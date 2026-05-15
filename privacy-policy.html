@@ -1,0 +1,791 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Privacy Policy — Lite Labs</title>
+<meta name="description" content="Privacy Policy of Lite Labs — a boutique application developer. Privacy-first architecture, anonymous analytics, no behavioral tracking.">
+<meta name="robots" content="index, follow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<!-- LUXURY LAWYER-FIRM TYPOGRAPHY: Playfair Display (titles), EB Garamond (body), Cormorant Garamond (signatures), JetBrains Mono (labels) -->
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800;900&family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  :root {
+    /* === Subtle VTS palette echo (soft hint, not literal match) === */
+    --bg-deep: #0B0E11;         /* Same deep base as VTS app shell */
+    --bg-rise: #14181F;         /* VTS bg-1 — slightly lifted */
+    --bg-card: rgba(24, 26, 32, 0.78);   /* VTS bg-card with extra opacity */
+    --bg-card-edge: rgba(240, 185, 11, 0.06);   /* faint VTS-gold edge instead of pure white */
+    --text-primary: #EAECEF;    /* VTS text-1 */
+    --text-secondary: #B5BCC9;
+    --text-tertiary: #7A8497;
+    --text-muted: #5A6373;
+    --accent: #C9A876;          /* Champagne gold — neutral lawyer-firm gold */
+    --accent-warm: #B87333;     /* VTS bronze — used only in subtle hints */
+    --accent-soft: rgba(201, 168, 118, 0.16);
+    --rule: rgba(255, 255, 255, 0.05);
+    --rule-strong: rgba(240, 185, 11, 0.10);   /* gold-tinged rule for VTS feel */
+  }
+  body {
+    /* Body font: EB Garamond — the serif of choice for premier law firms */
+    font-family: 'EB Garamond', 'Garamond', 'Adobe Garamond Pro', Georgia, 'Times New Roman', serif;
+    background:
+      /* Top-left whisper of VTS gold */
+      radial-gradient(ellipse 1600px 1000px at 12% -8%, rgba(240, 185, 11, 0.04), transparent 55%),
+      /* Bottom-right whisper of VTS bronze */
+      radial-gradient(ellipse 1300px 900px at 88% 108%, rgba(184, 115, 51, 0.035), transparent 55%),
+      /* Faint center cool tone for depth balance */
+      radial-gradient(ellipse 1000px 700px at 50% 50%, rgba(70, 80, 100, 0.025), transparent 70%),
+      /* VTS deep gradient base */
+      linear-gradient(180deg, var(--bg-deep) 0%, var(--bg-rise) 100%);
+    color: var(--text-primary);
+    line-height: 1.85;
+    min-height: 100vh;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-feature-settings: 'liga', 'kern', 'onum';
+    font-size: 17px;
+  }
+  .container {
+    max-width: 880px;
+    margin: 0 auto;
+    padding: 72px 32px 96px;
+  }
+
+  /* ============ MASTHEAD ============ */
+  header.masthead {
+    text-align: center;
+    margin-bottom: 56px;
+    padding-bottom: 40px;
+    border-bottom: 1px solid var(--rule);
+  }
+  .firm-mark {
+    /* Cormorant Garamond italic — the signature of a centennial firm */
+    font-family: 'Cormorant Garamond', 'Garamond', Georgia, serif;
+    font-size: 46px;
+    font-weight: 500;
+    letter-spacing: 5px;
+    font-style: italic;
+    background: linear-gradient(180deg, #FFFFFF 0%, #C9CDD4 60%, #8B92A0 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 12px;
+    line-height: 1;
+  }
+  .firm-tag {
+    font-family: 'JetBrains Mono', ui-monospace, monospace;
+    font-size: 10.5px;
+    color: var(--text-tertiary);
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    font-weight: 500;
+  }
+  .firm-rule {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 14px;
+    margin-top: 28px;
+  }
+  .firm-rule::before,
+  .firm-rule::after {
+    content: '';
+    height: 1px;
+    width: 80px;
+    background: linear-gradient(90deg, transparent, var(--accent), transparent);
+  }
+  .firm-rule-dot {
+    width: 5px; height: 5px;
+    border-radius: 50%;
+    background: var(--accent);
+    opacity: 0.85;
+  }
+
+  /* ============ DOCUMENT TITLE ============ */
+  h1 {
+    /* Playfair Display — luxury title typeface */
+    font-family: 'Playfair Display', 'EB Garamond', Georgia, serif;
+    font-size: 52px;
+    font-weight: 700;
+    color: var(--text-primary);
+    letter-spacing: -1px;
+    margin: 0 0 18px 0;
+    line-height: 1.1;
+    font-feature-settings: 'liga', 'dlig';
+  }
+  .doc-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 28px;
+    padding-bottom: 32px;
+    margin-bottom: 48px;
+    border-bottom: 1px solid var(--rule);
+  }
+  .doc-meta-item {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+  .doc-meta-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9.5px;
+    color: var(--text-muted);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    font-weight: 600;
+  }
+  .doc-meta-value {
+    font-family: 'EB Garamond', Georgia, serif;
+    font-size: 16px;
+    color: var(--text-secondary);
+    font-weight: 500;
+  }
+
+  /* ============ PREAMBLE ============ */
+  .preamble {
+    background: var(--bg-card);
+    backdrop-filter: blur(20px) saturate(140%);
+    -webkit-backdrop-filter: blur(20px) saturate(140%);
+    border: 1px solid var(--bg-card-edge);
+    border-radius: 14px;
+    padding: 36px 40px;
+    margin-bottom: 56px;
+    box-shadow:
+      0 1px 0 rgba(255, 255, 255, 0.04) inset,
+      0 24px 48px -24px rgba(0, 0, 0, 0.5);
+  }
+  .preamble-eyebrow {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--accent);
+    font-weight: 600;
+    margin-bottom: 16px;
+    opacity: 0.95;
+  }
+  .preamble p {
+    /* Slightly larger preamble for emphasis */
+    font-size: 17px;
+    color: var(--text-secondary);
+    margin: 0;
+    line-height: 1.85;
+    font-style: normal;
+  }
+  .preamble p + p { margin-top: 16px; }
+  .preamble p::first-letter {
+    /* Drop-cap effect for the very first paragraph */
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 48px;
+    font-weight: 600;
+    float: left;
+    line-height: 1;
+    margin: 4px 12px 0 0;
+    color: var(--accent);
+  }
+
+  /* ============ SECTIONS ============ */
+  section { margin-top: 60px; }
+  h2 {
+    font-family: 'Playfair Display', 'EB Garamond', Georgia, serif;
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--text-primary);
+    letter-spacing: -0.2px;
+    margin: 0 0 20px 0;
+    padding-bottom: 14px;
+    border-bottom: 1px solid var(--rule);
+    display: flex;
+    align-items: baseline;
+    gap: 16px;
+  }
+  h2 .sec-num {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--accent);
+    letter-spacing: 1px;
+    flex: none;
+  }
+  p {
+    font-size: 16px;
+    color: var(--text-secondary);
+    margin: 16px 0;
+    line-height: 1.85;
+  }
+  strong {
+    color: var(--text-primary);
+    font-weight: 600;
+  }
+  em {
+    color: var(--text-secondary);
+    font-style: italic;
+    font-family: 'EB Garamond', Georgia, serif;
+  }
+  ul, ol {
+    padding-inline-start: 28px;
+    margin: 18px 0;
+  }
+  li {
+    font-size: 16px;
+    color: var(--text-secondary);
+    margin-bottom: 12px;
+    line-height: 1.85;
+  }
+  li::marker { color: var(--text-muted); }
+  a {
+    color: var(--accent);
+    text-decoration: none;
+    border-bottom: 1px solid rgba(201, 168, 118, 0.25);
+    transition: border-color 0.2s ease, color 0.2s ease;
+  }
+  a:hover {
+    color: #DBC094;
+    border-bottom-color: var(--accent);
+  }
+
+  /* ============ SUB-HEADINGS ============ */
+  h3 {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text-primary);
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    margin: 32px 0 14px 0;
+  }
+
+  /* ============ CONTACT BLOCK ============ */
+  .contact-block {
+    margin-top: 72px;
+    padding: 40px 44px;
+    background: linear-gradient(135deg, rgba(20, 25, 34, 0.85), rgba(15, 19, 27, 0.85));
+    border: 1px solid var(--bg-card-edge);
+    border-radius: 14px;
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+  }
+  .contact-block h3 {
+    margin-top: 0;
+    margin-bottom: 20px;
+    color: var(--accent);
+    font-size: 11px;
+    letter-spacing: 2.5px;
+  }
+  .contact-row {
+    display: flex;
+    align-items: baseline;
+    gap: 18px;
+    padding: 12px 0;
+    border-bottom: 1px solid var(--rule);
+  }
+  .contact-row:last-child { border-bottom: none; }
+  .contact-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10.5px;
+    color: var(--text-muted);
+    letter-spacing: 1.8px;
+    text-transform: uppercase;
+    font-weight: 600;
+    min-width: 140px;
+    flex: none;
+  }
+  .contact-value {
+    font-family: 'EB Garamond', Georgia, serif;
+    font-size: 16px;
+    color: var(--text-secondary);
+  }
+
+  /* ============ SIGNATURE BLOCK ============ */
+  .signature-block {
+    margin-top: 80px;
+    padding-top: 56px;
+    border-top: 1px solid var(--rule);
+    text-align: center;
+  }
+  .signature-mark {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: 34px;
+    font-style: italic;
+    font-weight: 500;
+    letter-spacing: 4px;
+    color: var(--text-primary);
+    background: linear-gradient(180deg, #FFFFFF 0%, #B5BCC9 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 10px;
+    line-height: 1;
+  }
+  .signature-line {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10.5px;
+    color: var(--text-muted);
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    font-weight: 500;
+    margin-top: 6px;
+  }
+  .signature-divider {
+    width: 100px;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--accent), transparent);
+    margin: 22px auto;
+    opacity: 0.7;
+  }
+  .copyright-notice {
+    margin-top: 36px;
+    font-family: 'EB Garamond', Georgia, serif;
+    font-size: 13px;
+    color: var(--text-muted);
+    letter-spacing: 0.4px;
+    line-height: 1.7;
+    font-style: italic;
+  }
+
+  /* ============ MOBILE RESPONSIVE ============ */
+  @media (max-width: 720px) {
+    body { font-size: 16px; }
+    .container { padding: 48px 22px 64px; }
+    .firm-mark { font-size: 34px; letter-spacing: 3px; }
+    .firm-tag { font-size: 9.5px; letter-spacing: 3px; }
+    h1 { font-size: 38px; }
+    h2 { font-size: 19px; gap: 12px; }
+    h2 .sec-num { font-size: 12px; }
+    .preamble { padding: 26px 22px; }
+    .preamble p { font-size: 15.5px; }
+    .preamble p::first-letter { font-size: 40px; }
+    .doc-meta { gap: 20px; }
+    .contact-block { padding: 26px 22px; }
+    .contact-row { flex-direction: column; gap: 4px; }
+    .contact-label { min-width: 0; }
+    .signature-mark { font-size: 26px; }
+    p, li { font-size: 15px; }
+    .doc-meta-value { font-size: 15px; }
+    .contact-value { font-size: 15px; }
+  }
+
+  @media print {
+    body { background: white; color: black; }
+    .preamble, .contact-block { background: white; border: 1px solid #ccc; }
+    a { color: #1a3a8a; }
+    .firm-mark, .signature-mark { color: #1a1a1a; -webkit-text-fill-color: initial; }
+    .preamble p::first-letter { color: #1a1a1a; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+<!-- ============ MASTHEAD ============ -->
+<header class="masthead">
+  <div class="firm-mark">Lite Labs</div>
+  <div class="firm-tag">Boutique App Development Studio</div>
+  <div class="firm-rule">
+    <span class="firm-rule-dot"></span>
+  </div>
+</header>
+
+<!-- ============ TITLE ============ -->
+<h1>Privacy Policy</h1>
+<div class="doc-meta">
+  <div class="doc-meta-item">
+    <span class="doc-meta-label">Effective Date</span>
+    <span class="doc-meta-value">January 2026</span>
+  </div>
+  <div class="doc-meta-item">
+    <span class="doc-meta-label">Last Updated</span>
+    <span class="doc-meta-value">January 2026</span>
+  </div>
+  <div class="doc-meta-item">
+    <span class="doc-meta-label">Document Reference</span>
+    <span class="doc-meta-value">LL-PRIV-2026.01</span>
+  </div>
+  <div class="doc-meta-item">
+    <span class="doc-meta-label">Jurisdictional Scope</span>
+    <span class="doc-meta-value">Global</span>
+  </div>
+</div>
+
+<!-- ============ PREAMBLE ============ -->
+<div class="preamble">
+  <div class="preamble-eyebrow">Preamble</div>
+  <p>This Privacy Policy (the "<strong>Policy</strong>") sets forth the principles, practices, and commitments by which <strong>Lite Labs</strong>, acting as a boutique software developer (hereinafter referred to as "<strong>Lite Labs</strong>", the "<strong>Developer</strong>", "<strong>we</strong>", "<strong>our</strong>", or "<strong>us</strong>"), processes information in connection with the digital products, services, websites, and applications it designs, develops, publishes, and makes available to end users (collectively, the "<strong>Services</strong>").</p>
+  <p>The Developer has been architected from inception around a privacy-first design philosophy, anchored in the principles of <em>data minimization</em>, <em>purpose limitation</em>, and <em>transparency</em>. This Policy is intended to provide a clear, comprehensive, and legally sound description of those practices, and to articulate the rights afforded to individuals interacting with the Services, in alignment with international privacy and data-protection frameworks, including but not limited to the European Union General Data Protection Regulation ("<strong>GDPR</strong>"), the United Kingdom Data Protection Act 2018 ("<strong>UK DPA</strong>"), the California Consumer Privacy Act, as amended by the California Privacy Rights Act ("<strong>CCPA/CPRA</strong>"), and analogous statutory regimes operative in other jurisdictions.</p>
+</div>
+
+<!-- ============ SECTION 1 ============ -->
+<section>
+  <h2><span class="sec-num">&sect; 1</span> Scope and Applicability</h2>
+  <p>This Policy applies to all Services published or operated by Lite Labs and governs the information practices associated therewith. By accessing, installing, or otherwise utilizing the Services, the user acknowledges that they have read, understood, and accepted the terms of this Policy. To the maximum extent permitted by applicable law, this Policy constitutes the complete and exclusive statement of the Developer's information-handling practices with respect to the Services and supersedes any prior representations, communications, or understandings.</p>
+  <p>The Developer reserves the right to issue product-specific addenda or supplemental privacy notices where particular Services require additional disclosures. In the event of a conflict between this Policy and any such product-specific addendum, the terms of the addendum shall prevail solely with respect to the Service to which it applies.</p>
+</section>
+
+<!-- ============ SECTION 2 ============ -->
+<section>
+  <h2><span class="sec-num">&sect; 2</span> Privacy-First Architectural Philosophy</h2>
+  <p>The Developer designs its Services in accordance with the principles of privacy by design and privacy by default, as articulated in Article 25 of the GDPR and analogous international standards. The Developer implements <em>technical and organizational measures</em> calibrated to ensure that, by default, only the minimum information necessary for the legitimate operation and improvement of a Service is processed.</p>
+  <p>The Developer does not engage in user profiling, automated decision-making producing legal or similarly significant effects, behavioral advertising, cross-context tracking, identity resolution, or the construction of individualized data dossiers. The Services are not designed to identify individual users, and the architectural choices underlying them reflect that commitment.</p>
+</section>
+
+<!-- ============ SECTION 3 ============ -->
+<section>
+  <h2><span class="sec-num">&sect; 3</span> Information the Developer Does Not Collect</h2>
+  <p>In furtherance of the principle of data minimization, the Developer does <strong>not</strong> collect, store, transmit, sell, license, or otherwise process the following categories of personal information through its Services:</p>
+  <ul>
+    <li>Names, postal addresses, telephone numbers, electronic mail addresses, government-issued identifiers, account credentials, or any other direct identifiers.</li>
+    <li>Authentication credentials, passwords, tokens, biometric templates, or comparable security-related identifiers.</li>
+    <li>Contact lists, calendar entries, electronic correspondence, SMS records, or telephony metadata.</li>
+    <li>Photographs, video recordings, audio recordings, or other media files stored on the user's device.</li>
+    <li>Precise geolocation data, including, without limitation, GPS coordinates, Wi-Fi access-point triangulation, or cellular network positioning.</li>
+    <li>Live microphone input, camera input, or sensor-derived biometric data.</li>
+    <li>Payment instruments, credit or debit card numbers, banking details, or other financial account information.</li>
+    <li>Health, fitness, or medical information of any kind.</li>
+    <li>Lists of other applications installed upon the device, beyond standard browser-exposed metadata.</li>
+    <li>Any "<strong>special categories</strong>" of personal data within the meaning of Article 9 GDPR (including, <em>inter alia</em>, racial or ethnic origin, political opinions, religious or philosophical beliefs, trade-union membership, genetic data, sexual orientation, or sex life).</li>
+  </ul>
+</section>
+
+<!-- ============ SECTION 4 ============ -->
+<section>
+  <h2><span class="sec-num">&sect; 4</span> Anonymous Usage Analytics</h2>
+  <p>To support the ongoing development, stability, and qualitative improvement of its Services, the Developer collects a limited set of <strong>fully anonymous, aggregate analytics</strong>. Such processing is undertaken in reliance upon the lawful basis of <em>legitimate interests</em> (Article 6(1)(f) GDPR), specifically the legitimate interest of the Developer in understanding aggregate Service usage in order to identify defects, improve performance, and prioritize product development.</p>
+  <p>The categories of anonymous analytics processed are limited to the following:</p>
+  <ul>
+    <li>Aggregate navigation patterns and feature-usage frequencies, expressed in non-identifying form.</li>
+    <li>Approximate country-level location, inferred from anonymized network metadata.</li>
+    <li>Device category (mobile, tablet, desktop) and browser family, processed solely for compatibility analysis.</li>
+    <li>Aggregate session durations and engagement metrics, processed in non-attributable form.</li>
+    <li>Anonymous diagnostic, error, and crash telemetry necessary for the identification and remediation of defects.</li>
+  </ul>
+  <p>The analytics described in this Section are processed <strong>solely for the purpose of developing and improving the Services</strong>. The data contains no information capable, alone or in reasonable combination with other information available to the Developer, of identifying an individual user. Accordingly, such data is treated as anonymous information and falls outside the scope of personal data under prevailing data-protection law.</p>
+
+  <h3>Privacy-Protective Configuration</h3>
+  <p>Where third-party analytics infrastructure is employed, the following privacy-protective controls are configured and maintained at all times:</p>
+  <ul>
+    <li>Internet Protocol addresses are anonymized at the point of collection prior to any further processing.</li>
+    <li>Cross-device and cross-context identification features are disabled.</li>
+    <li>Advertising personalization signals are disabled.</li>
+    <li>Advertising identifiers are not collected.</li>
+    <li>Remarketing, audience construction, and similar profiling features are disabled.</li>
+    <li>No data is shared with the analytics provider, or any other party, for advertising purposes.</li>
+  </ul>
+</section>
+
+<!-- ============ SECTION 5 ============ -->
+<section>
+  <h2><span class="sec-num">&sect; 5</span> Local Device Storage</h2>
+  <p>Certain Services offered by the Developer make use of <em>local storage</em> mechanisms provided by the user's browser or operating environment in order to retain user preferences, session state, and other information necessary to the operation of the Service. Such locally stored information:</p>
+  <ul>
+    <li>Resides exclusively upon the user's device;</li>
+    <li>Is not transmitted to any server operated by the Developer;</li>
+    <li>Is not shared with any third party; and</li>
+    <li>May be cleared by the user at any time through native browser or operating-system controls, or through reset functionality provided within the Service.</li>
+  </ul>
+</section>
+
+<!-- ============ SECTION 6 ============ -->
+<section>
+  <h2><span class="sec-num">&sect; 6</span> Absence of Advertising and Behavioral Tracking</h2>
+  <p>The Services do not contain, embed, integrate, or otherwise rely upon any form of advertising network, behavioral tracking technology, advertising software development kit, or interest-based advertising mechanism. Specifically, the Services contain no display advertising, no interstitial advertising, no video advertising, no rewarded advertising, no native or in-feed advertising, and no affiliate marketing integrations.</p>
+  <p>The Developer does not participate in advertising auctions, real-time bidding systems, or similar advertising infrastructure, whether directly or indirectly.</p>
+</section>
+
+<!-- ============ SECTION 7 ============ -->
+<section>
+  <h2><span class="sec-num">&sect; 7</span> Third-Party Infrastructure Providers</h2>
+  <p>In the course of delivering its Services, the Developer relies upon a limited set of third-party infrastructure providers, each of which is subject to its own privacy policy and contractual data-handling obligations. These providers function in the capacity of data processors or independent controllers, as the case may be, and operate under their own legal frameworks. The principal categories of third-party infrastructure utilized include:</p>
+  <ul>
+    <li><strong>Static-content hosting providers</strong>, for the delivery of application files and assets;</li>
+    <li><strong>Typography content-delivery networks</strong>, for the provisioning of font assets;</li>
+    <li><strong>Analytics service providers</strong>, configured as described in Section 4 above; and</li>
+    <li><strong>Optional third-party contribution platforms</strong>, accessed solely upon the user's explicit and affirmative action.</li>
+  </ul>
+  <p>Users are encouraged to consult the privacy policies of any third-party services prior to engaging with such services. The Developer does not assume responsibility for the privacy practices of third parties beyond the commercially reasonable due-diligence measures taken when selecting infrastructure providers.</p>
+</section>
+
+<!-- ============ SECTION 8 ============ -->
+<section>
+  <h2><span class="sec-num">&sect; 8</span> Legal Bases for Processing</h2>
+  <p>To the extent that any processing carried out in connection with the Services constitutes the processing of personal data within the meaning of applicable data-protection law, such processing is undertaken upon one or more of the following lawful bases:</p>
+  <ul>
+    <li><strong>Legitimate interests</strong> (Article 6(1)(f) GDPR), where the processing is necessary for the legitimate interests pursued by the Developer, including the development, security, and improvement of the Services, and where such interests are not overridden by the interests or fundamental rights and freedoms of the data subject;</li>
+    <li><strong>Performance of a contract</strong> (Article 6(1)(b) GDPR), where the processing is necessary for the performance of any contract to which the data subject is a party;</li>
+    <li><strong>Compliance with a legal obligation</strong> (Article 6(1)(c) GDPR), where the processing is necessary for compliance with a legal obligation to which the Developer is subject; and</li>
+    <li><strong>Consent</strong> (Article 6(1)(a) GDPR), where the data subject has provided clear affirmative consent to the processing of personal data for one or more specific purposes.</li>
+  </ul>
+</section>
+
+<!-- ============ SECTION 9 ============ -->
+<section>
+  <h2><span class="sec-num">&sect; 9</span> Data Retention</h2>
+  <p>The Developer adheres to the principle of <em>storage limitation</em>. Personal information, to the limited extent it is processed at all, is retained only for so long as is necessary to fulfill the purposes for which it was collected, or as required by applicable law. Anonymous analytics data is retained in accordance with the default retention parameters of the relevant analytics provider, configured at the most privacy-protective settings reasonably available.</p>
+  <p>Locally stored information remains upon the user's device until cleared by the user or removed through normal device or browser maintenance.</p>
+</section>
+
+<!-- ============ SECTION 10 ============ -->
+<section>
+  <h2><span class="sec-num">&sect; 10</span> Rights of Data Subjects</h2>
+  <p>Although the privacy-first architecture of the Services is structured such that the Developer does not, in the ordinary course, hold personal data capable of triggering formal data-subject rights, the Developer nonetheless affirms the rights conferred upon data subjects under applicable data-protection law. Subject to the conditions and limitations prescribed by such law, data subjects may have the right to:</p>
+  <ul>
+    <li><strong>Access</strong> personal data concerning them processed by the Developer;</li>
+    <li><strong>Rectify</strong> inaccurate or incomplete personal data;</li>
+    <li><strong>Erase</strong> personal data, subject to applicable limitations;</li>
+    <li><strong>Restrict</strong> the processing of personal data;</li>
+    <li><strong>Object</strong> to processing carried out on the basis of legitimate interests;</li>
+    <li><strong>Data portability</strong>, in respect of personal data processed by automated means and on the basis of consent or contract;</li>
+    <li><strong>Withdraw consent</strong> at any time, where processing is undertaken upon the basis of consent; and</li>
+    <li><strong>Lodge a complaint</strong> with a competent supervisory authority.</li>
+  </ul>
+  <p>Requests in relation to the exercise of these rights may be directed to the contact address specified at the end of this Policy. The Developer will respond to such requests within the timeframes prescribed by applicable law.</p>
+</section>
+
+<!-- ============ SECTION 11 ============ -->
+<section>
+  <h2><span class="sec-num">&sect; 11</span> Technical and Organizational Security Measures</h2>
+  <p>The Developer implements <em>commercially reasonable</em> technical and organizational measures designed to safeguard the integrity, confidentiality, and availability of information processed in connection with the Services. Such measures include, without limitation, the exclusive delivery of Services over secure transport protocols, the avoidance of unnecessary data collection, and the principle of limiting third-party integrations to those strictly required for Service operation.</p>
+  <p>Notwithstanding the foregoing, no method of electronic transmission or storage can be guaranteed to be absolutely secure. To the maximum extent permitted by applicable law, the Developer disclaims liability for any unauthorized access, alteration, disclosure, or destruction of information arising from circumstances beyond its reasonable control.</p>
+</section>
+
+<!-- ============ SECTION 12 ============ -->
+<section>
+  <h2><span class="sec-num">&sect; 12</span> International Data Transfers</h2>
+  <p>To the limited extent that any information processed in connection with the Services is transferred across international borders, such transfers are conducted in compliance with applicable cross-border transfer requirements, including, where applicable, the implementation of appropriate safeguards such as standard contractual clauses adopted by the European Commission, or transfers to jurisdictions benefiting from an adequacy decision under Article 45 GDPR.</p>
+</section>
+
+<!-- ============ SECTION 13 ============ -->
+<section>
+  <h2><span class="sec-num">&sect; 13</span> Limitation of Liability</h2>
+  <p>To the maximum extent permitted by applicable law, the aggregate liability of the Developer arising from or in connection with this Policy, or any information practices described herein, shall be limited to direct damages actually incurred. In no event shall the Developer be liable for any indirect, incidental, consequential, exemplary, or punitive damages, whether arising in contract, tort (including negligence), or otherwise, regardless of whether the Developer has been advised of the possibility of such damages.</p>
+  <p>Nothing in this Policy excludes or limits any liability that cannot be excluded or limited under applicable law.</p>
+</section>
+
+<!-- ============ SECTION 14 ============ -->
+<section>
+  <h2><span class="sec-num">&sect; 14</span> Governing Interpretation and Severability</h2>
+  <p>This Policy shall be interpreted in a manner consistent with the principles set forth in the GDPR and other applicable international data-protection frameworks. In the event of any inconsistency between the English-language version of this Policy and any translated version, the English-language version shall govern.</p>
+  <p>If any provision of this Policy is held to be invalid, illegal, or unenforceable by a court of competent jurisdiction, the remaining provisions shall continue in full force and effect, and the invalid provision shall be construed in a manner that most closely reflects its original intent and complies with applicable law.</p>
+</section>
+
+<!-- ============ SECTION 15 ============ -->
+<section>
+  <h2><span class="sec-num">&sect; 15</span> Amendments to This Policy</h2>
+  <p>The Developer reserves the right to amend, modify, or update this Policy from time to time in order to reflect evolving operational practices, technological developments, legal or regulatory requirements, or other legitimate considerations. When such amendments are made, the "Last Updated" date appearing at the head of this document shall be revised accordingly. Material amendments shall, where reasonably practicable, be accompanied by appropriate prominent notice through the Services.</p>
+  <p>Continued use of the Services following the effective date of any amendment shall constitute acceptance of the amended terms.</p>
+</section>
+
+<!-- ============ SECTION 16 ============ -->
+<section>
+  <h2><span class="sec-num">&sect; 16</span> Regulatory Compliance</h2>
+  <p>This Policy has been drafted with a view to substantive compliance with internationally recognized privacy and data-protection frameworks, including, without limitation:</p>
+  <ul>
+    <li>The European Union General Data Protection Regulation (Regulation (EU) 2016/679);</li>
+    <li>The United Kingdom Data Protection Act 2018 and UK GDPR;</li>
+    <li>The California Consumer Privacy Act, as amended by the California Privacy Rights Act;</li>
+    <li>The Brazilian General Data Protection Law (LGPD); and</li>
+    <li>Other applicable national and supranational privacy frameworks.</li>
+  </ul>
+  <p>This Policy is further designed to operate in conformity with the developer-policy requirements of the principal application distribution platforms upon which the Services are made available.</p>
+</section>
+
+<!-- ============ +25 ADDITIONAL CLAUSES ============ -->
+
+<!-- ============ SECTION 17 ============ -->
+<section>
+  <h2><span class="sec-num">&sect; 17</span> Cookies and Similar Technologies</h2>
+  <p>The Services do not deploy persistent third-party tracking cookies for behavioral advertising or cross-site profiling. Where cookies or comparable browser-storage mechanisms are utilized at all, such utilization is strictly limited to functional necessity (such as session continuity, user-selected preferences, and security tokens). Users may, at all times, configure their browser to refuse or selectively accept cookies; such configuration may, however, affect the functional integrity of certain Services.</p>
+</section>
+
+<!-- ============ SECTION 18 ============ -->
+<section>
+  <h2><span class="sec-num">&sect; 18</span> Aggregated and De-Identified Information</h2>
+  <p>The Developer may aggregate, anonymize, or otherwise de-identify information collected in connection with the Services in such a manner that the resulting data set is no longer capable of being associated, directly or indirectly, with any identified or identifiable natural person. Such aggregated or de-identified information shall, to the maximum extent permitted by applicable law, fall outside the scope of personal data and may be retained and processed by the Developer without restriction for legitimate operational, statistical, and research purposes.</p>
+</section>
+
+<!-- ============ SECTION 19 ============ -->
+<section>
+  <h2><span class="sec-num">&sect; 19</span> Automated Decision-Making and Profiling</h2>
+  <p>The Developer does not engage in automated decision-making, including profiling, that produces legal effects concerning the user or similarly significantly affects the user, within the meaning of Article 22 GDPR. The Services contain no algorithmic systems designed to evaluate personal aspects of users, including the analysis or prediction of performance, economic situation, health, personal preferences, interests, reliability, behavior, location, or movements.</p>
+</section>
+
+<!-- ============ SECTION 20 ============ -->
+<section>
+  <h2><span class="sec-num">&sect; 20</span> Do Not Track Signals</h2>
+  <p>Some web browsers transmit "Do Not Track" ("<strong>DNT</strong>") signals to websites. Because no industry-wide standard governing DNT signals has yet been finalized, and given that the Services already operate under a privacy-first architecture that does not engage in tracking, the Developer treats user privacy uniformly regardless of any DNT signal received. The Developer does not condition Service availability on any user election with respect to DNT signaling.</p>
+</section>
+
+<!-- ============ SECTION 21 ============ -->
+<section>
+  <h2><span class="sec-num">&sect; 21</span> Sale or Sharing of Personal Information</h2>
+  <p>For purposes of the California Consumer Privacy Act, as amended by the California Privacy Rights Act, and analogous statutory regimes, the Developer does <strong>not</strong> "sell" or "share" personal information of users as those terms are defined in such statutes. The Developer derives no monetary or other valuable consideration from the transfer of user information to third parties, and engages in no cross-context behavioral advertising.</p>
+</section>
+
+<!-- ============ SECTION 22 ============ -->
+<section>
+  <h2><span class="sec-num">&sect; 22</span> Supplementary Rights Under State Law</h2>
+  <p>Residents of certain jurisdictions, including the State of California, may possess additional rights under applicable state-level privacy statutes, including, without limitation, the right to know the categories of information collected, the right to request deletion, the right to non-discrimination for exercising privacy rights, and the right to limit the use of sensitive personal information. Insofar as the Developer does not collect personal or sensitive personal information in the first instance, the substantive exercise of many such rights is not implicated; nevertheless, the Developer affirms its commitment to honoring all such rights to the extent any in-scope information may exist.</p>
+</section>
+
+<!-- ============ SECTION 23 ============ -->
+<section>
+  <h2><span class="sec-num">&sect; 23</span> Designated Privacy Contact</h2>
+  <p>While the Developer is not statutorily required to designate a Data Protection Officer under Article 37 GDPR by virtue of its operational profile and the nature of its processing activities, the Developer has nonetheless designated a single point of contact for privacy-related inquiries, requests, and correspondence. Such designated point of contact may be reached at the electronic mail address set forth in the Contact section of this Policy.</p>
+</section>
+
+<!-- ============ SECTION 24 ============ -->
+<section>
+  <h2><span class="sec-num">&sect; 24</span> Data Breach Notification</h2>
+  <p>In the unlikely event of a personal data breach that is likely to result in a risk to the rights and freedoms of natural persons, the Developer shall, to the extent required by applicable law, notify the competent supervisory authority within seventy-two (72) hours of becoming aware of the breach, and shall communicate the breach to affected data subjects where required by law. Given the privacy-first architecture of the Services and the absence of personal data collection in the ordinary course, the risk of such an event arising from the Developer's processing operations is correspondingly low.</p>
+</section>
+
+<!-- ============ SECTION 25 ============ -->
+<section>
+  <h2><span class="sec-num">&sect; 25</span> Records of Processing Activities</h2>
+  <p>To the extent required by Article 30 GDPR or analogous statutory provisions, the Developer maintains internal records of processing activities sufficient to demonstrate compliance with applicable data-protection law. Such records are made available to competent supervisory authorities upon lawful request.</p>
+</section>
+
+<!-- ============ SECTION 26 ============ -->
+<section>
+  <h2><span class="sec-num">&sect; 26</span> Subprocessors</h2>
+  <p>The third-party infrastructure providers identified in Section 7 of this Policy may, from time to time, engage subprocessors in support of the services they provide to the Developer. Any such engagement is governed by the contractual and statutory obligations binding upon the relevant provider, including, where applicable, the requirement to flow down equivalent data-protection obligations to subprocessors.</p>
+</section>
+
+<!-- ============ SECTION 27 ============ -->
+<section>
+  <h2><span class="sec-num">&sect; 27</span> No Warranty Regarding Third-Party Practices</h2>
+  <p>The Developer makes no representation or warranty regarding the privacy practices, technical security, or data-handling procedures of third parties whose services may be accessed through links or integrations within the Services. Any engagement by the user with such third-party services is at the user's sole discretion and is governed exclusively by the terms and privacy policies of those third parties.</p>
+</section>
+
+<!-- ============ SECTION 28 ============ -->
+<section>
+  <h2><span class="sec-num">&sect; 28</span> Pseudonymization and Encryption</h2>
+  <p>Where applicable, the Developer employs <em>pseudonymization</em> and <em>encryption</em> techniques consistent with the state of the art and the cost of implementation, taking into account the nature, scope, context, and purposes of processing, as well as the risks of varying likelihood and severity for the rights and freedoms of natural persons.</p>
+</section>
+
+<!-- ============ SECTION 29 ============ -->
+<section>
+  <h2><span class="sec-num">&sect; 29</span> Confidentiality Obligations</h2>
+  <p>All personnel, contractors, and authorized agents of the Developer who may, in the ordinary course of their duties, have access to any information processed in connection with the Services are bound by written confidentiality obligations, whether express or implied, and shall process such information solely in accordance with the documented instructions of the Developer.</p>
+</section>
+
+<!-- ============ SECTION 30 ============ -->
+<section>
+  <h2><span class="sec-num">&sect; 30</span> Lawful Disclosure</h2>
+  <p>Notwithstanding the privacy-first architecture of the Services, the Developer may be required to disclose certain information in response to a lawful and binding request issued by a competent governmental authority, regulatory body, court of competent jurisdiction, or other entity with statutory authority to compel disclosure. Any such disclosure shall be made strictly within the scope of the legal compulsion in question and shall be subject to challenge by the Developer where appropriate and lawful.</p>
+</section>
+
+<!-- ============ SECTION 31 ============ -->
+<section>
+  <h2><span class="sec-num">&sect; 31</span> Mergers, Acquisitions, and Corporate Transactions</h2>
+  <p>In the event of any merger, acquisition, reorganization, dissolution, sale of substantially all assets, or other corporate transaction involving the Developer, any information processed in connection with the Services may be transferred to the relevant successor entity, subject to applicable data-protection law and to the continuing applicability of this Policy or a substantially equivalent policy adopted by the successor.</p>
+</section>
+
+<!-- ============ SECTION 32 ============ -->
+<section>
+  <h2><span class="sec-num">&sect; 32</span> User Responsibilities</h2>
+  <p>The user acknowledges and accepts responsibility for maintaining the security of the device upon which the Services are accessed, including, without limitation, the application of operating-system updates, the use of reasonable authentication measures, and the safeguarding of locally stored information against unauthorized access by third parties having physical or remote access to the user's device.</p>
+</section>
+
+<!-- ============ SECTION 33 ============ -->
+<section>
+  <h2><span class="sec-num">&sect; 33</span> Accessibility of This Policy</h2>
+  <p>The Developer endeavors to publish this Policy in a manner that is clear, accessible, and intelligible to users of varying technical and legal sophistication. Where particular provisions remain unclear to the reader, inquiries may be addressed to the Developer using the contact information set forth herein.</p>
+</section>
+
+<!-- ============ SECTION 34 ============ -->
+<section>
+  <h2><span class="sec-num">&sect; 34</span> Survival of Obligations</h2>
+  <p>The provisions of this Policy relating to limitation of liability, governing interpretation, severability, and any other provisions which by their nature are intended to survive termination of the user's engagement with the Services shall so survive.</p>
+</section>
+
+<!-- ============ SECTION 35 ============ -->
+<section>
+  <h2><span class="sec-num">&sect; 35</span> No Third-Party Beneficiaries</h2>
+  <p>Save where applicable law expressly provides otherwise, this Policy is not intended to confer, and shall not be construed as conferring, any right or remedy upon any third party not a direct user of the Services.</p>
+</section>
+
+<!-- ============ SECTION 36 ============ -->
+<section>
+  <h2><span class="sec-num">&sect; 36</span> Force Majeure</h2>
+  <p>The Developer shall not be deemed in breach of its obligations under this Policy where its performance is delayed, impeded, or rendered impossible by reason of any cause beyond its reasonable control, including, without limitation, acts of God, governmental restrictions, network outages affecting third-party infrastructure providers, or other comparable events.</p>
+</section>
+
+<!-- ============ SECTION 37 ============ -->
+<section>
+  <h2><span class="sec-num">&sect; 37</span> No Waiver</h2>
+  <p>The failure of the Developer to enforce any provision of this Policy at any time shall not be construed as a waiver of such provision, nor shall it affect the right of the Developer to enforce such provision at a later time.</p>
+</section>
+
+<!-- ============ SECTION 38 ============ -->
+<section>
+  <h2><span class="sec-num">&sect; 38</span> Independent Provisions</h2>
+  <p>Each provision of this Policy shall be construed as independently enforceable, and the invalidity or unenforceability of any single provision shall not affect the validity or enforceability of any other provision.</p>
+</section>
+
+<!-- ============ SECTION 39 ============ -->
+<section>
+  <h2><span class="sec-num">&sect; 39</span> Headings for Convenience</h2>
+  <p>The headings of the sections of this Policy are inserted for convenience of reference only and shall not be deemed to alter, define, or limit the scope or interpretation of the provisions contained herein.</p>
+</section>
+
+<!-- ============ SECTION 40 ============ -->
+<section>
+  <h2><span class="sec-num">&sect; 40</span> Entire Statement</h2>
+  <p>This Policy, together with any product-specific addenda lawfully issued by the Developer, constitutes the entire statement of the Developer's privacy practices with respect to the Services and supersedes all prior or contemporaneous representations, communications, and understandings, whether oral or written, on the subject matter hereof.</p>
+</section>
+
+<!-- ============ SECTION 41 ============ -->
+<section>
+  <h2><span class="sec-num">&sect; 41</span> Interpretation in Favor of Privacy</h2>
+  <p>Where any provision of this Policy is capable of more than one reasonable interpretation, it shall be construed in the manner most favorable to the protection of user privacy and most consistent with the privacy-first principles articulated in Section 2.</p>
+</section>
+
+<!-- ============ CONTACT BLOCK ============ -->
+<div class="contact-block">
+  <h3>&sect; 42 &nbsp; Contact and Inquiries</h3>
+  <p>Any questions, requests, or concerns regarding this Policy, or the privacy practices of Lite Labs more generally, may be directed in writing to the contact set forth below. Inquiries shall be addressed promptly and in accordance with applicable law.</p>
+  <div style="margin-top: 24px;">
+    <div class="contact-row">
+      <span class="contact-label">Entity</span>
+      <span class="contact-value">Lite Labs</span>
+    </div>
+    <div class="contact-row">
+      <span class="contact-label">Description</span>
+      <span class="contact-value">Boutique App Development Studio</span>
+    </div>
+    <div class="contact-row">
+      <span class="contact-label">Electronic Mail</span>
+      <span class="contact-value"><a href="mailto:LiteLabs@proton.me">LiteLabs@proton.me</a></span>
+    </div>
+    <div class="contact-row">
+      <span class="contact-label">Jurisdiction</span>
+      <span class="contact-value">Global</span>
+    </div>
+    <div class="contact-row">
+      <span class="contact-label">Document Reference</span>
+      <span class="contact-value">LL-PRIV-2026.01</span>
+    </div>
+  </div>
+</div>
+
+<!-- ============ SIGNATURE BLOCK ============ -->
+<div class="signature-block">
+  <div class="signature-mark">Lite Labs</div>
+  <div class="signature-line">Boutique App Development Studio</div>
+  <div class="signature-divider"></div>
+  <div class="signature-line">Privacy-First by Design</div>
+
+  <div class="copyright-notice">
+    Copyright &copy; Lite Labs. All rights reserved.<br>
+    This Privacy Policy is the intellectual property of Lite Labs and may not be reproduced, distributed, or adapted without prior written authorization.<br>
+    Document last reviewed January 2026.
+  </div>
+</div>
+
+</div>
+</body>
+</html>
