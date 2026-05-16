@@ -1,1199 +1,743 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lite Labs — Boutique App Development Studio</title>
+<meta name="description" content="Lite Labs is a boutique app development studio crafting refined, privacy-respecting digital experiences.">
 <meta name="theme-color" content="#0B0E11">
-<meta name="color-scheme" content="light">
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-<meta name="mobile-web-app-capable" content="yes">
-<meta name="application-name" content="VTS">
-<meta name="apple-mobile-web-app-title" content="VTS">
-<meta name="description" content="VTS — Virtual Trading School. An educational virtual sandbox to learn trading with zero risk. No real money involved.">
-<title>VTS | Virtual Trading School</title>
-<!-- Google Analytics (anonymous usage tracking only) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-QJ8FCR27HK"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-QJ8FCR27HK', {
-    anonymize_ip: true,
-    allow_google_signals: false,
-    allow_ad_personalization_signals: false
-  });
-</script>
-<!-- PWA manifest (required for PWABuilder) -->
-<link rel="manifest" href="manifest.json">
-<!-- App icons -->
-<link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
-<link rel="icon" type="image/png" sizes="512x512" href="icon-512.png">
-<link rel="apple-touch-icon" href="icon-192.png">
+<meta property="og:title" content="Lite Labs">
+<meta property="og:description" content="Boutique app development studio. Privacy-first.">
+<meta property="og:type" content="website">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&family=Sora:wght@500;600;700;800&family=JetBrains+Mono:wght@400;500;700&family=IM+Fell+DW+Pica:ital@0;1&family=Montserrat:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800&family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Cormorant+Garamond:ital,wght@0,500;0,600;1,400;1,500&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  :root {
+    --bg-deep: #0B0E11;
+    --bg-rise: #14181F;
+    --bg-card: rgba(24, 26, 32, 0.78);
+    --bg-card-edge: rgba(240, 185, 11, 0.06);
+    --text-primary: #EAECEF;
+    --text-secondary: #B5BCC9;
+    --text-tertiary: #7A8497;
+    --text-muted: #5A6373;
+    --accent: #C9A876;
+    --accent-warm: #B87333;
+    --gold: #F0B90B;
+    --rule: rgba(255, 255, 255, 0.05);
+  }
+  body {
+    font-family: 'EB Garamond', Georgia, serif;
+    background:
+      radial-gradient(ellipse 1600px 1000px at 12% -8%, rgba(240,185,11,0.04), transparent 55%),
+      radial-gradient(ellipse 1300px 900px at 88% 108%, rgba(184,115,51,0.035), transparent 55%),
+      radial-gradient(ellipse 1000px 700px at 50% 50%, rgba(70,80,100,0.025), transparent 70%),
+      linear-gradient(180deg, var(--bg-deep) 0%, var(--bg-rise) 100%);
+    color: var(--text-primary);
+    line-height: 1.75;
+    min-height: 100vh;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-size: 17px;
+  }
+
+  /* ============ TOP BAR ============ */
+  .topbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1080px;
+    margin: 0 auto;
+    padding: 24px 32px;
+    border-bottom: 1px solid var(--rule);
+  }
+  .topbar-brand {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: 26px;
+    font-weight: 500;
+    font-style: italic;
+    letter-spacing: 3px;
+    background: linear-gradient(180deg, #FFFFFF 0%, #C9CDD4 60%, #8B92A0 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-decoration: none;
+  }
+  .topbar-nav {
+    display: flex;
+    gap: 32px;
+    align-items: center;
+  }
+  .topbar-nav a {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: var(--text-tertiary);
+    text-decoration: none;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    font-weight: 500;
+    transition: color 0.2s ease;
+  }
+  .topbar-nav a:hover { color: var(--accent); }
+
+  /* ============ CONTAINER ============ */
+  .container {
+    max-width: 1080px;
+    margin: 0 auto;
+    padding: 0 32px;
+  }
+
+  /* ============ HERO ============ */
+  .hero {
+    padding: 120px 0 100px;
+    text-align: center;
+    position: relative;
+  }
+  .hero-eyebrow {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--accent);
+    font-weight: 600;
+    margin-bottom: 28px;
+    opacity: 0.85;
+  }
+  .hero-mark {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: 96px;
+    font-weight: 500;
+    font-style: italic;
+    letter-spacing: 8px;
+    background: linear-gradient(180deg, #FFFFFF 0%, #C9CDD4 55%, #8B92A0 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    line-height: 1;
+    margin: 0 0 16px;
+  }
+  .hero-tag {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    color: var(--text-tertiary);
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    font-weight: 500;
+    margin-bottom: 56px;
+  }
+  .hero-rule {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    margin: 0 auto 56px;
+    width: 200px;
+  }
+  .hero-rule::before,
+  .hero-rule::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--accent), transparent);
+  }
+  .hero-rule-dot {
+    width: 5px; height: 5px;
+    border-radius: 50%;
+    background: var(--accent);
+  }
+  .hero-headline {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 44px;
+    font-weight: 500;
+    line-height: 1.25;
+    letter-spacing: -0.8px;
+    color: var(--text-primary);
+    max-width: 720px;
+    margin: 0 auto 24px;
+  }
+  .hero-headline em {
+    font-style: italic;
+    color: var(--accent);
+    font-weight: 500;
+  }
+  .hero-sub {
+    font-size: 18px;
+    line-height: 1.7;
+    color: var(--text-secondary);
+    max-width: 600px;
+    margin: 0 auto 48px;
+  }
+  .hero-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    padding: 16px 32px;
+    background: linear-gradient(135deg, rgba(240,185,11,0.12), rgba(184,115,51,0.06));
+    border: 1px solid rgba(240,185,11,0.35);
+    border-radius: 10px;
+    color: var(--text-primary);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.25s ease;
+    box-shadow: 0 4px 18px rgba(240,185,11,0.10);
+  }
+  .hero-cta:hover {
+    background: linear-gradient(135deg, rgba(240,185,11,0.20), rgba(184,115,51,0.10));
+    border-color: rgba(240,185,11,0.55);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 22px rgba(240,185,11,0.18);
+  }
+  .hero-cta-arrow { color: var(--accent); font-size: 14px; transition: transform 0.2s ease; }
+  .hero-cta:hover .hero-cta-arrow { transform: translateX(3px); }
+
+  /* ============ SECTION TITLE ============ */
+  section { padding: 80px 0; }
+  .section-eyebrow {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10.5px;
+    letter-spacing: 3.5px;
+    text-transform: uppercase;
+    color: var(--accent);
+    font-weight: 600;
+    margin-bottom: 16px;
+  }
+  .section-title {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 38px;
+    font-weight: 600;
+    letter-spacing: -0.4px;
+    color: var(--text-primary);
+    margin: 0 0 16px 0;
+    line-height: 1.2;
+  }
+  .section-sub {
+    font-size: 17px;
+    color: var(--text-secondary);
+    max-width: 640px;
+    line-height: 1.7;
+    margin: 0 0 56px 0;
+  }
+
+  /* ============ FEATURED APP ============ */
+  .featured-app {
+    background: var(--bg-card);
+    backdrop-filter: blur(20px) saturate(140%);
+    -webkit-backdrop-filter: blur(20px) saturate(140%);
+    border: 1px solid var(--bg-card-edge);
+    border-radius: 18px;
+    padding: 48px 52px;
+    margin-bottom: 24px;
+    box-shadow:
+      0 1px 0 rgba(255,255,255,0.04) inset,
+      0 32px 64px -32px rgba(0,0,0,0.5);
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.3s ease, border-color 0.3s ease;
+  }
+  .featured-app:hover {
+    transform: translateY(-2px);
+    border-color: rgba(240,185,11,0.20);
+  }
+  .featured-app::before {
+    content: '';
+    position: absolute;
+    top: 0; right: 0;
+    width: 280px; height: 280px;
+    background: radial-gradient(circle, rgba(240,185,11,0.06), transparent 60%);
+    pointer-events: none;
+  }
+  .app-status {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 24px;
+    font-weight: 700;
+  }
+  .app-status-dot {
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: var(--gold);
+    box-shadow: 0 0 8px rgba(240,185,11,0.55);
+    animation: pulse 2s ease-in-out infinite;
+  }
+  @keyframes pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.7; transform: scale(0.9); }
+  }
+  .app-name {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 32px;
+    font-weight: 700;
+    margin: 0 0 12px;
+    color: var(--text-primary);
+  }
+  .app-tagline {
+    font-family: 'EB Garamond', Georgia, serif;
+    font-style: italic;
+    font-size: 17px;
+    color: var(--accent);
+    margin: 0 0 20px;
+  }
+  .app-desc {
+    font-size: 16px;
+    color: var(--text-secondary);
+    margin: 0 0 32px;
+    max-width: 680px;
+    line-height: 1.8;
+  }
+  .app-actions { display: flex; gap: 12px; flex-wrap: wrap; }
+  .app-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 22px;
+    border-radius: 8px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.2s ease;
+  }
+  .app-btn.primary {
+    background: linear-gradient(135deg, rgba(240,185,11,0.18), rgba(184,115,51,0.08));
+    border: 1px solid rgba(240,185,11,0.40);
+    color: var(--text-primary);
+  }
+  .app-btn.primary:hover {
+    background: linear-gradient(135deg, rgba(240,185,11,0.28), rgba(184,115,51,0.14));
+    border-color: rgba(240,185,11,0.60);
+    transform: translateY(-1px);
+  }
+  .app-btn.secondary {
+    background: transparent;
+    border: 1px solid var(--rule);
+    color: var(--text-tertiary);
+  }
+  .app-btn.secondary:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+  }
+
+  /* ============ COMING SOON ============ */
+  .coming-soon {
+    background: rgba(20, 24, 31, 0.4);
+    border: 1px dashed rgba(255,255,255,0.08);
+    border-radius: 18px;
+    padding: 48px 52px;
+    text-align: center;
+  }
+  .coming-soon-mark {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-style: italic;
+    font-size: 28px;
+    color: var(--accent);
+    margin-bottom: 12px;
+    letter-spacing: 2px;
+  }
+  .coming-soon-text {
+    font-size: 15px;
+    color: var(--text-tertiary);
+    font-style: italic;
+    max-width: 540px;
+    margin: 0 auto;
+  }
+
+  /* ============ PRINCIPLES ============ */
+  .principles {
+    background: var(--bg-card);
+    backdrop-filter: blur(20px) saturate(140%);
+    -webkit-backdrop-filter: blur(20px) saturate(140%);
+    border: 1px solid var(--bg-card-edge);
+    border-radius: 18px;
+    padding: 56px 52px;
+  }
+  .principles-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 36px 48px;
+    margin-top: 40px;
+  }
+  .principle {
+    border-inline-start: 2px solid rgba(240,185,11,0.30);
+    padding-inline-start: 20px;
+  }
+  .principle-num {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    color: var(--accent);
+    letter-spacing: 2px;
+    font-weight: 600;
+    margin-bottom: 8px;
+  }
+  .principle-title {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 19px;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin: 0 0 8px;
+  }
+  .principle-text {
+    font-size: 15px;
+    color: var(--text-secondary);
+    line-height: 1.7;
+    margin: 0;
+  }
+
+  /* ============ SUPPORT CARD ============ */
+  .support-card {
+    background: linear-gradient(135deg, rgba(240,185,11,0.08), rgba(184,115,51,0.04));
+    border: 1px solid rgba(240,185,11,0.25);
+    border-radius: 18px;
+    padding: 48px 52px;
+    text-align: center;
+    box-shadow: 0 4px 24px rgba(240,185,11,0.06);
+  }
+  .support-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    color: var(--gold);
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    font-weight: 700;
+    margin-bottom: 20px;
+    padding: 6px 14px;
+    background: rgba(240,185,11,0.08);
+    border: 1px solid rgba(240,185,11,0.25);
+    border-radius: 999px;
+  }
+  .support-title {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 32px;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin: 0 0 16px;
+    line-height: 1.2;
+  }
+  .support-text {
+    font-size: 16px;
+    color: var(--text-secondary);
+    line-height: 1.8;
+    margin: 0 auto 32px;
+    max-width: 580px;
+  }
+  .support-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 14px 32px;
+    background: linear-gradient(180deg, #F0B90B, #D49A07);
+    color: #0B0E11;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    text-decoration: none;
+    border-radius: 10px;
+    transition: all 0.2s ease;
+    box-shadow: 0 4px 18px rgba(240,185,11,0.30);
+  }
+  .support-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 24px rgba(240,185,11,0.45);
+  }
+  .support-footer {
+    margin-top: 22px;
+    font-size: 13px;
+    color: var(--text-tertiary);
+    font-style: italic;
+  }
+
+  /* ============ CONTACT ============ */
+  .contact-section {
+    text-align: center;
+    padding: 80px 0;
+  }
+  .contact-email {
+    display: inline-block;
+    margin-top: 24px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 18px;
+    color: var(--accent);
+    text-decoration: none;
+    padding: 14px 28px;
+    border: 1px solid rgba(201,168,118,0.30);
+    border-radius: 10px;
+    transition: all 0.2s ease;
+    letter-spacing: 0.5px;
+  }
+  .contact-email:hover {
+    border-color: var(--accent);
+    background: rgba(201,168,118,0.05);
+  }
+
+  /* ============ FOOTER ============ */
+  footer {
+    margin-top: 80px;
+    padding: 56px 32px 48px;
+    border-top: 1px solid var(--rule);
+    text-align: center;
+  }
+  .footer-mark {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-style: italic;
+    font-size: 32px;
+    font-weight: 500;
+    letter-spacing: 4px;
+    background: linear-gradient(180deg, #FFFFFF 0%, #B5BCC9 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 8px;
+  }
+  .footer-tag {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    color: var(--text-muted);
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    margin-bottom: 32px;
+  }
+  .footer-quote {
+    font-family: 'EB Garamond', Georgia, serif;
+    font-style: italic;
+    font-size: 18px;
+    color: var(--text-tertiary);
+    max-width: 560px;
+    margin: 0 auto 28px;
+    line-height: 1.7;
+  }
+  .footer-links {
+    display: flex;
+    justify-content: center;
+    gap: 28px;
+    flex-wrap: wrap;
+    margin-bottom: 28px;
+  }
+  .footer-links a {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10.5px;
+    color: var(--text-tertiary);
+    text-decoration: none;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    transition: color 0.2s ease;
+  }
+  .footer-links a:hover { color: var(--accent); }
+  .footer-divider {
+    width: 80px;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--accent), transparent);
+    margin: 24px auto;
+    opacity: 0.5;
+  }
+  .footer-copy {
+    font-size: 12.5px;
+    color: var(--text-muted);
+    font-style: italic;
+    line-height: 1.6;
+  }
+  .footer-signature {
+    margin-top: 28px;
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-style: italic;
+    font-size: 20px;
+    color: var(--text-secondary);
+    letter-spacing: 1.5px;
+    opacity: 0.7;
+  }
+
+  /* ============ RESPONSIVE ============ */
+  @media (max-width: 720px) {
+    body { font-size: 16px; }
+    .topbar { padding: 18px 22px; }
+    .topbar-brand { font-size: 22px; letter-spacing: 2px; }
+    .topbar-nav { gap: 18px; }
+    .topbar-nav a { font-size: 10px; letter-spacing: 1.5px; }
+    .container { padding: 0 22px; }
+    .hero { padding: 80px 0 60px; }
+    .hero-mark { font-size: 60px; letter-spacing: 5px; }
+    .hero-tag { font-size: 10.5px; letter-spacing: 3.5px; }
+    .hero-headline { font-size: 30px; }
+    .hero-sub { font-size: 16px; }
+    section { padding: 56px 0; }
+    .section-title { font-size: 28px; }
+    .featured-app, .principles, .support-card, .coming-soon { padding: 32px 26px; }
+    .app-name { font-size: 24px; }
+    .principles-grid { grid-template-columns: 1fr; gap: 28px; }
+    .support-title { font-size: 24px; }
+    .footer-mark { font-size: 26px; }
+    .footer-links { gap: 16px; }
+  }
+</style>
 </head>
 <body>
-<div id="app">
 
-  <!-- ============ SPLASH SCREEN (shows briefly on every launch) ============ -->
-  <div class="splash-v2" id="splashV2">
-    <div class="splash-v2-content">
-      <div class="splash-v2-logo">
-        <img src="logo-large.png" alt="VTS" width="160" height="160">
-      </div>
-      <div class="splash-v2-brand">Virtual Trading School</div>
-      <div class="splash-v2-tag">Educational Trading Virtual</div>
-      <div class="splash-v2-loader"></div>
-      <div class="splash-v2-by">
-        <span class="splash-v2-by-label">PRESENTED BY</span>
-        <span class="splash-v2-by-name">Lite Labs</span>
-      </div>
-      <div class="splash-v2-version">v1.0</div>
+<!-- ============ TOPBAR ============ -->
+<nav class="topbar">
+  <a href="/" class="topbar-brand">Lite Labs</a>
+  <div class="topbar-nav">
+    <a href="apps.html">Apps</a>
+    <a href="privacy-policy.html">Privacy</a>
+    <a href="mailto:LiteLabs@proton.me">Contact</a>
+  </div>
+</nav>
+
+<!-- ============ HERO ============ -->
+<section class="hero">
+  <div class="container">
+    <div class="hero-eyebrow">EST. MMXXVI</div>
+    <h1 class="hero-mark">Lite Labs</h1>
+    <div class="hero-tag">Boutique App Development Studio</div>
+    <div class="hero-rule">
+      <span class="hero-rule-dot"></span>
+    </div>
+    <h2 class="hero-headline">
+      Crafting refined digital experiences with <em>uncompromising privacy</em>.
+    </h2>
+    <p class="hero-sub">
+      We design and build elegant applications that put the user first &mdash; no advertising, no data harvesting, no compromises. Quality over quantity, always.
+    </p>
+    <a href="#principles" class="hero-cta">
+      Discover Our Principles
+      <span class="hero-cta-arrow">→</span>
+    </a>
+  </div>
+</section>
+
+<!-- ============ COMING SOON SECTION ============ -->
+<section>
+  <div class="container">
+    <div class="section-eyebrow">In The Studio</div>
+    <h2 class="section-title">Building the next chapter</h2>
+    <p class="section-sub">
+      New projects are taking shape behind the scenes &mdash; each crafted with the same care, the same principles, and the same uncompromising attention to detail.
+    </p>
+
+    <div class="coming-soon">
+      <div class="coming-soon-mark">Stay attentive</div>
+      <p class="coming-soon-text">
+        Meaningful work takes time, and we believe it is worth the wait. Significant releases are on the horizon &mdash; thank you for your patience.
+      </p>
     </div>
   </div>
+</section>
 
-  <!-- ============ GATE SCREENS (offline / update / sign-in / underage) ============ -->
-  <div class="gate-screen" id="gateOffline">
-    <div class="gate-card">
-      <div class="gate-icon gate-icon-offline">
-        <svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="1" y1="1" x2="23" y2="23"/><path d="M16.72 11.06A10.94 10.94 0 0 1 19 12.55"/><path d="M5 12.55a10.94 10.94 0 0 1 5.17-2.39"/><path d="M10.71 5.05A16 16 0 0 1 22.58 9"/><path d="M1.42 9a15.91 15.91 0 0 1 4.7-2.88"/><path d="M8.53 16.11a6 6 0 0 1 6.95 0"/><line x1="12" y1="20" x2="12.01" y2="20"/></svg>
-      </div>
-      <div class="gate-title" data-i18n="gate_off_title">Connection Needed</div>
-      <div class="gate-msg" data-i18n="gate_off_msg">We can't reach our servers right now. Please connect to the internet so we can refresh your virtual session data and give you the best experience.</div>
-      <button class="btn btn-primary gate-btn" id="gateOfflineRetry" data-i18n="gate_retry">Try Again</button>
-    </div>
-  </div>
+<!-- ============ PRINCIPLES ============ -->
+<section id="principles">
+  <div class="container">
+    <div class="section-eyebrow">Our Principles</div>
+    <h2 class="section-title">What we stand for</h2>
+    <p class="section-sub">
+      Four guiding principles that shape every product decision we make.
+    </p>
 
-  <div class="gate-screen" id="gateUpdate">
-    <div class="gate-card">
-      <div class="gate-icon gate-icon-update">
-        <svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 4 23 10 17 10"/><polyline points="1 20 1 14 7 14"/><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10"/><path d="M20.49 15a9 9 0 0 1-14.85 3.36L1 14"/></svg>
-      </div>
-      <div class="gate-title" data-i18n="gate_upd_title">Update Available</div>
-      <div class="gate-msg" data-i18n="gate_upd_msg">Please update to enjoy the latest improvements and a more stable experience.</div>
-      <button class="btn btn-primary gate-btn" id="gateUpdateBtn" data-i18n="gate_upd_btn">Open Google Play</button>
-    </div>
-  </div>
-
-  <div class="gate-screen" id="gateSignIn">
-    <div class="gate-card">
-      <div class="gate-icon gate-icon-signin">
-        <svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
-      </div>
-      <div class="gate-title" data-i18n="gate_si_title">Welcome Back</div>
-      <div class="gate-msg" data-i18n="gate_si_msg">Sign in with your Google account so we can save your progress and keep your account secure across devices.</div>
-      <button class="btn btn-primary gate-btn" id="gateSignInBtn" data-i18n="gate_si_btn">Sign in with Google</button>
-    </div>
-  </div>
-
-  <div class="gate-screen" id="gateUnderage">
-    <div class="gate-card">
-      <div class="gate-icon gate-icon-block">
-        <svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="4.93" y1="4.93" x2="19.07" y2="19.07"/></svg>
-      </div>
-      <div class="gate-title" data-i18n="gate_ua_title">Age Restriction</div>
-      <div class="gate-msg" data-i18n="gate_ua_msg">You must be 18 years of age or older to use this educational virtual. Access has been restricted.</div>
-    </div>
-  </div>
-
-  <!-- ============ LANGUAGE SELECT (FIRST LAUNCH) ============ -->
-  <div class="lang-select" id="langSelect">
-    <div class="ls-grid" id="langGrid"></div>
-    <button class="btn btn-primary" id="langContinue" disabled>Continue</button>
-  </div>
-
-  <!-- ============ GOOGLE PLAY SIGN-IN ============ -->
-  <div class="signin" id="signIn">
-    <div class="si-card">
-      <div class="si-icon">
-        <svg width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: var(--gold);">
-          <rect x="2" y="6" width="20" height="14" rx="3" ry="3"/>
-          <path d="M7 6V4a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v2"/>
-          <circle cx="12" cy="13" r="1.6" fill="currentColor"/>
-          <path d="M12 14.6V17"/>
-        </svg>
-      </div>
-      <h1 class="si-title" data-i18n="si_title">Sign In to Continue</h1>
-      <p class="si-sub" data-i18n="si_sub">A quick sign-in keeps your account secure and your progress saved. We never share your personal info or browse your Google data.</p>
-      <ul class="si-benefits">
-        <li>
-          <span class="si-bullet-ico">✓</span>
-          <span data-i18n="si_benefit_1">Your progress stays safe across devices</span>
-        </li>
-        <li>
-          <span class="si-bullet-ico">✓</span>
-          <span data-i18n="si_benefit_2">We don't read your contacts, photos, or files</span>
-        </li>
-        <li>
-          <span class="si-bullet-ico">✓</span>
-          <span data-i18n="si_benefit_3">No data shared with third parties</span>
-        </li>
-      </ul>
-      <button class="btn btn-primary btn-google-style" id="googleSignInBtn" style="width:100%;">
-        <span class="g-logo" aria-hidden="true">
-          <svg width="18" height="18" viewBox="0 0 48 48">
-            <path fill="#FFC107" d="M43.611,20.083H42V20H24v8h11.303c-1.649,4.657-6.08,8-11.303,8c-6.627,0-12-5.373-12-12c0-6.627,5.373-12,12-12c3.059,0,5.842,1.154,7.961,3.039l5.657-5.657C34.046,6.053,29.268,4,24,4C12.955,4,4,12.955,4,24c0,11.045,8.955,20,20,20c11.045,0,20-8.955,20-20C44,22.659,43.862,21.35,43.611,20.083z"/>
-            <path fill="#FF3D00" d="M6.306,14.691l6.571,4.819C14.655,15.108,18.961,12,24,12c3.059,0,5.842,1.154,7.961,3.039l5.657-5.657C34.046,6.053,29.268,4,24,4C16.318,4,9.656,8.337,6.306,14.691z"/>
-            <path fill="#4CAF50" d="M24,44c5.166,0,9.86-1.977,13.409-5.192l-6.19-5.238C29.211,35.091,26.715,36,24,36c-5.202,0-9.619-3.317-11.283-7.946l-6.522,5.025C9.505,39.556,16.227,44,24,44z"/>
-            <path fill="#1976D2" d="M43.611,20.083H42V20H24v8h11.303c-0.792,2.237-2.231,4.166-4.087,5.571c0.001-0.001,0.002-0.001,0.003-0.002l6.19,5.238C36.971,39.205,44,34,44,24C44,22.659,43.862,21.35,43.611,20.083z"/>
-          </svg>
-        </span>
-        <span class="g-text" data-i18n="si_btn">Continue with Google</span>
-      </button>
-      <div class="si-status" id="siStatus"></div>
-      <p class="si-foot" data-i18n="si_foot">Educational virtual · No real money involved</p>
-    </div>
-  </div>
-
-  <!-- ============ ONBOARDING ============ -->
-  <div class="onboarding" id="onboarding">
-
-    <div class="onb-progress">
-      <span id="op1"></span>
-      <span id="op2"></span>
-      <span id="op3"></span>
-    </div>
-
-    <!-- STEP 1: MOTIVATION -->
-    <div class="onb-step active" data-step="1">
-      <h1 class="onb-title" data-i18n="onb1_title">Master Trading. No Real Risk.</h1>
-      <p class="onb-subtitle" data-i18n="onb1_sub">Practice across 80+ markets in a fully virtual sandbox environment. Build skills, not losses.</p>
-      <ul class="onb-bullets">
-        <li>
-                    <div class="b-text">
-            <strong data-i18n="onb1_b1t">AI-Powered Sandbox</strong>
-            <span data-i18n="onb1_b1d">All charts, prices, and market movements are generated entirely by AI on your device. No real data, no real markets — just a safe space to practice.</span>
-          </div>
-        </li>
-        <li>
-                    <div class="b-text">
-            <strong data-i18n="onb1_b2t">TP / SL & Position Tools</strong>
-            <span data-i18n="onb1_b2d">Take Profit, Stop Loss, and a full lot calculator with risk awareness.</span>
-          </div>
-        </li>
-        <li>
-                    <div class="b-text">
-            <strong data-i18n="onb1_b3t">Built-in Education</strong>
-            <span data-i18n="onb1_b3d">Dozens of in-app lessons on candles, leverage, risk management and psychology.</span>
-          </div>
-        </li>
-        <li>
-                    <div class="b-text">
-            <strong data-i18n="onb1_b4t">Achievements & Daily Rewards</strong>
-            <span data-i18n="onb1_b4d">Unlock milestones and claim daily virtual bonuses to keep practicing.</span>
-          </div>
-        </li>
-      </ul>
-      <div class="onb-actions">
-        <button class="btn btn-primary" id="onbStart1" data-i18n="onb_start">Start Trading</button>
-      </div>
-    </div>
-
-    <!-- STEP 2: AGE (YEAR ONLY) -->
-    <div class="onb-step" data-step="2">
-      <h1 class="onb-title" data-i18n="onb2_title">Verify Your Age</h1>
-      <p class="onb-subtitle" data-i18n="onb2_sub">You must be 18 or older to use this educational virtual.</p>
-
-      <div class="dob-privacy-card">
-        <div class="dob-privacy-q" data-i18n="dob_q">What is your year of birth?</div>
-        <div class="dob-privacy-text" data-i18n="dob_privacy">This data is not collected. This step is only used to verify legal age within VTS — Virtual Trading School (VTS APP) and qualify you as a future trader.</div>
-      </div>
-
-      <div class="dob-input-wrap">
-        <input type="text" id="dobYear" class="dob-year-input" inputmode="numeric" pattern="[0-9]*" placeholder="YYYY" maxlength="4" autocomplete="off">
-      </div>
-
-      <div class="onb-error" id="dobError"></div>
-      <div class="onb-actions">
-        <button class="btn btn-primary" id="onbNext2" data-i18n="onb_continue" style="width:100%;">Continue</button>
-      </div>
-    </div>
-
-    <!-- STEP 3: TERMS -->
-    <div class="onb-step" data-step="3">
-      <h1 class="onb-title" data-i18n="onb3_title">Terms & Conditions</h1>
-      <p class="onb-subtitle" data-i18n="onb3_sub">Please read carefully before continuing.</p>
-      <div class="terms-box" id="termsBox"></div>
-      <div class="terms-scroll-hint" id="termsScrollHint">
-        <span class="tsh-arrow">↓</span>
-        <span data-i18n="terms_scroll_hint">Please scroll down to read all terms</span>
-      </div>
-      <div class="onb-actions">
-        <button class="btn btn-secondary" id="onbDecline" data-i18n="onb_decline">Decline</button>
-        <button class="btn btn-primary" id="onbAgree" data-i18n="onb_agree" disabled>I Agree</button>
-      </div>
-    </div>
-
-    <!-- STEP 4: DISCLAIMER (no real money / educational only) -->
-    <div class="onb-step" data-step="4">
-      <h1 class="onb-title">Important Notice</h1>
-      <p class="onb-subtitle">Please read this disclaimer before starting.</p>
-      <div class="disclaimer-box" id="onbDisclaimerBox">
-        <div class="disclaimer-icon-wrap">
-          <!-- Elegant shield with sparkle — represents protection + premium quality -->
-          <svg width="36" height="36" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-            <defs>
-              <linearGradient id="shieldGrad" x1="0%" y1="0%" x2="0%" y2="100%">
-                <stop offset="0%" stop-color="#F5C846"/>
-                <stop offset="50%" stop-color="#F0B90B"/>
-                <stop offset="100%" stop-color="#B87333"/>
-              </linearGradient>
-              <linearGradient id="shieldInner" x1="0%" y1="0%" x2="0%" y2="100%">
-                <stop offset="0%" stop-color="rgba(255,255,255,0.18)"/>
-                <stop offset="100%" stop-color="rgba(255,255,255,0.00)"/>
-              </linearGradient>
-            </defs>
-            <!-- Outer shield shape -->
-            <path d="M24 4 L40 10 V22 C40 32 33 40 24 44 C15 40 8 32 8 22 V10 Z"
-                  fill="url(#shieldGrad)" stroke="rgba(255,200,100,0.55)" stroke-width="0.5"/>
-            <!-- Inner highlight -->
-            <path d="M24 7 L37 12 V22 C37 30 31 37 24 40.5 C17 37 11 30 11 22 V12 Z"
-                  fill="url(#shieldInner)"/>
-            <!-- Center sparkle/diamond -->
-            <path d="M24 16 L27 22 L24 28 L21 22 Z"
-                  fill="#FFFFFF" opacity="0.95"/>
-            <!-- Small accent dots -->
-            <circle cx="24" cy="14" r="0.8" fill="#FFFFFF" opacity="0.8"/>
-            <circle cx="24" cy="30" r="0.8" fill="#FFFFFF" opacity="0.8"/>
-            <circle cx="17" cy="22" r="0.6" fill="#FFFFFF" opacity="0.7"/>
-            <circle cx="31" cy="22" r="0.6" fill="#FFFFFF" opacity="0.7"/>
-          </svg>
+    <div class="principles">
+      <div class="principles-grid">
+        <div class="principle">
+          <div class="principle-num">01</div>
+          <h3 class="principle-title">Privacy by Design</h3>
+          <p class="principle-text">
+            Privacy is not a feature to be added later &mdash; it is the foundation upon which we build. We collect only what is strictly necessary, and never personal information.
+          </p>
         </div>
-        <h3 class="disclaimer-h">VTS is a virtual sandbox</h3>
-        <p class="disclaimer-p">All prices, charts, news, balances, and trades are <strong>entirely virtual</strong> and generated by AI. No real money, no real trading, no real assets are involved at any point. Asset names are fictional and do not represent any real company, currency, or commodity.</p>
-        <p class="disclaimer-p">VTS is designed solely for <strong>educational and entertainment purposes</strong>. Nothing in this app constitutes financial advice, a brokerage service, or any form of regulated financial activity. Skills practiced here may not translate directly to real markets — always consult licensed professionals before making real financial decisions.</p>
-        <p class="disclaimer-p">By continuing, you understand that <strong>any virtual gains, losses, or rewards have no monetary value</strong> and cannot be withdrawn, exchanged, or redeemed under any circumstance.</p>
-      </div>
-      <div class="onb-actions">
-        <button class="btn btn-primary" id="onbDisclaimerNext" style="width:100%;">I Understand</button>
-      </div>
-    </div>
-
-    <!-- STEP 5: ABOUT (welcome / values / support) -->
-    <div class="onb-step" data-step="5">
-      <h1 class="onb-title">A Quick Note Before We Start</h1>
-      <p class="onb-subtitle">Welcome — and thank you for being here.</p>
-      <div class="about-onb-card">
-        <div class="about-section">
-          <div class="about-icon-wrap">
-            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M9 12l2 2 4-4"/>
-              <circle cx="12" cy="12" r="10"/>
-            </svg>
-          </div>
-          <h3 class="about-h">100% Free. Forever.</h3>
-          <p class="about-p">VTS is offered <strong>completely free</strong>. There are no ads, no in-app purchases, no premium tiers, and no paywalls hiding any feature. Everything you see is yours to use without limits.</p>
+        <div class="principle">
+          <div class="principle-num">02</div>
+          <h3 class="principle-title">No Advertising</h3>
+          <p class="principle-text">
+            Our applications contain no advertisements of any kind. We do not participate in advertising networks, behavioral tracking, or interest-based marketing.
+          </p>
         </div>
-
-        <div class="about-section">
-          <div class="about-icon-wrap">
-            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/>
-              <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
-            </svg>
-          </div>
-          <h3 class="about-h">Your Privacy Stays Yours</h3>
-          <p class="about-p">This app only uses <strong>anonymous analytics</strong> for app improvement, performance optimization, bug fixing, and understanding general usage patterns. The app does NOT collect passwords, contacts, personal files, or private messages. No personal information is collected.</p>
+        <div class="principle">
+          <div class="principle-num">03</div>
+          <h3 class="principle-title">No Data Harvesting</h3>
+          <p class="principle-text">
+            We do not build user profiles, do not sell data, and do not share information with third parties. What you do on our applications stays on your device.
+          </p>
         </div>
-
-        <div class="about-section">
-          <div class="about-icon-wrap">
-            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
-            </svg>
-          </div>
-          <h3 class="about-h">Crafted by a Boutique Developer</h3>
-          <p class="about-p">VTS is a one-person passion project — built with care, tested with love, and shared with the world freely. No company, no investors, no sponsors. Just one developer trying to make trading education accessible to everyone.</p>
-        </div>
-
-        <div class="about-section about-support-cta">
-          <h3 class="about-h">If You'd Like to Help Us Improve</h3>
-          <p class="about-p">If VTS adds value to your day — whether you learn something, enjoy the practice, or simply find it useful — a small contribution helps keep this project alive. Hosting, devices for testing, and time for new features all add up. Every coffee, no matter how small, means the world to us. <strong>You are why this app exists.</strong></p>
-          <p class="about-p" style="margin-top:8px;font-size:11.5px;opacity:0.8;">There's no obligation. Use VTS freely, learn at your own pace, and if one day you feel like saying thank you — you'll find a small support button waiting in your settings.</p>
-        </div>
-      </div>
-      <div class="onb-actions">
-        <button class="btn btn-primary" id="onbAboutNext" style="width:100%;">Let's Get Started</button>
-      </div>
-    </div>
-
-    <!-- STEP 6: DECLINED (TERMINAL) -->
-    <div class="onb-step" data-step="6">
-      <div class="declined-card">
-        <div class="declined-mark">
-          <svg width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="15" y1="9" x2="9" y2="15"></line><line x1="9" y1="9" x2="15" y2="15"></line></svg>
-        </div>
-        <h1 class="onb-title" data-i18n="onb_decl_title">Terms Declined</h1>
-        <p class="onb-subtitle" data-i18n="onb_decl_sub">You declined the Terms & Conditions. Acceptance is required to use the application.</p>
-        <p class="onb-subtitle" style="font-size:12px;opacity:0.75;" data-i18n="onb_decl_note">You may close the app, or review and accept the terms to continue.</p>
-        <div class="onb-actions">
-          <button class="btn btn-primary" id="onbDeclineBack" data-i18n="onb_decl_review" style="width:100%;">Review Terms Again</button>
-        </div>
-      </div>
-    </div>
-
-  </div>
-
-  <!-- ============ MAIN SHELL ============ -->
-  <div class="shell" id="shell">
-
-    <!-- TOP BAR -->
-    <div class="topbar">
-      <div class="brand" id="topBrand">
-        <span class="brand-mark">VTS</span>
-        <span class="brand-text"><span data-brand-full>Virtual Trading School</span></span>
-        <span class="demo-badge" data-i18n="practice_success" style="display:none;">Practice = Success</span>
-      </div>
-      <div class="balance-pill">
-        <div>
-          <div class="label" data-i18n="balance">Balance<span class="help-icon" data-help="balance" role="button" aria-label="Help">?</span></div>
-          <div class="amount" id="topBalance">$3.00</div>
-        </div>
-      </div>
-      <button class="icon-btn" id="settingsBtn" aria-label="Settings">⚙</button>
-    </div>
-
-    <!-- PREMIUM SUB-HEADER (fixed champagne-gold style, theme-independent) -->
-    <div class="subheader" id="subheader" role="contentinfo" aria-label="Virtual Training Notice">
-      <svg class="subheader-icon" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linejoin="miter" aria-hidden="true">
-        <path d="M6 9 L12 3 L18 9 L12 21 Z"/>
-        <path d="M6 9 L18 9"/>
-        <path d="M12 3 L12 9"/>
-      </svg>
-      <span class="subheader-text">VIRTUAL TRAINING · NON-FINANCIAL</span>
-      <svg class="subheader-icon" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linejoin="miter" aria-hidden="true">
-        <path d="M6 9 L12 3 L18 9 L12 21 Z"/>
-        <path d="M6 9 L18 9"/>
-        <path d="M12 3 L12 9"/>
-      </svg>
-    </div>
-
-    <!-- LOW-BALANCE TIP — shown when balance hits $0 (friendly, not alarming) -->
-    <div class="bankrupt-banner" id="bankruptBanner" hidden role="status">
-      <div class="bb-icon" aria-hidden="true">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <!-- Hand-drawn lightbulb (idea) — bulb top + filament + base -->
-          <path d="M9 18h6"/>
-          <path d="M10 21h4"/>
-          <path d="M12 3a6 6 0 0 0-4 10.5c.5.5 1 1.2 1 2V16h6v-.5c0-.8.5-1.5 1-2A6 6 0 0 0 12 3z"/>
-          <path d="M10 13l2-3 2 3"/>
-        </svg>
-      </div>
-      <div class="bb-body">
-        <div class="bb-title">Quick tip</div>
-        <div class="bb-text">You're out of virtual balance. Wait for the next Hourly Card or Mystery Box, or reset from Settings to start fresh.</div>
-      </div>
-      <button class="bb-close" id="bankruptClose" type="button" aria-label="Dismiss">✕</button>
-    </div>
-
-    <!-- QUICK STATS STRIP -->
-    <div class="quickstats" id="quickStats">
-      <div class="qs-cell">
-        <div class="qs-lbl" data-i18n="qs_today">Today</div>
-        <div class="qs-split">
-          <div class="qs-split-row up" id="qsWonRow">+$0.00</div>
-          <div class="qs-split-row dn" id="qsLostRow">-$0.00</div>
-        </div>
-      </div>
-      <div class="qs-cell">
-        <div class="qs-lbl" data-i18n="qs_trades">Trades</div>
-        <div class="qs-val" id="qsTrades">0</div>
-      </div>
-      <div class="qs-cell">
-        <div class="qs-lbl" data-i18n="qs_winrate">Win Rate</div>
-        <div class="qs-val" id="qsWin">—</div>
-      </div>
-    </div>
-
-    <!-- SCROLL AREA -->
-    <div class="scroll" id="scroll">
-
-      <!-- MARKET TABS -->
-      <div class="tabs" id="tabs">
-        <button class="tab active" data-cat="all" data-i18n="cat_all">All</button>
-        <button class="tab" data-cat="favorites" data-i18n="cat_fav">★ Favorites</button>
-        <button class="tab" data-cat="forex" data-i18n="cat_forex">Forex</button>
-        <button class="tab" data-cat="crypto" data-i18n="cat_crypto">Crypto</button>
-        <button class="tab" data-cat="stocks" data-i18n="cat_stocks">Stocks</button>
-        <button class="tab" data-cat="commodities" data-i18n="cat_commodities">Commodities</button>
-        <button class="tab" data-cat="indices" data-i18n="cat_indices">Indices</button>
-      </div>
-
-      <!-- SEARCH -->
-      <div class="search-row">
-        <div class="search-box">
-          <span class="ico">🔍</span>
-          <input type="text" id="searchInput" placeholder="Search assets..." data-i18n-ph="search_ph">
-        </div>
-      </div>
-
-      <!-- TICKER -->
-      <div class="ticker">
-        <span class="badge">LIVE</span>
-        <span class="badge badge-sim">VIRTUAL</span>
-        <div style="overflow:hidden;flex:1;">
-          <span class="scroll-text" id="tickerText"></span>
-        </div>
-      </div>
-
-      <!-- ASSET LIST -->
-      <div class="assets-wrap">
-        <div class="assets-wrap-header">
-          <span data-i18n="markets">Markets</span>
-          <span id="assetsCount">0</span>
-        </div>
-        <div class="assets-list" id="assetsList"></div>
-      </div>
-
-      <!-- SELECTED ASSET HEADER -->
-      <div class="asset-header" id="assetHeader">
-        <div class="asset-header-top">
-          <div>
-            <div class="ah-symbol" id="ahSymbol">—</div>
-            <div class="ah-name" id="ahName">—</div>
-          </div>
-          <div>
-            <div class="ah-price" id="ahPrice">—</div>
-            <div class="asset-change" id="ahChange" style="margin-top:4px;">0.00%</div>
-          </div>
-        </div>
-        <div class="ah-stats">
-          <div class="ah-stat">
-            <span class="lbl" data-i18n="high24">24h High</span>
-            <span class="val" id="ahHigh">—</span>
-          </div>
-          <div class="ah-stat">
-            <span class="lbl" data-i18n="low24">24h Low</span>
-            <span class="val" id="ahLow">—</span>
-          </div>
-          <div class="ah-stat">
-            <span class="lbl" data-i18n="spread">Spread</span>
-            <span class="val" id="ahSpread">—</span>
-          </div>
-        </div>
-      </div>
-
-      <!-- MYSTERY BOX (replaces ad banners) — every 2 hours, 50min countdown then ready -->
-      <div class="mystery-box-card" id="mysteryBox">
-        <div class="mb-head">
-          <div class="mb-icon">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 12 20 22 4 22 4 12"/><rect x="2" y="7" width="20" height="5"/><line x1="12" y1="22" x2="12" y2="7"/><path d="M12 7H7.5a2.5 2.5 0 0 1 0-5C11 2 12 7 12 7z"/><path d="M12 7h4.5a2.5 2.5 0 0 0 0-5C13 2 12 7 12 7z"/></svg>
-          </div>
-          <div class="mb-titles">
-            <div class="mb-title" data-i18n="mb_title">Mystery Box</div>
-            <div class="mb-sub" id="mbSub" data-i18n="mb_sub_locked">Available every 2 hours</div>
-          </div>
-          <div class="mb-status" id="mbStatus" data-i18n="mb_locked">Locked</div>
-        </div>
-        <div class="mb-body" id="mbBody">
-          <!-- Locked state -->
-          <div class="mb-locked-state" id="mbLockedState">
-            <div class="mb-countdown" id="mbCountdown">50:00</div>
-            <div class="mb-progress"><div class="mb-progress-fill" id="mbProgressFill"></div></div>
-          </div>
-          <!-- Ready state -->
-          <div class="mb-ready-state" id="mbReadyState" style="display:none;">
-            <div class="mb-cta" data-i18n="mb_ready">Your reward is ready! Pick a card to reveal it.</div>
-            <div class="mb-cards" id="mbCards"></div>
-          </div>
-          <!-- Revealed state -->
-          <div class="mb-revealed-state" id="mbRevealedState" style="display:none;">
-            <div class="mb-revealed-icon" id="mbRevealedIcon"></div>
-            <div class="mb-revealed-title" id="mbRevealedTitle"></div>
-            <div class="mb-revealed-desc" id="mbRevealedDesc"></div>
-            <button class="mb-bonus-btn" id="mbBonusBtn" style="display:none;" data-i18n="mb_extra_50">Claim $12.99 bonus reward</button>
-            <button class="mb-close-btn" id="mbCloseBtn" data-i18n="mb_done">Done</button>
-          </div>
-        </div>
-      </div>
-
-      <!-- CHART -->
-      <div class="chart-wrap">
-        <div class="chart-tools">
-          <div class="tf-group" id="tfGroup">
-            <button class="tf active" data-tf="5m">5m</button>
-            <button class="tf" data-tf="30m">30m</button>
-            <button class="tf" data-tf="1h">1h</button>
-            <button class="tf" data-tf="4h">4h</button>
-            <button class="tf" data-tf="1d">1d</button>
-            <button class="tf" data-tf="1w">1w</button>
-            <button class="tf" data-tf="1mo">1M</button>
-          </div>
-          <div class="right">
-            <button class="chart-icon-btn on" id="toggleMA" title="Moving Averages (MA 5, 10, 30)">MA</button>
-            <button class="chart-icon-btn" id="toggleBOLL" title="Bollinger Bands (20, 2)">BOLL</button>
-            <button class="chart-icon-btn" id="toggleVol" title="Volume">VOL</button>
-            <button class="chart-icon-btn" id="toggleRSI" title="Relative Strength Index (14)">RSI</button>
-          </div>
-        </div>
-        <!-- Market mood indicator — sits ABOVE the chart so it doesn't overlap candles -->
-        <div class="chart-mood-strip" id="chartMood">
-          <span class="cm-dot" id="chartMoodDot"></span>
-          <span class="cm-lbl" data-i18n="mood_label">Market Mood</span>
-          <span class="cm-val" id="chartMoodVal">—</span>
-          <span class="cm-sim" data-i18n="virtual">Virtual</span>
-        </div>
-        <div class="chart-canvas-wrap">
-          <canvas id="chartCanvas"></canvas>
-          <div class="chart-tooltip" id="chartTooltip"></div>
-        </div>
-      </div>
-
-      <!-- TRADE PANEL -->
-      <div class="trade-panel">
-        <div class="section-title">
-          <span data-i18n="place_order">Place Order</span>
-          <span class="virtual-pill" title="Virtual / Sandbox" data-i18n="virtual">VIRTUAL</span>
-          <span class="sub" id="leverageInfo">1:100</span>
-        </div>
-
-        <div class="lot-row">
-          <div class="lot-stepper">
-            <button class="lot-btn" id="lotMinus">−</button>
-            <input type="text" class="lot-input" id="lotInput" value="0.10" inputmode="decimal" pattern="[0-9.]*" lang="en" autocomplete="off">
-            <button class="lot-btn" id="lotPlus">+</button>
-          </div>
-          <div class="balance-display">
-            <span class="lbl" data-i18n="balance">Balance</span>
-            <span class="val" id="balanceDisplay">$3.00</span>
-          </div>
-        </div>
-
-        <div class="lot-presets-wrap">
-          <div class="lot-presets-label">
-            Quick Lot Sizes
-            <span class="help-icon" data-help="lot_presets" role="button" aria-label="What are lot sizes?">?</span>
-          </div>
-          <div class="lot-presets">
-            <button class="preset-btn" data-lot="0.01">0.01</button>
-            <button class="preset-btn" data-lot="0.10">0.10</button>
-            <button class="preset-btn" data-lot="0.50">0.50</button>
-            <button class="preset-btn" data-lot="1.00">1.00</button>
-            <button class="preset-btn" data-lot="5.00">5.00</button>
-          </div>
-        </div>
-
-        <details class="risk-calc-card">
-          <summary>
-            <span class="rc-icon">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                <!-- Risk gauge: half-circle dial with tick marks and needle pointing to HIGH -->
-                <path d="M3 17a9 9 0 0 1 18 0"/>
-                <!-- Outer arc tick marks -->
-                <line x1="3" y1="17" x2="4.5" y2="16.4"/>
-                <line x1="7" y1="9.5" x2="8.2" y2="10.5"/>
-                <line x1="12" y1="6" x2="12" y2="7.5"/>
-                <line x1="17" y1="9.5" x2="15.8" y2="10.5"/>
-                <line x1="21" y1="17" x2="19.5" y2="16.4"/>
-                <!-- Needle pointing right (to HIGH zone) -->
-                <line x1="12" y1="17" x2="18" y2="12"/>
-                <!-- Pivot point -->
-                <circle cx="12" cy="17" r="1.2" fill="currentColor"/>
-              </svg>
-            </span>
-            <span data-i18n="risk_calc">Risk Calculator</span>
-            <span class="help-icon" data-help="risk_calc" role="button" aria-label="What is Risk Calculator?">?</span>
-            <span class="rc-chev">▾</span>
-          </summary>
-          <div class="rc-body">
-            <div class="rc-row">
-              <label data-i18n="risk_pct">Risk %</label>
-              <input type="number" id="rcPct" value="1" min="0.1" max="10" step="0.1">
-            </div>
-            <div class="rc-row">
-              <label data-i18n="risk_sl_pts">SL Distance (pts)</label>
-              <input type="number" id="rcSL" value="50" min="5" max="2000" step="5">
-            </div>
-            <div class="rc-result">
-              <span class="lbl" data-i18n="risk_suggested">Suggested lot size</span>
-              <span class="val" id="rcResult">—</span>
-            </div>
-            <button class="rc-apply" id="rcApply" data-i18n="confirm">Apply</button>
-          </div>
-        </details>
-
-        <div class="cost-row">
-          <span class="lbl" data-i18n="margin">Margin</span>
-          <span><span class="val" id="costVal">$1.00</span><span class="pct" id="costPct">(1.3%)</span></span>
-        </div>
-
-        <div class="risk-meter"><span id="riskBar"></span></div>
-
-        <div class="adv-toggle" id="advToggle">
-          <span data-i18n="advanced">Advanced Options (TP / SL)</span>
-          <span class="help-icon" data-help="advanced_options" role="button" aria-label="What are TP / SL?" onclick="event.stopPropagation();">?</span>
-          <span class="chev">▼</span>
-        </div>
-
-        <div class="adv-fields" id="advFields">
-          <div class="adv-field tp">
-            <div class="lbl" data-i18n="tp_pts">TP (pts)</div>
-            <input type="number" id="tpInput" placeholder="0" min="0" step="1">
-          </div>
-          <div class="adv-field sl">
-            <div class="lbl" data-i18n="sl_pts">SL (pts)</div>
-            <input type="number" id="slInput" placeholder="0" min="0" step="1">
-          </div>
-        </div>
-
-        <div class="action-buttons">
-          <button class="btn-buy" id="buyBtn">
-            BUY
-            <span class="px" id="buyPx">—</span>
-          </button>
-          <button class="btn-sell" id="sellBtn">
-            SELL
-            <span class="px" id="sellPx">—</span>
-          </button>
-        </div>
-      </div>
-
-      <!-- OPEN POSITIONS -->
-      <div class="panel">
-        <div class="panel-head">
-          <span data-i18n="open_positions">Open Positions</span>
-          <span class="count" id="openCount">0</span>
-          <button class="select-toggle-btn" id="selectModeBtn" type="button" aria-pressed="false">Select</button>
-        </div>
-        <!-- Select-mode toolbar (hidden by default) -->
-        <div class="select-toolbar" id="selectToolbar" hidden>
-          <button class="sb-btn" id="selectAllBtn" type="button">Select All</button>
-          <span class="sb-count" id="selectCount">0 selected</span>
-          <button class="sb-btn sb-btn-primary" id="closeSelectedBtn" type="button" disabled>Close</button>
-          <button class="sb-btn sb-btn-ghost" id="selectCancelBtn" type="button">✕</button>
-        </div>
-        <div class="panel-body" id="openPositions">
-          <div class="empty">
-            <div class="icn"></div>
-            <div data-i18n="no_positions">No open positions yet. Start your first trade above!</div>
-          </div>
-        </div>
-      </div>
-
-      <!-- TRADING PULSE: Streak + Daily Challenge + Market Mood -->
-      <div class="pulse-panel">
-        <div class="pulse-cell">
-          <div class="pulse-flame" id="streakFlame">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5z"></path></svg>
-          </div>
-          <div class="pulse-info">
-            <div class="pulse-val" id="streakVal">0</div>
-            <div class="pulse-lbl" data-i18n="streak_days">Day Streak<span class="help-icon" data-help="streak" role="button" aria-label="Help">?</span></div>
-          </div>
-        </div>
-        <div class="pulse-cell challenge-cell" id="dailyChallengeCell" role="button" tabindex="0">
-          <div class="pulse-info" style="flex:1;">
-            <div class="pulse-lbl" data-i18n="daily_challenge">Daily Challenge</div>
-            <div class="pulse-chal-text" id="dcText">—</div>
-            <div class="pulse-bar"><div class="pulse-bar-fill" id="dcProgress"></div></div>
-          </div>
-          <div class="dc-arrow">›</div>
-        </div>
-        <div class="pulse-cell mood-cell" id="moodCell" role="button" tabindex="0">
-          <div class="mood-dot" id="moodDot"></div>
-          <div class="pulse-info">
-            <div class="pulse-val mood-val" id="moodVal">—</div>
-            <div class="pulse-lbl" data-i18n="mood_label">Market Mood<span class="help-icon" data-help="market_mood" role="button" aria-label="Help">?</span></div>
-          </div>
-          <div class="mood-lock" id="moodLock" aria-hidden="true">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
-            <span class="mood-lock-lbl" data-i18n="mood_btn">Market Mood</span>
-          </div>
-          <div class="mood-timer" id="moodTimer"></div>
-        </div>
-      </div>
-
-      <!-- HOURLY CARD-FLIP GAME -->
-      <div class="flip-game">
-        <div class="flip-head">
-          <div class="ttl">
-            <span class="hourglass-ico" aria-hidden="true">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 22h14"></path><path d="M5 2h14"></path><path d="M17 22v-4.172a2 2 0 0 0-.586-1.414L12 12l-4.414 4.414A2 2 0 0 0 7 17.828V22"></path><path d="M7 2v4.172a2 2 0 0 0 .586 1.414L12 12l4.414-4.414A2 2 0 0 0 17 6.172V2"></path></svg>
-            </span>
-            <span data-i18n="flip_title">Hourly Practice Reward</span>
-          </div>
-          <div class="timer" id="flipTimer"></div>
-        </div>
-        <div class="flip-sub" data-i18n="flip_sub">Trade freely. Practice without risk. Pick a card and earn a virtual reward toward your sandbox journey.</div>
-        <div class="flip-cards" id="flipCards"></div>
-      </div>
-
-      <!-- AD SLOT 4 -->
-
-      <!-- TRADING RECORD -->
-      <div class="panel">
-        <div class="panel-head"><span data-i18n="trading_record">Trading Record</span></div>
-        <div class="record-grid">
-          <div class="record-card win">
-            <div class="lbl" data-i18n="wins">Wins</div>
-            <div class="val" id="winsCount">0</div>
-          </div>
-          <div class="record-card loss">
-            <div class="lbl" data-i18n="losses">Losses</div>
-            <div class="val" id="lossesCount">0</div>
-          </div>
-          <div class="record-card rate">
-            <div class="lbl" data-i18n="winrate">Win Rate<span class="help-icon" data-help="win_rate" role="button" aria-label="Help">?</span></div>
-            <div class="val" id="winRate">0%</div>
-          </div>
-        </div>
-      </div>
-
-      <!-- TRADE HISTORY -->
-      <div class="panel">
-        <div class="panel-head">
-          <span data-i18n="trade_history">Trade History</span>
-          <span class="count" id="histCount">0/30</span>
-        </div>
-        <div class="panel-body" id="tradeHistory">
-          <div class="empty">
-            <div class="icn"></div>
-            <div data-i18n="no_history">No closed trades yet.</div>
-          </div>
-        </div>
-      </div>
-
-      <!-- MARKET NEWS PANEL -->
-      <div class="news-panel" id="newsPanel">
-        <button class="news-toggle-btn" id="newsToggleBtn">
-          <span class="news-tb-left">
-            <span class="news-pulse"></span>
-            <span class="news-tb-label" data-i18n="news_title">Market News</span>
-            <span class="sim-pill">VIRTUAL</span>
-            <span class="help-icon" data-help="news" role="button" aria-label="Help">?</span>
-          </span>
-          <span class="news-tb-right">
-            <span class="news-tb-dot" id="newsUnreadDot" aria-hidden="true"></span>
-            <span class="news-tb-arrow">›</span>
-          </span>
-        </button>
-      </div>
-
-      <!-- INFO BUTTONS (Hints, FAQ, T&C, Disclaimer, Achievements) -->
-      <div class="info-buttons">
-        <button class="info-btn" id="btnHints">
-          <span class="ico">TIP</span>
-          <span class="lbls">
-            <span class="t" data-i18n="ib_hints">Trade Hints</span>
-            <span class="s" data-i18n="ib_hints_s">Tutorials & lessons</span>
-          </span>
-        </button>
-        <button class="info-btn" id="btnAchievements">
-          <span class="ico">★</span>
-          <span class="lbls">
-            <span class="t" data-i18n="ib_ach">Achievements</span>
-            <span class="s">Your unlocked milestones</span>
-          </span>
-        </button>
-        <button class="info-btn" id="btnTerms">
-          <span class="ico">T&C</span>
-          <span class="lbls">
-            <span class="t" data-i18n="ib_terms">Terms</span>
-            <span class="s" data-i18n="ib_terms_s">Terms & conditions</span>
-          </span>
-        </button>
-        <button class="info-btn" id="btnDisclaimer">
-          <span class="ico">!</span>
-          <span class="lbls">
-            <span class="t" data-i18n="ib_disc">Disclaimer</span>
-            <span class="s" data-i18n="ib_disc_s">Liability notice</span>
-          </span>
-        </button>
-        <button class="info-btn" id="btnFaq">
-          <span class="ico">FAQ</span>
-          <span class="lbls">
-            <span class="t" data-i18n="ib_faq">FAQ</span>
-            <span class="s" data-i18n="ib_faq_s">Common questions</span>
-          </span>
-        </button>
-      </div>
-
-      <!-- SUPPORT CARD — elegant, ads-free messaging -->
-      <div class="support-card">
-        <div class="support-card-bg-pattern"></div>
-        <div class="support-card-content">
-          <div class="support-badge">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M9 12l2 2 4-4"/>
-              <circle cx="12" cy="12" r="10"/>
-            </svg>
-            <span>100% Free · No Ads</span>
-          </div>
-          <h3 class="support-title">Built with passion. Sustained by you.</h3>
-          <p class="support-text">VTS is developed and offered completely free — no advertising and no in-app purchases — only anonymous usage analytics to help us improve. If this app has helped you learn, a small contribution lets us keep building, keep improving, and keep it free for everyone.</p>
-          <a class="support-btn" id="supportBtnMain" href="https://ko-fi.com/litelabs" target="_blank" rel="noopener noreferrer">
-            <span class="support-btn-icon" aria-hidden="true">
-              <img src="logo-small.png" alt="" width="24" height="24" style="display:block;border-radius:50%;">
-            </span>
-            <span class="support-btn-text">Help Us Improve</span>
-            <span class="support-btn-arrow">›</span>
-          </a>
-          <div class="support-thanks">Every contribution moves the project forward — thank you.</div>
-        </div>
-      </div>
-
-    </div>
-
-  </div>
-
-  <!-- ============ DAILY CHALLENGE MODAL ============ -->
-  <div class="modal-bg" id="challengeModal">
-    <div class="modal">
-      <div class="modal-head">
-        <span class="ttl" data-i18n="daily_challenge">Daily Challenge</span>
-        <button class="x" data-close>✕</button>
-      </div>
-      <div class="modal-body">
-        <div class="challenge-intro">
-          <div class="ci-title" data-i18n="dc_intro_title">Daily Challenges</div>
-          <div class="ci-text" data-i18n="dc_intro_text">Complete any of the four challenges below to earn a virtual reward. Cards refresh every 24 hours.</div>
-        </div>
-        <div class="challenge-cards" id="challengeCards"></div>
-      </div>
-    </div>
-  </div>
-
-  <div class="modal-bg" id="newsModal">
-    <div class="modal">
-      <div class="modal-head">
-        <span class="ttl" data-i18n="news_title">Market News</span>
-        <button class="x" data-close>✕</button>
-      </div>
-      <div class="modal-body modal-body-with-ad">
-        <div id="newsModalBody"></div>
-      </div>
-    </div>
-  </div>
-
-  <!-- ============ MODALS ============ -->
-  <div class="modal-bg" id="hintsModal">
-    <div class="modal">
-      <div class="modal-head">
-        <span class="ttl" data-i18n="hints_title">Trade Hints — Learn the Markets</span>
-        <button class="x" data-close>✕</button>
-      </div>
-      <div class="modal-body modal-body-with-ad">
-        <div id="hintsBody"></div>
-      </div>
-    </div>
-  </div>
-
-  <div class="modal-bg" id="faqModal">
-    <div class="modal">
-      <div class="modal-head">
-        <span class="ttl" data-i18n="faq_title">Frequently Asked Questions</span>
-        <button class="x" data-close>✕</button>
-      </div>
-      <div class="modal-body modal-body-with-ad">
-        <div id="faqBody"></div>
-      </div>
-    </div>
-  </div>
-
-  <div class="modal-bg" id="termsModal">
-    <div class="modal">
-      <div class="modal-head">
-        <span class="ttl" data-i18n="terms_title">Terms & Conditions</span>
-        <button class="x" data-close>✕</button>
-      </div>
-      <div class="modal-body modal-body-with-ad">
-        <div id="termsModalBody"></div>
-      </div>
-    </div>
-  </div>
-
-  <div class="modal-bg" id="disclaimerModal">
-    <div class="modal">
-      <div class="modal-head">
-        <span class="ttl" data-i18n="disclaimer_title">Disclaimer</span>
-        <button class="x" data-close>✕</button>
-      </div>
-      <div class="modal-body modal-body-with-ad">
-        <div id="disclaimerBody"></div>
-      </div>
-    </div>
-  </div>
-
-  <div class="modal-bg" id="achievementsModal">
-    <div class="modal">
-      <div class="modal-head">
-        <span class="ttl" data-i18n="achievements">Achievements</span>
-        <button class="x" data-close>✕</button>
-      </div>
-      <div class="modal-body modal-body-with-ad">
-        <div class="ach-grid" id="achGrid"></div>
-      </div>
-    </div>
-  </div>
-
-  <div class="modal-bg" id="achievementsModal">
-    <div class="modal">
-      <div class="modal-head">
-        <span class="ttl" data-i18n="achievements">Achievements</span>
-        <button class="x" data-close>✕</button>
-      </div>
-      <div class="modal-body modal-body-with-ad">
-        <div class="ach-grid" id="achGrid"></div>
-      </div>
-    </div>
-  </div>
-
-  <div class="modal-bg" id="settingsModal">
-    <div class="modal">
-      <div class="modal-head">
-        <span class="ttl" data-i18n="settings">Settings</span>
-        <button class="x" data-close>✕</button>
-      </div>
-      <div class="modal-body">
-
-        <div class="settings-row" style="display:block;">
-          <div class="lbl-main" data-i18n="language">Language</div>
-          <div class="lbl-sub" style="margin-bottom:10px;">English</div>
-          <div class="early-version-notice">
-            <div class="evn-header">
-              <span class="evn-icon">⚙</span>
-              <span class="evn-title" data-i18n="early_version_title">Early Access Build</span>
-            </div>
-            <div class="evn-body" data-i18n="early_version_text">This is an early release of VTS — Virtual Trading School. You may encounter occasional bugs or rough edges as we polish the experience. Additional languages, features, and improvements are actively being developed and will arrive in upcoming updates. Thank you for being an early user — your feedback shapes the product.</div>
-          </div>
-        </div>
-
-        <div class="settings-row">
-          <div>
-            <div class="lbl-main" data-i18n="sound">Sound Effects</div>
-            <div class="lbl-sub" data-i18n="sound_sub">Subtle UI feedback sounds</div>
-          </div>
-          <div class="switch" id="soundSwitch"></div>
-        </div>
-
-        <div class="settings-row">
-          <div>
-            <div class="lbl-main" data-i18n="haptics">Haptics</div>
-            <div class="lbl-sub" data-i18n="haptics_sub">Vibrations for actions</div>
-          </div>
-          <div class="switch on" id="hapticsSwitch"></div>
-        </div>
-
-        <div class="settings-row" style="display:block;">
-          <div class="lbl-main" data-i18n="theme">Theme</div>
-          <div class="lbl-sub" style="margin-bottom:10px;" data-i18n="theme_sub">Choose your visual style</div>
-          <div class="theme-picker" id="themePicker">
-            <div class="theme-card" data-theme="default">
-              <div class="theme-swatch" style="background:linear-gradient(135deg,#0B0E11 0%,#1E2329 50%,#F0B90B 100%);"></div>
-              <span data-i18n="theme_dark">Dark</span>
-            </div>
-            <div class="theme-card" data-theme="midnight">
-              <div class="theme-swatch" style="background:linear-gradient(135deg,#07091A 0%,#161D38 50%,#6E8CFF 100%);"></div>
-              <span data-i18n="theme_midnight">Midnight</span>
-            </div>
-            <div class="theme-card" data-theme="forest">
-              <div class="theme-swatch" style="background:linear-gradient(135deg,#0A100E 0%,#1A2522 50%,#2DD4A4 100%);"></div>
-              <span data-i18n="theme_forest">Forest</span>
-            </div>
-            <div class="theme-card" data-theme="sunset">
-              <div class="theme-swatch" style="background:linear-gradient(135deg,#120D0A 0%,#2A1E18 50%,#FF8855 100%);"></div>
-              <span data-i18n="theme_sunset">Sunset</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="settings-row" style="display:block;">
-          <div class="lbl-main" data-i18n="tut_replay_label">App Tutorial</div>
-          <div class="lbl-sub" style="margin-bottom:10px;" data-i18n="tut_replay_sub">Replay the guided tour to learn every feature</div>
-          <button class="tutorial-launch-btn" id="replayTutorialBtn">
-            <span class="settings-btn-icon" aria-hidden="true">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M22 10v6M2 10l10-5 10 5-10 5z"/>
-                <path d="M6 12v5c3 3 9 3 12 0v-5"/>
-              </svg>
-            </span>
-            <span data-i18n="tut_replay_btn">Replay Tutorial</span>
-          </button>
-        </div>
-
-        <div class="settings-row" style="display:block;">
-          <div class="lbl-main" data-i18n="reset_app_label">Reset App</div>
-          <div class="lbl-sub" style="margin-bottom:10px;" data-i18n="reset_app_sub">Clear all data and start fresh — useful for testing or starting over</div>
-          <button class="btn btn-secondary" id="resetAppBtn" style="width:100%;font-size:13px;padding:10px;display:flex;align-items:center;justify-content:center;gap:8px;">
-            <span class="settings-btn-icon" aria-hidden="true">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M3 12a9 9 0 1 0 9-9"/>
-                <path d="M3 4v5h5"/>
-              </svg>
-            </span>
-            <span data-i18n="reset_app_btn">Reset Everything</span>
-          </button>
-        </div>
-
-        <details class="about-collapsible" id="aboutCollapsible">
-          <summary class="about-summary">
-            <div class="about-header-icon">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                <path d="M2 4h8a3 3 0 0 1 3 3v13"/>
-                <path d="M22 4h-8a3 3 0 0 0-3 3v13"/>
-                <path d="M2 4v15h8a3 3 0 0 1 3 1"/>
-                <path d="M22 4v15h-8a3 3 0 0 0-3 1"/>
-              </svg>
-            </div>
-            <div class="about-summary-text">
-              <div class="lbl-main" data-i18n="about">About Us</div>
-              <div class="lbl-sub">Boutique developer · Privacy-first</div>
-            </div>
-            <span class="about-chev">▾</span>
-          </summary>
-          <div class="about-body">
-            <p><strong>Lite Labs</strong> is a boutique software developer crafting refined, privacy-respecting digital experiences. As a sole developer studio, we focus on clean, modern, and user-focused applications — engineered without compromise on user privacy.</p>
-
-            <p><strong>VTS — Virtual Trading School</strong> is our flagship educational application, designed to teach the mechanics of financial markets within a fully virtual, risk-free environment. Every price, chart, news event, balance, and trade displayed within the application is <strong>generated locally by algorithmic simulation</strong> on your own device. The application does not connect to any real market, exchange, broker, or financial institution. All asset names are <strong>fictional symbols</strong> chosen purely for educational realism.</p>
-
-            <p>Our mission is straightforward: to help learners understand how trading mechanics function — orders, leverage, stop-loss and take-profit logic, position management, and market psychology — <strong>before</strong> they consider exposing themselves to real financial risk. We believe rigorous education must always precede exposure to capital.</p>
-
-            <p><strong>Our privacy commitment:</strong> Lite Labs, as a sole developer, operates under a strict privacy-first philosophy. We do not collect personal information of any kind. No accounts are required, no passwords are stored, no contacts or files are accessed, and no advertising networks are integrated. Your progress, settings, and virtual trade history remain on your device at all times.</p>
-
-            <p>To help us improve the application over time, we collect <strong>anonymous usage analytics only</strong> — aggregate measurements such as which features are used and overall session activity. This data is fully anonymized, contains no personally identifying information, and is used solely for product development purposes. You may opt out at any time through your browser settings.</p>
-
-            <p>VTS is and will remain <strong>completely free of charge</strong>. Voluntary contributions through Ko-fi help cover hosting, typography licenses, and ongoing development time. They are entirely optional and unlock no additional features.</p>
-
-            <!-- Official links to Lite Labs studio -->
-            <div class="about-links-grid">
-              <a href="https://litelabsg.github.io/" target="_blank" rel="noopener noreferrer" class="about-link-card">
-                <span class="alc-icon">
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <circle cx="12" cy="12" r="10"/>
-                    <line x1="2" y1="12" x2="22" y2="12"/>
-                    <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
-                  </svg>
-                </span>
-                <span class="alc-text">
-                  <span class="alc-title">Visit Website</span>
-                  <span class="alc-sub">litelabsg.github.io</span>
-                </span>
-                <span class="alc-chev">→</span>
-              </a>
-
-              <a href="https://litelabsg.github.io/privacy-policy.html" target="_blank" rel="noopener noreferrer" class="about-link-card">
-                <span class="alc-icon">
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
-                    <path d="M9 12l2 2 4-4"/>
-                  </svg>
-                </span>
-                <span class="alc-text">
-                  <span class="alc-title">Privacy Policy</span>
-                  <span class="alc-sub">Full international policy</span>
-                </span>
-                <span class="alc-chev">→</span>
-              </a>
-
-              <a href="https://litelabsg.github.io/apps.html" target="_blank" rel="noopener noreferrer" class="about-link-card">
-                <span class="alc-icon">
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <rect x="3" y="3" width="7" height="7"/>
-                    <rect x="14" y="3" width="7" height="7"/>
-                    <rect x="3" y="14" width="7" height="7"/>
-                    <rect x="14" y="14" width="7" height="7"/>
-                  </svg>
-                </span>
-                <span class="alc-text">
-                  <span class="alc-title">Our Applications</span>
-                  <span class="alc-sub">Explore the studio portfolio</span>
-                </span>
-                <span class="alc-chev">→</span>
-              </a>
-            </div>
-
-            <div class="about-signature">
-              <div class="about-sig-line">Lite Labs</div>
-              <div class="about-sig-sub">Boutique App Development Studio</div>
-              <div class="about-sig-sub">Building clean, modern, and user-focused digital experiences</div>
-              <div class="about-sig-contact">
-                <div>Web: <a href="https://litelabsg.github.io/" target="_blank" rel="noopener noreferrer" class="about-email">litelabsg.github.io</a></div>
-                <div>Email: <a href="mailto:LiteLabs@proton.me" class="about-email">LiteLabs@proton.me</a></div>
-              </div>
-            </div>
-
-            <p class="about-version">VTS v1.0 — Developed by <a href="https://litelabsg.github.io/" target="_blank" rel="noopener noreferrer" class="about-email">Lite Labs</a> · Compliant with Google Play educational and privacy policies.</p>
-          </div>
-        </details>
-
-        <!-- SUPPORT — always the last item in settings -->
-        <div class="settings-row" style="display:block;">
-          <div class="lbl-main">Support the Project</div>
-          <div class="lbl-sub" style="margin-bottom:10px;">Help us keep VTS free and ad-free</div>
-          <div class="support-card support-card-settings">
-            <div class="support-card-bg-pattern"></div>
-            <div class="support-card-content">
-              <div class="support-badge">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M9 12l2 2 4-4"/>
-                  <circle cx="12" cy="12" r="10"/>
-                </svg>
-                <span>100% Free · No Ads</span>
-              </div>
-              <h3 class="support-title">A small gift goes a long way</h3>
-              <p class="support-text">VTS is built independently and offered to everyone for free. Your contribution funds servers, new features, and continuous improvements — keeping the experience clean and open for all.</p>
-              <a class="support-btn" id="supportBtnSettings" href="https://ko-fi.com/litelabs" target="_blank" rel="noopener noreferrer">
-                <span class="support-btn-icon" aria-hidden="true">
-                  <img src="logo-small.png" alt="" width="24" height="24" style="display:block;border-radius:50%;">
-                </span>
-                <span class="support-btn-text">Help Us Improve</span>
-                <span class="support-btn-arrow">›</span>
-              </a>
-            </div>
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </div>
-
-  <div class="modal-bg" id="confirmBg" style="align-items:center;">
-    <div class="confirm-modal">
-      <h3 id="confirmTitle">Confirm</h3>
-      <p id="confirmText">Are you sure?</p>
-      <div class="btns">
-        <button class="btn btn-secondary" id="confirmCancel" data-i18n="cancel">Cancel</button>
-        <button class="btn btn-primary" id="confirmOk" data-i18n="confirm">Confirm</button>
-      </div>
-    </div>
-  </div>
-
-  <!-- ============ HELP POPUP (? icons) ============ -->
-  <div class="help-popup-overlay" id="helpPopupOverlay">
-    <div class="help-popup-card">
-      <div class="help-popup-icon">?</div>
-      <div class="help-popup-title" id="helpPopupTitle">—</div>
-      <div class="help-popup-text" id="helpPopupText">—</div>
-      <button class="help-popup-close" id="helpPopupClose" data-i18n="help_got_it">Got it</button>
-    </div>
-  </div>
-
-  <!-- ============ TUTORIAL OVERLAY ============ -->
-  <div class="tutorial-overlay" id="tutorialOverlay">
-    <div class="tutorial-mask" id="tutorialMask"></div>
-    <div class="tutorial-tooltip" id="tutorialTooltip">
-      <div class="tt-step">
-        <span class="tt-num" id="ttNum">1</span>
-        <span class="tt-total" id="ttTotal">/ 10</span>
-      </div>
-      <div class="tt-title" id="ttTitle">—</div>
-      <div class="tt-text" id="ttText">—</div>
-      <div class="tt-actions">
-        <button class="tt-skip" id="ttSkip" data-i18n="tut_skip">Skip</button>
-        <div class="tt-nav">
-          <button class="tt-prev" id="ttPrev" data-i18n="tut_prev">Back</button>
-          <button class="tt-next" id="ttNext" data-i18n="tut_next">Next</button>
+        <div class="principle">
+          <div class="principle-num">04</div>
+          <h3 class="principle-title">Refined Interfaces</h3>
+          <p class="principle-text">
+            We believe software should be beautiful as well as functional. Every interface is crafted with attention to typography, spacing, and the small details that elevate experience.
+          </p>
         </div>
       </div>
     </div>
   </div>
+</section>
 
-  <div class="toast-wrap" id="toastWrap"></div>
+<!-- ============ SUPPORT ============ -->
+<section>
+  <div class="container">
+    <div class="support-card">
+      <span class="support-badge">100% FREE · NO ADS</span>
+      <h2 class="support-title">Built with passion. Sustained by you.</h2>
+      <p class="support-text">
+        Our applications are independently developed and offered completely free &mdash; no advertising, no in-app purchases &mdash; only anonymous usage analytics to help us improve. If our work has helped you, a small contribution lets us keep building, keep improving, and keep it free for everyone.
+      </p>
+      <a href="https://ko-fi.com/litelabs" target="_blank" rel="noopener noreferrer" class="support-btn">
+        Help Us Improve →
+      </a>
+      <div class="support-footer">Every contribution moves the project forward &mdash; thank you.</div>
+    </div>
+  </div>
+</section>
 
-</div>
-<script src="script.js"></script>
+<!-- ============ CONTACT ============ -->
+<section class="contact-section">
+  <div class="container">
+    <div class="section-eyebrow">Get in Touch</div>
+    <h2 class="section-title">We read every message</h2>
+    <p class="section-sub" style="margin-left: auto; margin-right: auto; text-align: center;">
+      For inquiries, feedback, partnership opportunities, or simply to say hello &mdash; we welcome correspondence.
+    </p>
+    <a href="mailto:LiteLabs@proton.me" class="contact-email">LiteLabs@proton.me</a>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="footer-mark">Lite Labs</div>
+  <div class="footer-tag">Boutique App Development Studio</div>
+
+  <p class="footer-quote">
+    "Stay attentive. Meaningful work takes time, and we believe it is worth the wait."
+  </p>
+
+  <div class="footer-links">
+    <a href="apps.html">Apps</a>
+    <a href="privacy-policy.html">Privacy Policy</a>
+    <a href="mailto:LiteLabs@proton.me">Contact</a>
+    <a href="https://ko-fi.com/litelabs" target="_blank" rel="noopener noreferrer">Support</a>
+  </div>
+
+  <div class="footer-divider"></div>
+
+  <div class="footer-copy">
+    Copyright &copy; Lite Labs. All rights reserved.<br>
+    Crafted with care &mdash; MMXXVI.
+  </div>
+
+  <div class="footer-signature">~ Lite Labs ~</div>
+</footer>
+
 </body>
 </html>
