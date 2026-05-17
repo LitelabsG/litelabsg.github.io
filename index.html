@@ -372,9 +372,10 @@ section {
   background-clip: text;
   -webkit-text-fill-color: transparent;
   text-decoration: none;
-  transition: filter 0.5s var(--ease);
+  pointer-events: none;
+  user-select: none;
 }
-.topbar-brand:hover { filter: brightness(1.15); }
+.topbar-brand:hover { filter: none; }
 .topbar-nav {
   display: flex;
   gap: var(--u-5);
@@ -1140,7 +1141,7 @@ a:focus-visible, button:focus-visible {
 <!-- Topbar -->
 <nav class="topbar">
   <div class="topbar-inner">
-    <a href="/" class="topbar-brand" draggable="false">Lite Labs</a>
+    <span class="topbar-brand" draggable="false">Lite Labs</span>
     <div class="topbar-nav">
       <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme" type="button">
         <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
@@ -1166,7 +1167,7 @@ a:focus-visible, button:focus-visible {
       <span id="typedText"></span><span class="typed-cursor" id="typedCursor"></span>
     </h2>
     <p class="hero-lede">
-      We design and build elegant applications that put the user first &mdash; no advertising, no data harvesting, no compromises. Quality over quantity, always.
+      Software has lost its quiet. We build the kind that returns it &mdash; tools that listen rather than speak, that serve rather than demand, that respect the silence and attention of the person on the other side.
     </p>
 
     <a href="#principles" class="hero-cta" draggable="false">
@@ -1190,7 +1191,7 @@ a:focus-visible, button:focus-visible {
         <h3 class="studio-name">A purposeful entry into <em>educational technology</em></h3>
         <p class="studio-tagline">Designed for learners — built for clarity.</p>
         <p class="studio-desc">
-          New work is taking shape behind the scenes &mdash; each project crafted with the same care, the same principles, and the same uncompromising attention to detail. Meaningful work takes time, and we believe it is worth the wait.
+          We believe technology, when shaped with care, becomes more than a tool &mdash; it becomes a sanctuary. A space where curiosity meets safety, where exploration is unhurried, and where learning unfolds without exposure to harm. As a studio approaching its first chapter, we welcome thoughtful conversations with investors, collaborators, and patrons who recognize that the future of meaningful technology is built deliberately, not loudly. Correspondence is open at <em>LiteLabs@proton.me</em>.
         </p>
       </div>
 
@@ -1226,7 +1227,7 @@ a:focus-visible, button:focus-visible {
     <span class="section-eyebrow reveal">Our Principles</span>
     <h2 class="section-title reveal">The standards by which we <em>build</em>.</h2>
     <p class="section-prose reveal">
-      These are not marketing claims. They are the rules we hold ourselves to with every line of code, every design decision, and every user interaction.
+      A discipline is defined by what it refuses, not what it produces. These are the refusals that define us &mdash; the lines we will not cross, the shortcuts we will not take, the compromises we will not entertain. They are not aspirations. They are obligations.
     </p>
 
     <div class="principles-grid">
@@ -1259,6 +1260,54 @@ a:focus-visible, button:focus-visible {
         <h3 class="principle-title">Built to Last</h3>
         <p class="principle-text">
           Software should be timeless. We resist trends in favor of clarity, restraint, and craftsmanship. Our work is designed to remain useful and beautiful long after the next aesthetic wave has passed.
+        </p>
+      </div>
+
+      <div class="principle reveal">
+        <div class="principle-number">05</div>
+        <h3 class="principle-title">Silence over Spectacle</h3>
+        <p class="principle-text">
+          The loudest interface is rarely the most useful one. We design for the quiet moments &mdash; for the focused mind, for the unhurried hand. Spectacle entertains; silence enables understanding.
+        </p>
+      </div>
+
+      <div class="principle reveal">
+        <div class="principle-number">06</div>
+        <h3 class="principle-title">Honesty in Every Pixel</h3>
+        <p class="principle-text">
+          A button is what it claims to be. A price is what it appears to be. A promise is what it sounds like. We do not deceive through omission, suggestion, or design sleight-of-hand. Transparency is not a feature &mdash; it is the floor.
+        </p>
+      </div>
+
+      <div class="principle reveal">
+        <div class="principle-number">07</div>
+        <h3 class="principle-title">Beauty as Function</h3>
+        <p class="principle-text">
+          Aesthetic care is not decoration. A well-considered surface signals a well-considered system beneath it. Beauty, in our work, is the visible evidence of underlying respect &mdash; for the user, for the craft, for ourselves.
+        </p>
+      </div>
+
+      <div class="principle reveal">
+        <div class="principle-number">08</div>
+        <h3 class="principle-title">Slowness as Strategy</h3>
+        <p class="principle-text">
+          The world rewards velocity. We reward thoroughness. To move slowly when others rush is to choose the long horizon over the short victory. The work that endures is rarely the work that arrived first.
+        </p>
+      </div>
+
+      <div class="principle reveal">
+        <div class="principle-number">09</div>
+        <h3 class="principle-title">The Discipline of Less</h3>
+        <p class="principle-text">
+          Every additional element competes for attention, comprehension, and trust. We earn each new feature through proof of necessity, not through enthusiasm of imagination. Subtraction is the most underrated form of progress.
+        </p>
+      </div>
+
+      <div class="principle reveal">
+        <div class="principle-number">10</div>
+        <h3 class="principle-title">Ownership Without Surveillance</h3>
+        <p class="principle-text">
+          When you use our work, nothing of you remains in our hands. No profile, no history, no behavioral residue. Your interaction is yours &mdash; complete, undocumented, and returned in full when you close the tab.
         </p>
       </div>
     </div>
@@ -1699,32 +1748,24 @@ a:focus-visible, button:focus-visible {
     });
   }
 
-  // ─── 6b. AUTO-HIDE TOPBAR — hide on scroll down, reveal on scroll up ───
+  // ─── 6b. AUTO-HIDE TOPBAR — hide on scroll, reveal only when at top ───
   (function() {
     const topbar = document.querySelector('.topbar');
     if (!topbar) return;
 
-    let lastScrollY = window.pageYOffset || 0;
     let ticking = false;
 
     function onScrollDirection() {
       const currentY = window.pageYOffset || 0;
-      const delta = currentY - lastScrollY;
 
-      // At top — always show
+      // Only show topbar when user is at the very top
       if (currentY < 80) {
         topbar.classList.remove('hidden-on-scroll');
-      }
-      // Scrolling down by meaningful amount — hide
-      else if (delta > 6) {
+      } else {
+        // Once user starts scrolling, keep hidden forever (until back to top)
         topbar.classList.add('hidden-on-scroll');
       }
-      // Scrolling up by meaningful amount — show
-      else if (delta < -6) {
-        topbar.classList.remove('hidden-on-scroll');
-      }
 
-      lastScrollY = currentY;
       ticking = false;
     }
 
