@@ -255,6 +255,15 @@ img, svg, picture, video {
   box-shadow: var(--ao-3), 0 12px 32px -12px rgba(201, 168, 118, 0.45);
 }
 
+/* Auto-hide on scroll down — reveal on scroll up */
+.back-arrow.hidden-on-scroll,
+.theme-toggle.hidden-on-scroll {
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-12px);
+  pointer-events: none;
+}
+
 .container {
   position: relative; z-index: 10;
   max-width: 960px;
@@ -957,8 +966,8 @@ a:focus-visible, button:focus-visible {
   if (savedTheme === 'light' || savedTheme === 'dark') {
     applyTheme(savedTheme);
   } else {
-    const prefersLight = window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches;
-    applyTheme(prefersLight ? 'light' : 'dark');
+    // Default to Dark theme regardless of system preference
+    applyTheme('dark');
   }
   const toggle = document.getElementById('themeToggle');
   if (toggle) {
@@ -983,6 +992,47 @@ a:focus-visible, button:focus-visible {
     window.addEventListener('resize', updateProgress);
     updateProgress();
   }
+
+  // 3b. AUTO-HIDE NAV BUTTONS — hide on scroll down, reveal on scroll up
+  (function() {
+    const backArrow = document.querySelector('.back-arrow');
+    const themeBtn = document.querySelector('.theme-toggle');
+    if (!backArrow && !themeBtn) return;
+
+    let lastScrollY = window.pageYOffset || 0;
+    let ticking = false;
+
+    function onScrollDirection() {
+      const currentY = window.pageYOffset || 0;
+      const delta = currentY - lastScrollY;
+
+      // At top — always show
+      if (currentY < 80) {
+        if (backArrow) backArrow.classList.remove('hidden-on-scroll');
+        if (themeBtn) themeBtn.classList.remove('hidden-on-scroll');
+      }
+      // Scrolling down by meaningful amount — hide
+      else if (delta > 6) {
+        if (backArrow) backArrow.classList.add('hidden-on-scroll');
+        if (themeBtn) themeBtn.classList.add('hidden-on-scroll');
+      }
+      // Scrolling up by meaningful amount — show
+      else if (delta < -6) {
+        if (backArrow) backArrow.classList.remove('hidden-on-scroll');
+        if (themeBtn) themeBtn.classList.remove('hidden-on-scroll');
+      }
+
+      lastScrollY = currentY;
+      ticking = false;
+    }
+
+    window.addEventListener('scroll', function() {
+      if (!ticking) {
+        requestAnimationFrame(onScrollDirection);
+        ticking = true;
+      }
+    }, { passive: true });
+  })();
 
   // 4. SCROLL REVEAL
   if ('IntersectionObserver' in window) {
