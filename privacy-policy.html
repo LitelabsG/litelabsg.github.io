@@ -14,32 +14,25 @@
   *, *::before, *::after { box-sizing: border-box; }
   html, body { margin: 0; padding: 0; }
   :root {
-    /* === Subtle VTS palette echo (soft hint, not literal match) === */
-    --bg-deep: #0B0E11;         /* Same deep base as VTS app shell */
-    --bg-rise: #14181F;         /* VTS bg-1 — slightly lifted */
-    --bg-card: rgba(24, 26, 32, 0.78);   /* VTS bg-card with extra opacity */
-    --bg-card-edge: rgba(240, 185, 11, 0.06);   /* faint VTS-gold edge instead of pure white */
-    --text-primary: #EAECEF;    /* VTS text-1 */
+    --bg-deep: #0A0D12;
+    --bg-rise: #11151D;
+    --bg-card: rgba(20, 25, 34, 0.72);
+    --bg-card-edge: rgba(255, 255, 255, 0.06);
+    --text-primary: #E8ECF4;
     --text-secondary: #B5BCC9;
     --text-tertiary: #7A8497;
     --text-muted: #5A6373;
-    --accent: #C9A876;          /* Champagne gold — neutral lawyer-firm gold */
-    --accent-warm: #B87333;     /* VTS bronze — used only in subtle hints */
-    --accent-soft: rgba(201, 168, 118, 0.16);
-    --rule: rgba(255, 255, 255, 0.05);
-    --rule-strong: rgba(240, 185, 11, 0.10);   /* gold-tinged rule for VTS feel */
+    --accent: #C9A876;        /* Champagne gold */
+    --accent-soft: rgba(201, 168, 118, 0.18);
+    --rule: rgba(255, 255, 255, 0.06);
+    --rule-strong: rgba(255, 255, 255, 0.12);
   }
   body {
     /* Body font: EB Garamond — the serif of choice for premier law firms */
     font-family: 'EB Garamond', 'Garamond', 'Adobe Garamond Pro', Georgia, 'Times New Roman', serif;
     background:
-      /* Top-left whisper of VTS gold */
-      radial-gradient(ellipse 1600px 1000px at 12% -8%, rgba(240, 185, 11, 0.04), transparent 55%),
-      /* Bottom-right whisper of VTS bronze */
-      radial-gradient(ellipse 1300px 900px at 88% 108%, rgba(184, 115, 51, 0.035), transparent 55%),
-      /* Faint center cool tone for depth balance */
-      radial-gradient(ellipse 1000px 700px at 50% 50%, rgba(70, 80, 100, 0.025), transparent 70%),
-      /* VTS deep gradient base */
+      radial-gradient(ellipse 1400px 900px at 15% -10%, rgba(201, 168, 118, 0.05), transparent 60%),
+      radial-gradient(ellipse 1200px 800px at 85% 110%, rgba(70, 90, 130, 0.06), transparent 60%),
       linear-gradient(180deg, var(--bg-deep) 0%, var(--bg-rise) 100%);
     color: var(--text-primary);
     line-height: 1.85;
@@ -47,6 +40,7 @@
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     font-feature-settings: 'liga', 'kern', 'onum';
+    /* Slightly larger root size for that distinguished "printed document" feel */
     font-size: 17px;
   }
   .container {
@@ -347,42 +341,6 @@
     font-style: italic;
   }
 
-  /* ============ BACK ARROW ============ */
-  .back-arrow {
-    position: fixed;
-    top: 24px;
-    inset-inline-start: 24px;
-    width: 42px;
-    height: 42px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: rgba(20, 25, 34, 0.78);
-    backdrop-filter: blur(20px) saturate(140%);
-    -webkit-backdrop-filter: blur(20px) saturate(140%);
-    border: 1px solid rgba(201, 168, 118, 0.20);
-    border-radius: 50%;
-    color: var(--accent);
-    text-decoration: none;
-    transition: all 0.25s ease;
-    z-index: 100;
-    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
-  }
-  .back-arrow:hover, .back-arrow:active {
-    background: rgba(28, 32, 42, 0.92);
-    border-color: rgba(201, 168, 118, 0.50);
-    transform: translateX(-3px);
-    box-shadow: 0 6px 20px rgba(201, 168, 118, 0.15);
-  }
-  @media (max-width: 720px) {
-    .back-arrow {
-      top: 16px;
-      inset-inline-start: 16px;
-      width: 38px;
-      height: 38px;
-    }
-  }
-
   /* ============ MOBILE RESPONSIVE ============ */
   @media (max-width: 720px) {
     body { font-size: 16px; }
@@ -415,14 +373,6 @@
 </style>
 </head>
 <body>
-
-<!-- ============ BACK ARROW ============ -->
-<a href="https://litelabsg.github.io/" class="back-arrow" title="Back to Lite Labs" aria-label="Back to Lite Labs">
-  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-    <line x1="19" y1="12" x2="5" y2="12"/>
-    <polyline points="12 19 5 12 12 5"/>
-  </svg>
-</a>
 <div class="container">
 
 <!-- ============ MASTHEAD ============ -->
