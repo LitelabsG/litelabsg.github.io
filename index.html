@@ -277,6 +277,16 @@ img, svg, picture, video {
   100% { background-position: -200% 0; }
 }
 
+/* Reading progress bar — 2px gold gradient */
+.reading-progress {
+  position: fixed; top: 0; left: 0;
+  height: 2px; width: 0%;
+  background: linear-gradient(90deg, var(--acc-1), var(--gold), var(--acc-1));
+  z-index: 300;
+  box-shadow: 0 0 12px rgba(232, 201, 119, 0.5);
+  transition: width 0.15s linear;
+}
+
 /* ─── TOPBAR ─── */
 .topbar {
   position: sticky; top: 0; z-index: 100;
@@ -1071,6 +1081,9 @@ a:focus-visible, button:focus-visible {
 <div class="cursor-glow" id="cursorGlow"></div>
 <div class="cursor-dot" id="cursorDot"></div>
 
+<!-- Reading progress bar -->
+<div class="reading-progress" id="readingProgress"></div>
+
 <!-- Topbar -->
 <nav class="topbar">
   <div class="topbar-inner">
@@ -1271,14 +1284,13 @@ a:focus-visible, button:focus-visible {
       <div class="philosophy-item reveal">
         <div class="philosophy-icon">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M20 12V8H6a2 2 0 0 1-2-2c0-1.1.9-2 2-2h12v4"/>
-            <path d="M4 6v12c0 1.1.9 2 2 2h14v-4"/>
-            <path d="M18 12a2 2 0 0 0 0 4h4v-4z"/>
+            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+            <path d="M9 12l2 2 4-4"/>
           </svg>
         </div>
-        <h3 class="philosophy-title">Free, with intention.</h3>
+        <h3 class="philosophy-title">A safe space to explore.</h3>
         <p class="philosophy-text selectable">
-          When something costs nothing, the user often becomes the product. We refuse that bargain. Our work is free because we want it to be &mdash; not because we plan to extract value later.
+          Our applications are designed as quiet sanctuaries &mdash; places where you can learn, experiment, and discover at your own pace. No pressure. No risk. No hidden agendas. Just space to grow, freely and safely.
         </p>
       </div>
     </div>
@@ -1467,6 +1479,20 @@ a:focus-visible, button:focus-visible {
       el.addEventListener('mouseleave', () => cursorDot.classList.remove('hovering'));
     });
     moveCursor();
+  }
+
+  // ─── 5b. READING PROGRESS BAR ───
+  const progressBar = document.getElementById('readingProgress');
+  if (progressBar) {
+    function updateProgress() {
+      const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+      const pct = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+      progressBar.style.width = Math.min(100, Math.max(0, pct)) + '%';
+    }
+    window.addEventListener('scroll', updateProgress, { passive: true });
+    window.addEventListener('resize', updateProgress);
+    updateProgress();
   }
 
   // ─── 6. BACK TO TOP ───
