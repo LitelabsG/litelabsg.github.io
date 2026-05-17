@@ -225,9 +225,111 @@
     margin: 0 0 56px 0;
   }
 
+  /* ============ FEATURED APP ============ */
+  .featured-app {
+    background: var(--bg-card);
+    backdrop-filter: blur(20px) saturate(140%);
+    -webkit-backdrop-filter: blur(20px) saturate(140%);
+    border: 1px solid var(--bg-card-edge);
+    border-radius: 18px;
+    padding: 48px 52px;
+    margin-bottom: 24px;
+    box-shadow:
+      0 1px 0 rgba(255,255,255,0.04) inset,
+      0 32px 64px -32px rgba(0,0,0,0.5);
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.3s ease, border-color 0.3s ease;
+  }
+  .featured-app:hover {
+    transform: translateY(-2px);
+    border-color: rgba(240,185,11,0.20);
+  }
+  .featured-app::before {
+    content: '';
+    position: absolute;
+    top: 0; right: 0;
+    width: 280px; height: 280px;
+    background: radial-gradient(circle, rgba(240,185,11,0.06), transparent 60%);
+    pointer-events: none;
+  }
+  .app-status {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 24px;
+    font-weight: 700;
+  }
+  .app-status-dot {
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: var(--gold);
+    box-shadow: 0 0 8px rgba(240,185,11,0.55);
+    animation: pulse 2s ease-in-out infinite;
+  }
   @keyframes pulse {
     0%, 100% { opacity: 1; transform: scale(1); }
     50% { opacity: 0.7; transform: scale(0.9); }
+  }
+  .app-name {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 32px;
+    font-weight: 700;
+    margin: 0 0 12px;
+    color: var(--text-primary);
+  }
+  .app-tagline {
+    font-family: 'EB Garamond', Georgia, serif;
+    font-style: italic;
+    font-size: 17px;
+    color: var(--accent);
+    margin: 0 0 20px;
+  }
+  .app-desc {
+    font-size: 16px;
+    color: var(--text-secondary);
+    margin: 0 0 32px;
+    max-width: 680px;
+    line-height: 1.8;
+  }
+  .app-actions { display: flex; gap: 12px; flex-wrap: wrap; }
+  .app-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 22px;
+    border-radius: 8px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.2s ease;
+  }
+  .app-btn.primary {
+    background: linear-gradient(135deg, rgba(240,185,11,0.18), rgba(184,115,51,0.08));
+    border: 1px solid rgba(240,185,11,0.40);
+    color: var(--text-primary);
+  }
+  .app-btn.primary:hover {
+    background: linear-gradient(135deg, rgba(240,185,11,0.28), rgba(184,115,51,0.14));
+    border-color: rgba(240,185,11,0.60);
+    transform: translateY(-1px);
+  }
+  .app-btn.secondary {
+    background: transparent;
+    border: 1px solid var(--rule);
+    color: var(--text-tertiary);
+  }
+  .app-btn.secondary:hover {
+    border-color: var(--accent);
+    color: var(--accent);
   }
 
   /* ============ COMING SOON ============ */
@@ -477,7 +579,8 @@
     .hero-sub { font-size: 16px; }
     section { padding: 56px 0; }
     .section-title { font-size: 28px; }
-    .principles, .support-card, .coming-soon { padding: 32px 26px; }
+    .featured-app, .principles, .support-card, .coming-soon { padding: 32px 26px; }
+    .app-name { font-size: 24px; }
     .principles-grid { grid-template-columns: 1fr; gap: 28px; }
     .support-title { font-size: 24px; }
     .footer-mark { font-size: 26px; }
@@ -491,6 +594,7 @@
 <nav class="topbar">
   <a href="/" class="topbar-brand">Lite Labs</a>
   <div class="topbar-nav">
+    <a href="apps.html">Apps</a>
     <a href="privacy-policy.html">Privacy</a>
     <a href="mailto:LiteLabs@proton.me">Contact</a>
   </div>
@@ -511,33 +615,52 @@
     <p class="hero-sub">
       We design and build elegant applications that put the user first &mdash; no advertising, no data harvesting, no compromises. Quality over quantity, always.
     </p>
-    <a href="#principles" class="hero-cta">
-      Discover Our Principles
+    <a href="apps.html" class="hero-cta">
+      View Our Apps
       <span class="hero-cta-arrow">→</span>
     </a>
   </div>
 </section>
 
-<!-- ============ COMING SOON SECTION ============ -->
+<!-- ============ FEATURED APP ============ -->
 <section>
   <div class="container">
-    <div class="section-eyebrow">In The Studio</div>
-    <h2 class="section-title">Building the next chapter</h2>
+    <div class="section-eyebrow">Featured Release</div>
+    <h2 class="section-title">Our latest creation</h2>
     <p class="section-sub">
-      New projects are taking shape behind the scenes &mdash; each crafted with the same care, the same principles, and the same uncompromising attention to detail.
+      A purposeful entry into the educational technology space, designed to transform how learners understand complex systems.
     </p>
 
-    <div class="coming-soon">
-      <div class="coming-soon-mark">Stay attentive</div>
+    <div class="featured-app">
+      <div class="app-status">
+        <span class="app-status-dot"></span>
+        <span>Live · v1.0</span>
+      </div>
+      <h3 class="app-name">VTS &mdash; Virtual Trading School</h3>
+      <p class="app-tagline">Learn the mechanics of financial markets in a fully virtual, risk-free environment.</p>
+      <p class="app-desc">
+        Every price, chart, news event, balance, and trade is generated locally by algorithmic simulation on your own device. VTS does not connect to any real market, exchange, broker, or financial institution. Built for learners who want to understand how trading works &mdash; before they ever consider exposing themselves to real risk.
+      </p>
+      <div class="app-actions">
+        <a href="https://litelabsg.github.io/Project-1/" class="app-btn primary">
+          Open App →
+        </a>
+        <a href="privacy-policy.html" class="app-btn secondary">Privacy</a>
+        <a href="apps.html" class="app-btn secondary">Learn More</a>
+      </div>
+    </div>
+
+    <div class="coming-soon" style="margin-top: 24px;">
+      <div class="coming-soon-mark">More on the horizon</div>
       <p class="coming-soon-text">
-        Meaningful work takes time, and we believe it is worth the wait. Significant releases are on the horizon &mdash; thank you for your patience.
+        New projects are taking shape in the studio. Stay attentive &mdash; meaningful work takes time, and we believe it is worth the wait.
       </p>
     </div>
   </div>
 </section>
 
 <!-- ============ PRINCIPLES ============ -->
-<section id="principles">
+<section>
   <div class="container">
     <div class="section-eyebrow">Our Principles</div>
     <h2 class="section-title">What we stand for</h2>
@@ -587,7 +710,7 @@
       <span class="support-badge">100% FREE · NO ADS</span>
       <h2 class="support-title">Built with passion. Sustained by you.</h2>
       <p class="support-text">
-        Lite Labs is an independent studio crafting refined applications &mdash; offered completely free, with no advertising and no in-app purchases. Only anonymous usage analytics help us improve. If our work has helped you, a small contribution lets us keep building, keep improving, and keep our applications free for everyone.
+        Our applications are independently developed and offered completely free &mdash; no advertising, no in-app purchases &mdash; only anonymous usage analytics to help us improve. If our work has helped you, a small contribution lets us keep building, keep improving, and keep it free for everyone.
       </p>
       <a href="https://ko-fi.com/litelabs" target="_blank" rel="noopener noreferrer" class="support-btn">
         Help Us Improve →
@@ -619,6 +742,7 @@
   </p>
 
   <div class="footer-links">
+    <a href="apps.html">Apps</a>
     <a href="privacy-policy.html">Privacy Policy</a>
     <a href="mailto:LiteLabs@proton.me">Contact</a>
     <a href="https://ko-fi.com/litelabs" target="_blank" rel="noopener noreferrer">Support</a>
