@@ -277,6 +277,53 @@ img, svg, picture, video {
   100% { background-position: -200% 0; }
 }
 
+/* ─── CINEMATIC PAGE TRANSITION ─── */
+.page-transition {
+  position: fixed;
+  inset: 0;
+  z-index: 9500;
+  pointer-events: none;
+  background: var(--bg-0);
+  transform: translateY(0);
+  transition: transform 1.0s cubic-bezier(0.86, 0, 0.07, 1);
+}
+.page-transition.lift {
+  transform: translateY(-100%);
+}
+
+/* ─── INK REVEAL ENHANCEMENT ─── */
+.ink-reveal {
+  opacity: 0;
+  transform: translateY(40px);
+  filter: blur(8px);
+  transition: opacity 1.4s var(--ease), transform 1.4s var(--ease), filter 1.4s var(--ease);
+}
+.ink-reveal.in {
+  opacity: 1;
+  transform: translateY(0);
+  filter: blur(0);
+}
+
+/* ─── SMOOTH MOMENTUM SCROLL HINT ─── */
+html { scroll-behavior: smooth; }
+@supports (-webkit-overflow-scrolling: touch) {
+  html, body { -webkit-overflow-scrolling: touch; }
+}
+
+/* ─── SECTION ENTRY POLISH ─── */
+section {
+  animation: sectionDrift 1.0s var(--ease);
+  animation-timeline: view();
+  animation-range: entry 0% cover 30%;
+}
+@supports not (animation-timeline: view()) {
+  section { animation: none; }
+}
+@keyframes sectionDrift {
+  from { transform: translateY(20px); opacity: 0.4; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
 /* Reading progress bar — 2px gold gradient */
 .reading-progress {
   position: fixed; top: 0; left: 0;
@@ -811,9 +858,12 @@ section { padding: var(--section) 0; position: relative; }
 }
 .philosophy-grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: clamp(32px, 5vw, 56px);
+  grid-template-columns: repeat(3, 1fr);
+  gap: clamp(28px, 4vw, 40px);
   margin-top: var(--u-8);
+}
+@media (max-width: 1100px) {
+  .philosophy-grid { grid-template-columns: repeat(2, 1fr); }
 }
 .philosophy-item {
   padding: clamp(28px, 4vw, 40px);
@@ -1081,6 +1131,9 @@ a:focus-visible, button:focus-visible {
 <div class="cursor-glow" id="cursorGlow"></div>
 <div class="cursor-dot" id="cursorDot"></div>
 
+<!-- Cinematic page-transition curtain -->
+<div class="page-transition" id="pageTransition"></div>
+
 <!-- Reading progress bar -->
 <div class="reading-progress" id="readingProgress"></div>
 
@@ -1112,7 +1165,7 @@ a:focus-visible, button:focus-visible {
     <h2 class="hero-statement" id="heroStatement" data-full="Crafting refined digital experiences with <em>uncompromising privacy</em>.">
       <span id="typedText"></span><span class="typed-cursor" id="typedCursor"></span>
     </h2>
-    <p class="hero-lede selectable">
+    <p class="hero-lede">
       We design and build elegant applications that put the user first &mdash; no advertising, no data harvesting, no compromises. Quality over quantity, always.
     </p>
 
@@ -1136,7 +1189,7 @@ a:focus-visible, button:focus-visible {
         </div>
         <h3 class="studio-name">A purposeful entry into <em>educational technology</em></h3>
         <p class="studio-tagline">Designed for learners — built for clarity.</p>
-        <p class="studio-desc selectable">
+        <p class="studio-desc">
           New work is taking shape behind the scenes &mdash; each project crafted with the same care, the same principles, and the same uncompromising attention to detail. Meaningful work takes time, and we believe it is worth the wait.
         </p>
       </div>
@@ -1144,10 +1197,10 @@ a:focus-visible, button:focus-visible {
       <div class="studio-side reveal">
         <p class="studio-side-eyebrow">Our Approach</p>
         <h3 class="studio-side-title">Few projects. Refined deeply.</h3>
-        <p class="studio-side-text selectable">
+        <p class="studio-side-text">
           Lite Labs is intentionally small. We choose to work on a handful of meaningful projects rather than many. Each application receives the focus, time, and refinement it deserves.
         </p>
-        <p class="studio-side-text selectable">
+        <p class="studio-side-text">
           The result is software that feels considered &mdash; every interaction, every transition, every line of text shaped with intention.
         </p>
       </div>
@@ -1159,10 +1212,10 @@ a:focus-visible, button:focus-visible {
   <div class="container">
     <span class="section-eyebrow reveal">The Craft</span>
     <h2 class="section-title reveal">Software, treated as a <em>craft</em>.</h2>
-    <p class="section-prose reveal selectable">
+    <p class="section-prose reveal">
       We approach software the way a master tailor approaches a bespoke suit &mdash; with patience, precision, and an unwavering commitment to the finest details. Every component is considered. Every transition is intentional. Every word is weighed.
     </p>
-    <p class="section-prose reveal selectable">
+    <p class="section-prose reveal">
       Mass-produced software treats users as metrics. Crafted software treats users as guests. We choose the latter, every time.
     </p>
   </div>
@@ -1172,7 +1225,7 @@ a:focus-visible, button:focus-visible {
   <div class="container">
     <span class="section-eyebrow reveal">Our Principles</span>
     <h2 class="section-title reveal">The standards by which we <em>build</em>.</h2>
-    <p class="section-prose reveal selectable">
+    <p class="section-prose reveal">
       These are not marketing claims. They are the rules we hold ourselves to with every line of code, every design decision, and every user interaction.
     </p>
 
@@ -1180,7 +1233,7 @@ a:focus-visible, button:focus-visible {
       <div class="principle reveal">
         <div class="principle-number">01</div>
         <h3 class="principle-title">Privacy as Foundation</h3>
-        <p class="principle-text selectable">
+        <p class="principle-text">
           We do not collect personal data. We do not track behavior across services. We do not sell information to third parties. Your data belongs to you, and we believe this is non-negotiable.
         </p>
       </div>
@@ -1188,7 +1241,7 @@ a:focus-visible, button:focus-visible {
       <div class="principle reveal">
         <div class="principle-number">02</div>
         <h3 class="principle-title">Quality over Quantity</h3>
-        <p class="principle-text selectable">
+        <p class="principle-text">
           We release fewer applications, each refined to a level we are proud of. We would rather perfect one experience than ship ten compromises. Time is the ingredient most studios forget.
         </p>
       </div>
@@ -1196,7 +1249,7 @@ a:focus-visible, button:focus-visible {
       <div class="principle reveal">
         <div class="principle-number">03</div>
         <h3 class="principle-title">No Dark Patterns</h3>
-        <p class="principle-text selectable">
+        <p class="principle-text">
           No advertising. No upsells disguised as features. No artificial urgency. No psychological manipulation. Our applications are tools, not casinos &mdash; designed to respect your attention rather than capture it.
         </p>
       </div>
@@ -1204,7 +1257,7 @@ a:focus-visible, button:focus-visible {
       <div class="principle reveal">
         <div class="principle-number">04</div>
         <h3 class="principle-title">Built to Last</h3>
-        <p class="principle-text selectable">
+        <p class="principle-text">
           Software should be timeless. We resist trends in favor of clarity, restraint, and craftsmanship. Our work is designed to remain useful and beautiful long after the next aesthetic wave has passed.
         </p>
       </div>
@@ -1212,36 +1265,16 @@ a:focus-visible, button:focus-visible {
   </div>
 </section>
 
-<section class="support-section" id="support">
-  <div class="container">
-    <span class="section-eyebrow reveal">Support The Studio</span>
-    <h2 class="section-title reveal">Built with passion. <em>Sustained by you</em>.</h2>
-
-    <div class="support-card reveal">
-      <div class="support-badge">
-        <span>100% Free</span>
-        <span>·</span>
-        <span>No Ads</span>
-      </div>
-      <h3 class="support-title">A small gift goes a long way</h3>
-      <p class="support-text selectable">
-        Lite Labs is developed and offered completely free &mdash; no advertising and no in-app purchases &mdash; only anonymous usage analytics to help us improve. If our work has helped you, a small contribution lets us keep building, keep improving, and keep our applications free for everyone.
-      </p>
-      <a href="https://ko-fi.com/litelabs" target="_blank" rel="noopener noreferrer" class="support-btn" draggable="false">
-        <span>Help Us Improve</span>
-        <span style="font-size: 14px;">→</span>
-      </a>
-      <div class="support-footer">Every contribution moves the studio forward &mdash; thank you.</div>
-    </div>
-  </div>
-</section>
-
 <section class="philosophy-section">
   <div class="container">
     <span class="section-eyebrow reveal">Our Philosophy</span>
-    <h2 class="section-title reveal">A few <em>guiding beliefs</em>.</h2>
+    <h2 class="section-title reveal">Twelve <em>guiding beliefs</em>.</h2>
+    <p class="section-prose reveal">
+      These are not slogans. They are the convictions that shape how we build, what we refuse to do, and why we exist as a studio at all.
+    </p>
 
     <div class="philosophy-grid">
+
       <div class="philosophy-item reveal">
         <div class="philosophy-icon">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
@@ -1250,7 +1283,7 @@ a:focus-visible, button:focus-visible {
           </svg>
         </div>
         <h3 class="philosophy-title">Patience pays.</h3>
-        <p class="philosophy-text selectable">
+        <p class="philosophy-text">
           Software shipped slowly outlives software shipped quickly. The market rewards speed, but users reward care. We choose users.
         </p>
       </div>
@@ -1264,7 +1297,7 @@ a:focus-visible, button:focus-visible {
           </svg>
         </div>
         <h3 class="philosophy-title">Restraint is a feature.</h3>
-        <p class="philosophy-text selectable">
+        <p class="philosophy-text">
           A confused interface is not a feature-rich interface. We say no to clutter so the essential can breathe. Less, when chosen deliberately, is the rarest luxury.
         </p>
       </div>
@@ -1276,7 +1309,7 @@ a:focus-visible, button:focus-visible {
           </svg>
         </div>
         <h3 class="philosophy-title">Trust is earned in silence.</h3>
-        <p class="philosophy-text selectable">
+        <p class="philosophy-text">
           We do not ask for trust &mdash; we build it through what we choose not to do. No tracking. No selling. No surveillance. The absence of harm is the foundation of trust.
         </p>
       </div>
@@ -1289,10 +1322,141 @@ a:focus-visible, button:focus-visible {
           </svg>
         </div>
         <h3 class="philosophy-title">A safe space to explore.</h3>
-        <p class="philosophy-text selectable">
+        <p class="philosophy-text">
           Our applications are designed as quiet sanctuaries &mdash; places where you can learn, experiment, and discover at your own pace. No pressure. No risk. No hidden agendas. Just space to grow, freely and safely.
         </p>
       </div>
+
+      <div class="philosophy-item reveal">
+        <div class="philosophy-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M2 12h6m8 0h6M12 2v6m0 8v6M5 5l4 4m6 6l4 4M5 19l4-4m6-6l4-4"/>
+          </svg>
+        </div>
+        <h3 class="philosophy-title">The user is the work.</h3>
+        <p class="philosophy-text">
+          We do not design for personas or focus groups. We design for the person on the other side of the screen &mdash; alone, attentive, deserving of our full effort.
+        </p>
+      </div>
+
+      <div class="philosophy-item reveal">
+        <div class="philosophy-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+            <polyline points="14 2 14 8 20 8"/>
+            <line x1="9" y1="15" x2="15" y2="15"/>
+          </svg>
+        </div>
+        <h3 class="philosophy-title">Details are not decoration.</h3>
+        <p class="philosophy-text">
+          A misaligned pixel betrays a deeper disregard. A clumsy transition reveals haste. We obsess over what most overlook because the smallest details carry the largest meaning.
+        </p>
+      </div>
+
+      <div class="philosophy-item reveal">
+        <div class="philosophy-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/>
+            <path d="M3 3v5h5"/>
+          </svg>
+        </div>
+        <h3 class="philosophy-title">Refinement, not novelty.</h3>
+        <p class="philosophy-text">
+          We do not chase what is new. We refine what is right. Novelty fades within a season; refinement compounds over decades. Time, not trend, is our editor.
+        </p>
+      </div>
+
+      <div class="philosophy-item reveal">
+        <div class="philosophy-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M3 21v-4a4 4 0 0 1 4-4h10a4 4 0 0 1 4 4v4"/>
+            <circle cx="12" cy="7" r="4"/>
+          </svg>
+        </div>
+        <h3 class="philosophy-title">No audience &mdash; only individuals.</h3>
+        <p class="philosophy-text">
+          We do not build for the crowd. The crowd is a fiction. We build for one person at a time &mdash; the curious, the careful, the considered. If we have served them well, the rest will follow.
+        </p>
+      </div>
+
+      <div class="philosophy-item reveal">
+        <div class="philosophy-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7z"/>
+          </svg>
+        </div>
+        <h3 class="philosophy-title">Care, made visible.</h3>
+        <p class="philosophy-text">
+          Software either feels cared for, or it does not. There is no in-between. Every line of code, every pixel, every word is an opportunity to make care visible &mdash; or to fail quietly.
+        </p>
+      </div>
+
+      <div class="philosophy-item reveal">
+        <div class="philosophy-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="3" y="3" width="18" height="18" rx="2"/>
+            <line x1="9" y1="9" x2="15" y2="15"/>
+            <line x1="15" y1="9" x2="9" y2="15"/>
+          </svg>
+        </div>
+        <h3 class="philosophy-title">Saying no, often.</h3>
+        <p class="philosophy-text">
+          For every feature we ship, we have declined a dozen others. The discipline of refusal is the highest form of design. What we leave out defines us as much as what we include.
+        </p>
+      </div>
+
+      <div class="philosophy-item reveal">
+        <div class="philosophy-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10"/>
+            <path d="M8 14s1.5 2 4 2 4-2 4-2"/>
+            <line x1="9" y1="9" x2="9.01" y2="9"/>
+            <line x1="15" y1="9" x2="15.01" y2="9"/>
+          </svg>
+        </div>
+        <h3 class="philosophy-title">Calm over loud.</h3>
+        <p class="philosophy-text">
+          Notifications, badges, popups, urgency &mdash; the modern interface shouts. We choose to whisper. The applications we admire most are the ones that respect the silence around them.
+        </p>
+      </div>
+
+      <div class="philosophy-item reveal">
+        <div class="philosophy-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="3"/>
+            <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/>
+          </svg>
+        </div>
+        <h3 class="philosophy-title">The work is the message.</h3>
+        <p class="philosophy-text">
+          We do not believe in marketing language, hype cycles, or manufactured urgency. The applications we build are themselves our argument. If the work is good, it will speak. If it is not, no campaign will save it.
+        </p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section class="support-section" id="support">
+  <div class="container">
+    <span class="section-eyebrow reveal">Sustain The Studio</span>
+    <h2 class="section-title reveal">An <em>offering</em>, freely given.</h2>
+
+    <div class="support-card reveal">
+      <div class="support-badge">
+        <span>100% Free</span>
+        <span>·</span>
+        <span>No Ads</span>
+      </div>
+      <h3 class="support-title">An <em>offering</em>, not a transaction</h3>
+      <p class="support-text">
+        Lite Labs operates on a quiet principle: software, at its best, is a gift extended without expectation. We build because the work matters &mdash; not because metrics demand it. Our applications carry no advertising, no purchases, no surveillance disguised as service. What we ask in return is nothing. What you choose to give, if anything at all, simply allows the work to continue. The exchange is not financial. It is philosophical &mdash; a recognition that thoughtful tools deserve thoughtful stewardship.
+      </p>
+      <a href="https://ko-fi.com/litelabs" target="_blank" rel="noopener noreferrer" class="support-btn" draggable="false">
+        <span>Contribute</span>
+        <span style="font-size: 14px;">→</span>
+      </a>
+      <div class="support-footer">Every gesture sustains the work &mdash; gratitude, not obligation.</div>
     </div>
   </div>
 </section>
@@ -1301,7 +1465,7 @@ a:focus-visible, button:focus-visible {
   <div class="container">
     <span class="section-eyebrow reveal">Get In Touch</span>
     <h2 class="section-title reveal" style="margin-left: auto; margin-right: auto;">We read <em>every</em> message.</h2>
-    <p class="section-prose reveal selectable" style="margin: 0 auto var(--u-7);">
+    <p class="section-prose reveal" style="margin: 0 auto var(--u-7);">
       Questions, feedback, partnership inquiries, or simply hello &mdash; we welcome thoughtful correspondence and respond personally to every message we receive.
     </p>
     <a href="mailto:LiteLabs@proton.me" class="contact-email reveal" draggable="false">LiteLabs@proton.me</a>
@@ -1316,7 +1480,7 @@ a:focus-visible, button:focus-visible {
   <div class="footer-links">
     <a href="privacy-policy.html" draggable="false">Privacy Policy</a>
     <a href="mailto:LiteLabs@proton.me" draggable="false">Contact</a>
-    <a href="https://ko-fi.com/litelabs" target="_blank" rel="noopener noreferrer" draggable="false">Support</a>
+    <a href="https://ko-fi.com/litelabs" target="_blank" rel="noopener noreferrer" draggable="false">Contribute</a>
   </div>
 
   <div class="footer-divider"></div>
@@ -1351,6 +1515,33 @@ a:focus-visible, button:focus-visible {
   }
   if (document.readyState === 'complete') hideSkeleton();
   else window.addEventListener('load', hideSkeleton);
+
+  // ─── 1b. PAGE TRANSITION — cinematic curtain lift ───
+  const pageTransition = document.getElementById('pageTransition');
+  function liftCurtain() {
+    setTimeout(() => pageTransition && pageTransition.classList.add('lift'), 100);
+  }
+  if (document.readyState === 'complete') liftCurtain();
+  else window.addEventListener('load', liftCurtain);
+
+  // ─── 1c. NAVIGATE WITH CURTAIN — intercept internal links ───
+  document.addEventListener('click', function(e) {
+    const link = e.target.closest('a[href]');
+    if (!link) return;
+    const href = link.getAttribute('href');
+    if (!href) return;
+    // Skip: external, mailto, tel, anchors, target=_blank
+    if (href.startsWith('http') || href.startsWith('mailto:') || href.startsWith('tel:') || href.startsWith('#')) return;
+    if (link.target === '_blank') return;
+    e.preventDefault();
+    if (pageTransition) {
+      pageTransition.classList.remove('lift');
+      pageTransition.style.transform = 'translateY(0)';
+      setTimeout(() => { window.location.href = href; }, 700);
+    } else {
+      window.location.href = href;
+    }
+  }, false);
 
   // ─── 2. DUAL-THEME SYSTEM WITH MEMORY ───
   const STORAGE_KEY = 'litelabs.theme';
