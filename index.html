@@ -1,0 +1,1869 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="google-site-verification" content="R5vb4CU6V3bAXJVknvbBZnLiOuZVA5vvj0L2Csh8__0" />
+<title>Lite Labs — The Conscious Harmony Studio</title>
+<meta name="description" content="Lite Labs is an independent studio crafting refined, privacy-respecting applications. Conscious by design. Quality without compromise.">
+<meta name="theme-color" content="#0A0B0E" id="metaThemeColor">
+<meta property="og:title" content="Lite Labs — The Conscious Harmony Studio">
+<meta property="og:description" content="An independent studio crafting refined, privacy-respecting applications.">
+<meta property="og:type" content="website">
+<meta name="format-detection" content="telephone=no">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400;1,500&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+/* ============================================================
+   LITE LABS — Ultra-Hi-Fi Edition
+   Sub-pixel precision · Dual-theme · Cinematic depth
+   ============================================================ */
+
+*, *::before, *::after { box-sizing: border-box; }
+html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
+html, body { margin: 0; padding: 0; }
+
+/* ─── DARK THEME (default) ─── */
+:root,
+:root[data-theme="dark"] {
+  --bg-0: #0A0B0E;
+  --bg-1: #0F1115;
+  --bg-2: #14171D;
+  --bg-3: #1A1E26;
+  --bg-glass: rgba(20, 23, 29, 0.62);
+  --bg-glass-strong: rgba(20, 23, 29, 0.82);
+
+  --tx-0: #F5F6F8;
+  --tx-1: #E2E5EA;
+  --tx-2: #ADB3BD;
+  --tx-3: #6E7480;
+  --tx-4: #4A4F58;
+
+  --acc-0: #D9BC8B;
+  --acc-1: #C9A876;
+  --acc-2: #B5945F;
+  --acc-warm: #B87333;
+  --gold: #E8C977;
+
+  --ln-1: rgba(255, 255, 255, 0.04);
+  --ln-2: rgba(255, 255, 255, 0.06);
+  --ln-3: rgba(255, 255, 255, 0.10);
+  --ln-warm-1: rgba(201, 168, 118, 0.10);
+  --ln-warm-2: rgba(201, 168, 118, 0.18);
+  --ln-warm-3: rgba(201, 168, 118, 0.28);
+
+  --grid-line: rgba(255, 255, 255, 0.025);
+  --grid-line-strong: rgba(255, 255, 255, 0.04);
+
+  --skeleton-base: rgba(20, 23, 29, 0.6);
+  --skeleton-shine: rgba(201, 168, 118, 0.08);
+
+  --ao-1: 0 0 0 1px rgba(255,255,255,0.02), 0 1px 2px rgba(0,0,0,0.20);
+  --ao-2: 0 0 0 1px rgba(255,255,255,0.03), 0 2px 8px rgba(0,0,0,0.25), 0 8px 24px -8px rgba(0,0,0,0.35);
+  --ao-3: 0 0 0 1px rgba(255,255,255,0.04), 0 4px 12px rgba(0,0,0,0.30), 0 16px 40px -12px rgba(0,0,0,0.45), 0 32px 64px -24px rgba(0,0,0,0.50);
+  --ao-4: 0 0 0 1px rgba(255,255,255,0.05), 0 8px 24px rgba(0,0,0,0.35), 0 24px 56px -16px rgba(0,0,0,0.50), 0 48px 96px -32px rgba(0,0,0,0.60);
+
+  --vignette: radial-gradient(ellipse 1400px 900px at 50% 50%, transparent 0%, transparent 65%, rgba(0,0,0,0.30) 100%);
+  --cursor-glow: rgba(217, 188, 139, 0.10);
+}
+
+/* ─── LIGHT THEME ─── */
+:root[data-theme="light"] {
+  --bg-0: #F8F7F4;
+  --bg-1: #F1EFEA;
+  --bg-2: #ECE9E2;
+  --bg-3: #E4E0D7;
+  --bg-glass: rgba(255, 253, 248, 0.74);
+  --bg-glass-strong: rgba(255, 253, 248, 0.88);
+
+  --tx-0: #1A1C20;
+  --tx-1: #2E3138;
+  --tx-2: #5A5F69;
+  --tx-3: #7E8490;
+  --tx-4: #A8ACB4;
+
+  --acc-0: #8A6E3F;
+  --acc-1: #7A5F30;
+  --acc-2: #6A511F;
+  --acc-warm: #94501F;
+  --gold: #B89048;
+
+  --ln-1: rgba(26, 28, 32, 0.06);
+  --ln-2: rgba(26, 28, 32, 0.10);
+  --ln-3: rgba(26, 28, 32, 0.14);
+  --ln-warm-1: rgba(122, 95, 48, 0.14);
+  --ln-warm-2: rgba(122, 95, 48, 0.22);
+  --ln-warm-3: rgba(122, 95, 48, 0.32);
+
+  --grid-line: rgba(26, 28, 32, 0.03);
+  --grid-line-strong: rgba(26, 28, 32, 0.05);
+
+  --skeleton-base: rgba(236, 233, 226, 0.7);
+  --skeleton-shine: rgba(122, 95, 48, 0.10);
+
+  --ao-1: 0 0 0 1px rgba(26,28,32,0.04), 0 1px 2px rgba(26,28,32,0.06);
+  --ao-2: 0 0 0 1px rgba(26,28,32,0.05), 0 2px 8px rgba(26,28,32,0.08), 0 8px 24px -8px rgba(26,28,32,0.12);
+  --ao-3: 0 0 0 1px rgba(26,28,32,0.06), 0 4px 12px rgba(26,28,32,0.10), 0 16px 40px -12px rgba(26,28,32,0.14), 0 32px 64px -24px rgba(26,28,32,0.18);
+  --ao-4: 0 0 0 1px rgba(26,28,32,0.07), 0 8px 24px rgba(26,28,32,0.12), 0 24px 56px -16px rgba(26,28,32,0.18), 0 48px 96px -32px rgba(26,28,32,0.22);
+
+  --vignette: radial-gradient(ellipse 1400px 900px at 50% 50%, transparent 0%, transparent 65%, rgba(160,150,130,0.18) 100%);
+  --cursor-glow: rgba(122, 95, 48, 0.12);
+}
+
+/* ─── Shared ─── */
+:root {
+  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', system-ui, sans-serif;
+  --font-display: 'Playfair Display', Georgia, serif;
+  --font-italic: 'Cormorant Garamond', Georgia, serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, monospace;
+
+  --u-1: 4px; --u-2: 8px; --u-3: 12px; --u-4: 16px; --u-5: 24px;
+  --u-6: 32px; --u-7: 48px; --u-8: 64px; --u-9: 96px; --u-10: 128px;
+
+  --gutter: clamp(20px, 5vw, 48px);
+  --section: clamp(96px, 14vw, 176px);
+
+  --ease: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-soft: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+body {
+  font-family: var(--font-sans);
+  background: var(--bg-0);
+  color: var(--tx-1);
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.6;
+  letter-spacing: -0.011em;
+  font-feature-settings: 'ss01', 'cv11', 'kern';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  min-height: 100vh;
+  overflow-x: hidden;
+  transition: background 0.6s var(--ease), color 0.6s var(--ease);
+
+  /* Global selection containment */
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/* Hide native cursor on desktop, keep on touch */
+@media (hover: hover) and (pointer: fine) {
+  body { cursor: none; }
+  a, button, [role="button"], input, textarea, label { cursor: none; }
+}
+
+/* Restore selection for content + interactive */
+/* All text content is locked — only interactive elements remain selectable */
+a, a *, button, button *, input, textarea {
+  -webkit-user-select: text;
+  -moz-user-select: text;
+  -ms-user-select: text;
+  user-select: text;
+}
+a, button, input, textarea, [role="button"] { pointer-events: auto; }
+
+img, svg, picture, video {
+  -webkit-user-drag: none;
+  user-drag: none;
+  -webkit-touch-callout: none;
+}
+
+/* ─── BACKGROUND LAYERS ─── */
+.bg-mesh {
+  position: fixed; inset: 0; z-index: 0; pointer-events: none;
+  background:
+    radial-gradient(ellipse 1400px 900px at 12% -6%, rgba(217, 188, 139, 0.045), transparent 55%),
+    radial-gradient(ellipse 1200px 800px at 90% 108%, rgba(184, 115, 51, 0.030), transparent 55%),
+    radial-gradient(ellipse 900px 650px at 50% 55%, rgba(78, 96, 124, 0.022), transparent 70%);
+  transition: opacity 0.6s var(--ease);
+}
+:root[data-theme="light"] .bg-mesh {
+  background:
+    radial-gradient(ellipse 1400px 900px at 12% -6%, rgba(184, 144, 72, 0.055), transparent 55%),
+    radial-gradient(ellipse 1200px 800px at 90% 108%, rgba(148, 80, 31, 0.030), transparent 55%),
+    radial-gradient(ellipse 900px 650px at 50% 55%, rgba(78, 96, 124, 0.020), transparent 70%);
+}
+
+/* Geometric grid mesh */
+.bg-grid {
+  position: fixed; inset: 0; z-index: 0; pointer-events: none;
+  background-image:
+    linear-gradient(to right, var(--grid-line) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--grid-line) 1px, transparent 1px);
+  background-size: 80px 80px;
+  mask-image: radial-gradient(ellipse 1200px 800px at 50% 40%, rgba(0,0,0,0.55) 0%, transparent 80%);
+  -webkit-mask-image: radial-gradient(ellipse 1200px 800px at 50% 40%, rgba(0,0,0,0.55) 0%, transparent 80%);
+  transition: opacity 0.6s var(--ease);
+}
+
+.bg-grain {
+  position: fixed; inset: 0; z-index: 1; pointer-events: none;
+  opacity: 0.022; mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='240' height='240' viewBox='0 0 240 240'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' seed='5'/><feColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0.5 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+}
+:root[data-theme="light"] .bg-grain { opacity: 0.035; mix-blend-mode: multiply; }
+
+.bg-vignette {
+  position: fixed; inset: 0; z-index: 2; pointer-events: none;
+  background: var(--vignette);
+}
+
+/* ─── CUSTOM GLOW CURSOR ─── */
+.cursor-glow {
+  position: fixed;
+  top: 0; left: 0;
+  width: 480px; height: 480px;
+  border-radius: 50%;
+  background: radial-gradient(circle, var(--cursor-glow) 0%, transparent 60%);
+  pointer-events: none;
+  z-index: 3;
+  transform: translate(-50%, -50%);
+  transition: opacity 0.4s var(--ease);
+  opacity: 0;
+  will-change: transform, opacity;
+}
+.cursor-dot {
+  position: fixed;
+  top: 0; left: 0;
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  background: var(--acc-1);
+  pointer-events: none;
+  z-index: 9999;
+  transform: translate(-50%, -50%);
+  transition: opacity 0.3s var(--ease), width 0.3s var(--ease), height 0.3s var(--ease);
+  opacity: 0;
+  box-shadow: 0 0 10px var(--acc-1);
+  will-change: transform;
+}
+.cursor-dot.hovering { width: 32px; height: 32px; background: transparent; border: 1px solid var(--acc-1); }
+@media (hover: none) {
+  .cursor-glow, .cursor-dot { display: none; }
+}
+
+/* ─── SKELETON LOADER ─── */
+.skeleton-overlay {
+  position: fixed; inset: 0;
+  z-index: 9000;
+  background: var(--bg-0);
+  display: flex; align-items: center; justify-content: center;
+  flex-direction: column;
+  gap: 24px;
+  transition: opacity 0.6s var(--ease), visibility 0.6s var(--ease);
+}
+.skeleton-overlay.done {
+  opacity: 0; visibility: hidden;
+  pointer-events: none;
+}
+.skeleton-bar {
+  height: 14px;
+  border-radius: 2px;
+  background: linear-gradient(90deg,
+    var(--skeleton-base) 0%,
+    var(--skeleton-shine) 50%,
+    var(--skeleton-base) 100%);
+  background-size: 200% 100%;
+  animation: shimmer 1.2s linear infinite;
+}
+.skeleton-bar.w-1 { width: 220px; }
+.skeleton-bar.w-2 { width: 320px; height: 32px; }
+.skeleton-bar.w-3 { width: 180px; }
+@keyframes shimmer {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+/* ─── CINEMATIC PAGE TRANSITION ─── */
+.page-transition {
+  position: fixed;
+  inset: 0;
+  z-index: 9500;
+  pointer-events: none;
+  background: var(--bg-0);
+  transform: translateY(0);
+  transition: transform 1.0s cubic-bezier(0.86, 0, 0.07, 1);
+}
+.page-transition.lift {
+  transform: translateY(-100%);
+}
+
+/* ─── INK REVEAL ENHANCEMENT ─── */
+.ink-reveal {
+  opacity: 0;
+  transform: translateY(40px);
+  filter: blur(8px);
+  transition: opacity 1.4s var(--ease), transform 1.4s var(--ease), filter 1.4s var(--ease);
+}
+.ink-reveal.in {
+  opacity: 1;
+  transform: translateY(0);
+  filter: blur(0);
+}
+
+/* ─── SMOOTH MOMENTUM SCROLL HINT ─── */
+html { scroll-behavior: smooth; }
+@supports (-webkit-overflow-scrolling: touch) {
+  html, body { -webkit-overflow-scrolling: touch; }
+}
+
+/* ─── SECTION ENTRY POLISH ─── */
+section {
+  animation: sectionDrift 1.0s var(--ease);
+  animation-timeline: view();
+  animation-range: entry 0% cover 30%;
+}
+@supports not (animation-timeline: view()) {
+  section { animation: none; }
+}
+@keyframes sectionDrift {
+  from { transform: translateY(20px); opacity: 0.4; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+/* Reading progress bar — 2px gold gradient */
+.reading-progress {
+  position: fixed; top: 0; left: 0;
+  height: 2px; width: 0%;
+  background: linear-gradient(90deg, var(--acc-1), var(--gold), var(--acc-1));
+  z-index: 300;
+  box-shadow: 0 0 12px rgba(232, 201, 119, 0.5);
+  transition: width 0.15s linear;
+}
+
+/* ─── TOPBAR ─── */
+.topbar {
+  position: sticky; top: 0; z-index: 100;
+  background: rgba(10, 11, 14, 0.72);
+  backdrop-filter: blur(20px) saturate(140%);
+  -webkit-backdrop-filter: blur(20px) saturate(140%);
+  border-bottom: 1px solid var(--ln-2);
+  transition: background 0.6s var(--ease), border-color 0.6s var(--ease), transform 0.5s var(--ease), opacity 0.5s var(--ease);
+}
+:root[data-theme="light"] .topbar {
+  background: rgba(255, 253, 248, 0.82);
+}
+/* Auto-hide on scroll down — reveal on scroll up */
+.topbar.hidden-on-scroll {
+  transform: translateY(-100%);
+  opacity: 0;
+  pointer-events: none;
+}
+.topbar-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: var(--u-5) var(--gutter);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--u-5);
+}
+.topbar-brand {
+  font-family: var(--font-italic);
+  font-size: 22px;
+  font-style: italic;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  background: linear-gradient(180deg, var(--tx-0) 0%, var(--tx-1) 55%, var(--tx-2) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-decoration: none;
+  pointer-events: none;
+  user-select: none;
+}
+.topbar-brand:hover { filter: none; }
+.topbar-nav {
+  display: flex;
+  gap: var(--u-5);
+  align-items: center;
+}
+.topbar-nav a {
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--tx-3);
+  text-decoration: none;
+  position: relative;
+  transition: color 0.5s var(--ease);
+}
+.topbar-nav a::after {
+  content: '';
+  position: absolute; bottom: -6px; left: 0;
+  width: 0; height: 1px;
+  background: linear-gradient(90deg, transparent, var(--acc-1), transparent);
+  transition: width 0.6s var(--ease);
+}
+.topbar-nav a:hover { color: var(--acc-1); }
+.topbar-nav a:hover::after { width: 100%; }
+
+/* Theme toggle */
+.theme-toggle {
+  width: 36px; height: 36px;
+  display: flex; align-items: center; justify-content: center;
+  background: transparent;
+  border: 1px solid var(--ln-2);
+  border-radius: 50%;
+  color: var(--tx-2);
+  transition: all 0.5s var(--ease);
+  position: relative;
+  overflow: hidden;
+}
+.theme-toggle:hover {
+  color: var(--acc-1);
+  border-color: var(--ln-warm-2);
+  transform: rotate(15deg);
+}
+.theme-toggle svg {
+  width: 16px; height: 16px;
+  transition: transform 0.5s var(--ease), opacity 0.4s var(--ease);
+}
+.theme-toggle .icon-sun { display: none; }
+.theme-toggle .icon-moon { display: block; }
+:root[data-theme="light"] .theme-toggle .icon-sun { display: block; }
+:root[data-theme="light"] .theme-toggle .icon-moon { display: none; }
+
+/* ─── LAYOUT ─── */
+.container {
+  position: relative; z-index: 10;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 var(--gutter);
+}
+section { padding: var(--section) 0; position: relative; }
+
+/* ─── HERO ─── */
+.hero {
+  padding: clamp(80px, 12vw, 144px) 0 clamp(96px, 14vw, 176px);
+  text-align: center;
+}
+.hero-eyebrow {
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  font-weight: 500;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: var(--acc-1);
+  margin: 0 0 var(--u-7);
+  opacity: 0;
+  animation: fadeUp 1.4s 0.2s var(--ease) forwards;
+}
+.hero-title {
+  font-family: var(--font-italic);
+  font-style: italic;
+  font-weight: 400;
+  font-size: clamp(64px, 11vw, 140px);
+  line-height: 0.95;
+  letter-spacing: -0.03em;
+  margin: 0 0 var(--u-6);
+  background: linear-gradient(180deg, var(--tx-0) 0%, var(--tx-1) 45%, var(--tx-2) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  opacity: 0;
+  animation: fadeUp 1.6s 0.4s var(--ease) forwards;
+  min-height: 1em;
+}
+.hero-sub {
+  font-family: var(--font-mono);
+  font-size: 11.5px;
+  font-weight: 500;
+  letter-spacing: 0.38em;
+  text-transform: uppercase;
+  color: var(--tx-3);
+  margin: 0;
+  opacity: 0;
+  animation: fadeUp 1.4s 0.6s var(--ease) forwards;
+}
+
+.ornament {
+  display: flex; align-items: center; justify-content: center;
+  margin: var(--u-8) auto var(--u-7);
+  max-width: 240px;
+  opacity: 0;
+  animation: fadeUp 1.4s 0.8s var(--ease) forwards;
+}
+.ornament-line { flex: 1; height: 1px; background: linear-gradient(90deg, transparent, var(--ln-warm-2), transparent); }
+.ornament-diamond {
+  width: 5px; height: 5px;
+  background: var(--acc-1);
+  transform: rotate(45deg);
+  margin: 0 var(--u-3);
+  box-shadow: 0 0 12px rgba(201, 168, 118, 0.5);
+}
+
+.hero-statement {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: clamp(28px, 5vw, 46px);
+  line-height: 1.28;
+  letter-spacing: -0.02em;
+  margin: 0 auto var(--u-6);
+  max-width: 880px;
+  color: var(--tx-0);
+  opacity: 0;
+  animation: fadeUp 1.6s 1.0s var(--ease) forwards;
+  min-height: 1em;
+}
+.hero-statement em { font-family: var(--font-italic); font-style: italic; color: var(--acc-1); }
+.typed-cursor {
+  display: inline-block;
+  width: 2px;
+  margin-left: 4px;
+  background: var(--acc-1);
+  animation: blink 1s steps(2) infinite;
+  vertical-align: baseline;
+}
+@keyframes blink { 50% { opacity: 0; } }
+
+.hero-lede {
+  font-family: var(--font-sans);
+  font-size: clamp(15px, 1.6vw, 17px);
+  font-weight: 400;
+  line-height: 1.7;
+  letter-spacing: -0.005em;
+  color: var(--tx-2);
+  max-width: 660px;
+  margin: 0 auto var(--u-8);
+  opacity: 0;
+  animation: fadeUp 1.6s 1.2s var(--ease) forwards;
+}
+
+.hero-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--u-3);
+  padding: var(--u-4) var(--u-7);
+  background: linear-gradient(180deg, rgba(201,168,118,0.04), rgba(201,168,118,0.08));
+  border: 1px solid var(--ln-warm-2);
+  border-radius: 2px;
+  color: var(--acc-1);
+  text-decoration: none;
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  font-weight: 500;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  position: relative;
+  overflow: hidden;
+  box-shadow: var(--ao-1);
+  transition: all 0.5s var(--ease);
+  opacity: 0;
+  animation: fadeUp 1.6s 1.4s var(--ease) forwards;
+}
+.hero-cta::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: linear-gradient(90deg, transparent, rgba(201, 168, 118, 0.14), transparent);
+  transform: translateX(-100%);
+  transition: transform 0.8s var(--ease);
+}
+.hero-cta:hover {
+  color: var(--tx-0);
+  border-color: var(--acc-1);
+  transform: translateY(-2px);
+  box-shadow: var(--ao-3), 0 16px 40px -20px rgba(201, 168, 118, 0.45);
+}
+.hero-cta:hover::before { transform: translateX(100%); }
+.hero-cta-arrow {
+  position: relative; z-index: 1;
+  font-size: 14px;
+  transition: transform 0.4s var(--ease);
+}
+.hero-cta:hover .hero-cta-arrow { transform: translateX(6px); }
+.hero-cta-text { position: relative; z-index: 1; }
+
+/* ─── SECTION COMMONS ─── */
+.section-eyebrow {
+  display: inline-block;
+  padding-bottom: var(--u-1);
+  margin: 0 0 var(--u-6);
+  border-bottom: 1px solid var(--ln-warm-2);
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  font-weight: 500;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: var(--acc-1);
+}
+.section-title {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: clamp(40px, 6vw, 60px);
+  line-height: 1.10;
+  letter-spacing: -0.025em;
+  margin: 0 0 var(--u-6);
+  max-width: 820px;
+  color: var(--tx-0);
+}
+.section-title em { font-family: var(--font-italic); font-style: italic; font-weight: 400; color: var(--acc-1); }
+.section-prose {
+  font-family: var(--font-sans);
+  font-size: 17px;
+  font-weight: 400;
+  line-height: 1.7;
+  letter-spacing: -0.008em;
+  color: var(--tx-2);
+  max-width: 680px;
+  margin: 0 0 var(--u-6);
+}
+
+/* ─── STUDIO ─── */
+.studio-section {
+  border-top: 1px solid var(--ln-2);
+  background: radial-gradient(ellipse 800px 600px at 80% 30%, rgba(201, 168, 118, 0.025), transparent 60%);
+}
+.studio-grid {
+  display: grid;
+  grid-template-columns: 1.15fr 1fr;
+  gap: clamp(48px, 8vw, 96px);
+  align-items: start;
+}
+.studio-card {
+  position: relative;
+  overflow: hidden;
+  padding: clamp(40px, 5vw, 56px);
+  background: var(--bg-glass);
+  backdrop-filter: blur(24px) saturate(140%);
+  -webkit-backdrop-filter: blur(24px) saturate(140%);
+  border: 1px solid var(--ln-warm-1);
+  border-radius: 4px;
+  box-shadow: var(--ao-3);
+  transition: transform 0.7s var(--ease), border-color 0.5s var(--ease), box-shadow 0.7s var(--ease);
+}
+.studio-card::before {
+  content: '';
+  position: absolute; top: 0; right: 0;
+  width: 280px; height: 280px;
+  background: radial-gradient(circle, rgba(201, 168, 118, 0.06), transparent 65%);
+  pointer-events: none;
+}
+.studio-card:hover {
+  transform: translateY(-3px);
+  border-color: var(--ln-warm-2);
+  box-shadow: var(--ao-4);
+}
+.studio-status {
+  display: inline-flex; align-items: center; gap: var(--u-2);
+  margin-bottom: var(--u-6);
+  font-family: var(--font-mono);
+  font-size: 9.5px; font-weight: 500;
+  letter-spacing: 0.24em; text-transform: uppercase;
+  color: var(--acc-1);
+}
+.studio-status-dot {
+  width: 5px; height: 5px;
+  background: var(--acc-1);
+  border-radius: 50%;
+  box-shadow: 0 0 8px rgba(201, 168, 118, 0.6);
+  animation: gentlePulse 2.6s ease-in-out infinite;
+}
+.studio-name {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: clamp(30px, 4vw, 44px);
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  margin: 0 0 var(--u-4);
+  color: var(--tx-0);
+}
+.studio-name em { font-family: var(--font-italic); font-style: italic; color: var(--acc-1); font-weight: 400; }
+.studio-tagline {
+  font-family: var(--font-italic);
+  font-style: italic;
+  font-size: clamp(17px, 1.8vw, 20px);
+  line-height: 1.5;
+  color: var(--acc-1);
+  margin: 0 0 var(--u-6);
+}
+.studio-desc {
+  font-family: var(--font-sans);
+  font-size: 15.5px; font-weight: 400;
+  line-height: 1.72;
+  letter-spacing: -0.005em;
+  color: var(--tx-2);
+  margin: 0;
+}
+
+.studio-side { padding-top: clamp(24px, 4vw, 40px); }
+.studio-side-eyebrow {
+  font-family: var(--font-mono);
+  font-size: 10px; font-weight: 500;
+  letter-spacing: 0.28em; text-transform: uppercase;
+  color: var(--acc-1);
+  margin: 0 0 var(--u-3);
+}
+.studio-side-title {
+  font-family: var(--font-italic);
+  font-style: italic; font-weight: 400;
+  font-size: clamp(28px, 3.5vw, 36px);
+  line-height: 1.25;
+  letter-spacing: -0.02em;
+  margin: 0 0 var(--u-5);
+  color: var(--tx-0);
+}
+.studio-side-text {
+  font-family: var(--font-sans);
+  font-size: 16px; font-weight: 400;
+  line-height: 1.72;
+  letter-spacing: -0.005em;
+  color: var(--tx-2);
+  margin: 0 0 var(--u-4);
+}
+
+/* ─── THE CRAFT ─── */
+.craft-section {
+  border-top: 1px solid var(--ln-2);
+  background: radial-gradient(ellipse 700px 500px at 20% 70%, rgba(184, 115, 51, 0.025), transparent 60%);
+}
+
+/* ─── PRINCIPLES ─── */
+.principles-section { border-top: 1px solid var(--ln-2); }
+.principles-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: clamp(40px, 6vw, 72px);
+  margin-top: var(--u-8);
+}
+.principle {
+  position: relative;
+  padding-left: var(--u-7);
+  transition: transform 0.6s var(--ease);
+}
+.principle-number {
+  position: absolute;
+  left: 0; top: 4px;
+  font-family: var(--font-mono);
+  font-size: 11px; font-weight: 500;
+  letter-spacing: 0.1em;
+  color: var(--acc-1);
+}
+.principle-title {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: clamp(22px, 2.4vw, 26px);
+  line-height: 1.3;
+  letter-spacing: -0.02em;
+  margin: 0 0 var(--u-3);
+  color: var(--tx-0);
+}
+.principle-text {
+  font-family: var(--font-sans);
+  font-size: 16px; font-weight: 400;
+  line-height: 1.72;
+  letter-spacing: -0.005em;
+  color: var(--tx-2);
+  margin: 0;
+}
+
+/* ─── SUPPORT ─── */
+.support-section {
+  border-top: 1px solid var(--ln-2);
+  background: radial-gradient(ellipse 900px 600px at 50% 0%, rgba(232, 201, 119, 0.04), transparent 60%);
+}
+.support-card {
+  position: relative;
+  overflow: hidden;
+  max-width: 820px;
+  margin: var(--u-8) auto 0;
+  padding: clamp(48px, 7vw, 72px);
+  background: var(--bg-glass);
+  backdrop-filter: blur(28px) saturate(140%);
+  -webkit-backdrop-filter: blur(28px) saturate(140%);
+  border: 1px solid var(--ln-warm-2);
+  border-radius: 4px;
+  text-align: center;
+  box-shadow: var(--ao-3);
+}
+.support-card::before {
+  content: '';
+  position: absolute;
+  top: -100px; left: 50%;
+  transform: translateX(-50%);
+  width: 600px; height: 400px;
+  background: radial-gradient(ellipse, rgba(232, 201, 119, 0.08), transparent 60%);
+  pointer-events: none;
+}
+.support-badge {
+  display: inline-flex; align-items: center;
+  gap: var(--u-2);
+  padding: var(--u-2) var(--u-4);
+  margin-bottom: var(--u-6);
+  border: 1px solid var(--ln-warm-2);
+  border-radius: 100px;
+  font-family: var(--font-mono);
+  font-size: 10px; font-weight: 500;
+  letter-spacing: 0.28em; text-transform: uppercase;
+  color: var(--acc-1);
+  position: relative; z-index: 1;
+}
+.support-title {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: clamp(28px, 4vw, 38px);
+  line-height: 1.25;
+  letter-spacing: -0.025em;
+  margin: 0 0 var(--u-5);
+  color: var(--tx-0);
+  position: relative; z-index: 1;
+}
+.support-title em { font-family: var(--font-italic); font-style: italic; color: var(--acc-1); font-weight: 400; }
+.support-text {
+  font-family: var(--font-sans);
+  font-size: 16.5px; font-weight: 400;
+  line-height: 1.72;
+  letter-spacing: -0.005em;
+  color: var(--tx-2);
+  max-width: 620px;
+  margin: 0 auto var(--u-7);
+  position: relative; z-index: 1;
+}
+.support-btn {
+  display: inline-flex; align-items: center;
+  gap: var(--u-3);
+  padding: 18px 42px;
+  background: linear-gradient(180deg, var(--gold), var(--acc-2));
+  color: var(--bg-0);
+  text-decoration: none;
+  font-family: var(--font-mono);
+  font-size: 10.5px; font-weight: 600;
+  letter-spacing: 0.22em; text-transform: uppercase;
+  border-radius: 2px;
+  box-shadow: var(--ao-2), 0 16px 36px -16px rgba(232, 201, 119, 0.45);
+  transition: all 0.5s var(--ease);
+  position: relative; z-index: 1;
+}
+.support-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--ao-3), 0 20px 44px -16px rgba(232, 201, 119, 0.65);
+  filter: brightness(1.08);
+}
+.support-footer {
+  margin-top: var(--u-6);
+  font-family: var(--font-italic);
+  font-style: italic;
+  font-size: 15px;
+  color: var(--tx-3);
+  position: relative; z-index: 1;
+}
+
+/* ─── PHILOSOPHY ─── */
+.philosophy-section {
+  border-top: 1px solid var(--ln-2);
+  background: radial-gradient(ellipse 800px 600px at 80% 70%, rgba(201, 168, 118, 0.022), transparent 60%);
+}
+.philosophy-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: clamp(28px, 4vw, 40px);
+  margin-top: var(--u-8);
+}
+@media (max-width: 1100px) {
+  .philosophy-grid { grid-template-columns: repeat(2, 1fr); }
+}
+.philosophy-item {
+  padding: clamp(28px, 4vw, 40px);
+  background: var(--bg-glass);
+  backdrop-filter: blur(20px) saturate(130%);
+  -webkit-backdrop-filter: blur(20px) saturate(130%);
+  border: 1px solid var(--ln-warm-1);
+  border-radius: 4px;
+  box-shadow: var(--ao-2);
+  transition: transform 0.6s var(--ease), border-color 0.5s var(--ease), box-shadow 0.5s var(--ease);
+  position: relative;
+  overflow: hidden;
+}
+.philosophy-item::before {
+  content: '';
+  position: absolute;
+  top: 0; right: 0;
+  width: 200px; height: 200px;
+  background: radial-gradient(circle, rgba(201, 168, 118, 0.05), transparent 65%);
+  pointer-events: none;
+}
+.philosophy-item:hover {
+  transform: translateY(-3px);
+  border-color: var(--ln-warm-2);
+  box-shadow: var(--ao-3);
+}
+.philosophy-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border: 1px solid var(--ln-warm-2);
+  border-radius: 50%;
+  color: var(--acc-1);
+  margin-bottom: var(--u-5);
+  position: relative;
+  z-index: 1;
+}
+.philosophy-icon svg { width: 20px; height: 20px; }
+.philosophy-title {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: clamp(20px, 2.2vw, 24px);
+  line-height: 1.3;
+  letter-spacing: -0.02em;
+  margin: 0 0 var(--u-3);
+  color: var(--tx-0);
+  position: relative;
+  z-index: 1;
+}
+.philosophy-text {
+  font-family: var(--font-sans);
+  font-size: 15.5px;
+  font-weight: 400;
+  line-height: 1.72;
+  letter-spacing: -0.005em;
+  color: var(--tx-2);
+  margin: 0;
+  position: relative;
+  z-index: 1;
+}
+@media (max-width: 880px) {
+  .philosophy-grid { grid-template-columns: 1fr; gap: 28px; }
+}
+
+/* ─── CONTACT ─── */
+.contact-section {
+  border-top: 1px solid var(--ln-2);
+  text-align: center;
+}
+.contact-email {
+  display: inline-block;
+  margin-top: var(--u-4);
+  padding: var(--u-4) var(--u-6);
+  font-family: var(--font-mono);
+  font-size: 13.5px;
+  letter-spacing: 0.1em;
+  color: var(--acc-1);
+  text-decoration: none;
+  border: 1px solid var(--ln-warm-2);
+  border-radius: 2px;
+  position: relative;
+  overflow: hidden;
+  box-shadow: var(--ao-1);
+  transition: all 0.5s var(--ease);
+}
+.contact-email::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: linear-gradient(90deg, transparent, rgba(201, 168, 118, 0.10), transparent);
+  transform: translateX(-100%);
+  transition: transform 0.8s var(--ease);
+}
+.contact-email:hover {
+  color: var(--tx-0);
+  border-color: var(--acc-1);
+  transform: translateY(-2px);
+  box-shadow: var(--ao-2);
+}
+.contact-email:hover::before { transform: translateX(100%); }
+
+/* ─── FOOTER ─── */
+.footer {
+  position: relative; z-index: 10;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: var(--u-9) var(--gutter) var(--u-7);
+  border-top: 1px solid var(--ln-2);
+  text-align: center;
+}
+.footer-quote {
+  font-family: var(--font-italic);
+  font-style: italic;
+  font-size: 17px;
+  line-height: 1.65;
+  color: var(--tx-3);
+  max-width: 580px;
+  margin: 0 auto var(--u-7);
+}
+.footer-links {
+  display: flex; justify-content: center;
+  gap: var(--u-6);
+  flex-wrap: wrap;
+  margin: 0 0 var(--u-6);
+}
+.footer-links a {
+  font-family: var(--font-mono);
+  font-size: 10.5px; font-weight: 500;
+  letter-spacing: 0.18em; text-transform: uppercase;
+  color: var(--tx-3);
+  text-decoration: none;
+  transition: color 0.5s var(--ease);
+}
+.footer-links a:hover { color: var(--acc-1); }
+.footer-divider {
+  width: 60px; height: 1px;
+  background: var(--ln-warm-2);
+  margin: var(--u-6) auto;
+}
+.footer-copy {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  line-height: 2;
+  color: var(--tx-4);
+}
+.footer-signature {
+  font-family: var(--font-italic);
+  font-style: italic;
+  font-size: 13px;
+  letter-spacing: 0.08em;
+  color: var(--tx-4);
+  margin-top: var(--u-5);
+}
+
+/* ─── BACK TO TOP ─── */
+.back-to-top {
+  position: fixed;
+  bottom: 24px; right: 24px;
+  width: 44px; height: 44px;
+  display: flex; align-items: center; justify-content: center;
+  background: var(--bg-glass-strong);
+  backdrop-filter: blur(16px) saturate(140%);
+  -webkit-backdrop-filter: blur(16px) saturate(140%);
+  border: 1px solid var(--ln-warm-2);
+  border-radius: 50%;
+  color: var(--acc-1);
+  cursor: pointer;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(20px);
+  transition: opacity 0.5s var(--ease), visibility 0.5s var(--ease), transform 0.5s var(--ease), color 0.5s var(--ease), border-color 0.5s var(--ease);
+  z-index: 99;
+  box-shadow: var(--ao-2);
+}
+.back-to-top.visible {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+.back-to-top:hover {
+  color: var(--tx-0);
+  border-color: var(--acc-1);
+  transform: translateY(-4px);
+  box-shadow: var(--ao-3), 0 12px 32px -12px rgba(201, 168, 118, 0.45);
+}
+.back-to-top svg { width: 18px; height: 18px; }
+
+/* ─── ANIMATIONS ─── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes gentlePulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.4; }
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 1.2s var(--ease), transform 1.2s var(--ease);
+}
+.reveal.in {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+  .reveal { opacity: 1; transform: none; }
+}
+
+/* ─── RESPONSIVE ─── */
+@media (min-width: 1600px) {
+  :root { --gutter: 56px; }
+  .container, .footer { max-width: 1320px; }
+}
+@media (min-width: 2000px) {
+  body { font-size: 17px; }
+  .container, .footer { max-width: 1440px; }
+}
+
+@media (max-width: 880px) {
+  .topbar-inner { padding: 16px 20px; gap: 12px; }
+  .topbar-brand { font-size: 20px; letter-spacing: 0.10em; }
+  .topbar-nav { gap: 18px; }
+  .topbar-nav a { font-size: 9.5px; letter-spacing: 0.13em; }
+  .studio-grid { grid-template-columns: 1fr; gap: 48px; }
+  .principles-grid { grid-template-columns: 1fr; gap: 40px; }
+  .principle { padding-left: 36px; }
+  .back-to-top { bottom: 16px; right: 16px; width: 40px; height: 40px; }
+}
+@media (max-width: 480px) {
+  .footer-links { gap: 20px; }
+  .hero-cta, .support-btn, .contact-email { padding-left: 24px; padding-right: 24px; font-size: 10px; }
+  .ornament { margin: 40px auto 32px; max-width: 200px; }
+  .bg-grid { background-size: 60px 60px; }
+}
+
+a:focus-visible, button:focus-visible {
+  outline: 2px solid var(--acc-1);
+  outline-offset: 4px;
+  border-radius: 2px;
+}
+</style>
+</head>
+<body>
+
+<!-- Skeleton loader -->
+<div class="skeleton-overlay" id="skeletonOverlay">
+  <div class="skeleton-bar w-1"></div>
+  <div class="skeleton-bar w-2"></div>
+  <div class="skeleton-bar w-3"></div>
+</div>
+
+<!-- Background layers -->
+<div class="bg-mesh"></div>
+<div class="bg-grid"></div>
+<div class="bg-grain"></div>
+<div class="bg-vignette"></div>
+
+<!-- Custom glow cursor -->
+<div class="cursor-glow" id="cursorGlow"></div>
+<div class="cursor-dot" id="cursorDot"></div>
+
+<!-- Cinematic page-transition curtain -->
+<div class="page-transition" id="pageTransition"></div>
+
+<!-- Reading progress bar -->
+<div class="reading-progress" id="readingProgress"></div>
+
+<!-- Topbar -->
+<nav class="topbar">
+  <div class="topbar-inner">
+    <span class="topbar-brand" draggable="false">Lite Labs</span>
+    <div class="topbar-nav">
+      <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme" type="button">
+        <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="container">
+    <p class="hero-eyebrow">Est. MMXXVI</p>
+    <h1 class="hero-title">Lite Labs</h1>
+    <p class="hero-sub">The Conscious Harmony Studio</p>
+
+    <div class="ornament">
+      <span class="ornament-line"></span>
+      <span class="ornament-diamond"></span>
+      <span class="ornament-line"></span>
+    </div>
+
+    <h2 class="hero-statement" id="heroStatement" data-full="Crafting refined digital experiences with <em>uncompromising privacy</em>.">
+      <span id="typedText"></span><span class="typed-cursor" id="typedCursor"></span>
+    </h2>
+    <p class="hero-lede">
+      Software has lost its quiet. We build the kind that returns it &mdash; tools that listen rather than speak, that serve rather than demand, that respect the silence and attention of the person on the other side.
+    </p>
+
+    <a href="#principles" class="hero-cta" draggable="false">
+      <span class="hero-cta-text">Discover Our Principles</span>
+      <span class="hero-cta-arrow">→</span>
+    </a>
+  </div>
+</section>
+
+<section class="studio-section">
+  <div class="container">
+    <span class="section-eyebrow reveal">In The Studio</span>
+    <h2 class="section-title reveal">Building the <em>next chapter</em>.</h2>
+
+    <div class="studio-grid">
+      <div class="studio-card reveal">
+        <div class="studio-status">
+          <span class="studio-status-dot"></span>
+          <span>Currently Crafting</span>
+        </div>
+        <h3 class="studio-name">A purposeful entry into <em>educational technology</em></h3>
+        <p class="studio-tagline">Designed for learners — built for clarity.</p>
+        <p class="studio-desc">
+          We believe technology, when shaped with care, becomes more than a tool &mdash; it becomes a sanctuary. A space where curiosity meets safety, where exploration is unhurried, and where learning unfolds without exposure to harm. As a studio approaching its first chapter, we welcome thoughtful conversations with investors, collaborators, and patrons who recognize that the future of meaningful technology is built deliberately, not loudly. Correspondence is open at <em>LiteLabs@proton.me</em>.
+        </p>
+      </div>
+
+      <div class="studio-side reveal">
+        <p class="studio-side-eyebrow">Our Approach</p>
+        <h3 class="studio-side-title">Few projects. Refined deeply.</h3>
+        <p class="studio-side-text">
+          Lite Labs is intentionally small. We choose to work on a handful of meaningful projects rather than many. Each application receives the focus, time, and refinement it deserves.
+        </p>
+        <p class="studio-side-text">
+          The result is software that feels considered &mdash; every interaction, every transition, every line of text shaped with intention.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="craft-section">
+  <div class="container">
+    <span class="section-eyebrow reveal">The Stillness</span>
+    <h2 class="section-title reveal">Where the work meets <em>inner stillness</em>.</h2>
+    <p class="section-prose reveal">
+      We build from a place of quiet. Software, when shaped without urgency or noise, becomes a kind of meditation &mdash; a private dialogue between intention and form. The work that emerges from such stillness carries it forward, into the hands of those who use it, into the rhythm of their day.
+    </p>
+    <p class="section-prose reveal">
+      What we make is not separate from how we make it. Harmony in the process becomes harmony in the result. The user does not need to know why an interface feels calm &mdash; only that it does. And that, quietly, is the work.
+    </p>
+  </div>
+</section>
+
+<section class="principles-section" id="principles">
+  <div class="container">
+    <span class="section-eyebrow reveal">Our Principles</span>
+    <h2 class="section-title reveal">The standards by which we <em>build</em>.</h2>
+    <p class="section-prose reveal">
+      A discipline is defined by what it refuses, not what it produces. These are the refusals that define us &mdash; the lines we will not cross, the shortcuts we will not take, the compromises we will not entertain. They are not aspirations. They are obligations.
+    </p>
+
+    <div class="principles-grid">
+      <div class="principle reveal">
+        <div class="principle-number">01</div>
+        <h3 class="principle-title">Privacy as Foundation</h3>
+        <p class="principle-text">
+          We do not collect personal data. We do not track behavior across services. We do not sell information to third parties. Your data belongs to you, and we believe this is non-negotiable.
+        </p>
+      </div>
+
+      <div class="principle reveal">
+        <div class="principle-number">02</div>
+        <h3 class="principle-title">Quality over Quantity</h3>
+        <p class="principle-text">
+          We release fewer applications, each refined to a level we are proud of. We would rather perfect one experience than ship ten compromises. Time is the ingredient most studios forget.
+        </p>
+      </div>
+
+      <div class="principle reveal">
+        <div class="principle-number">03</div>
+        <h3 class="principle-title">No Dark Patterns</h3>
+        <p class="principle-text">
+          No advertising. No upsells disguised as features. No artificial urgency. No psychological manipulation. Our applications are tools, not casinos &mdash; designed to respect your attention rather than capture it.
+        </p>
+      </div>
+
+      <div class="principle reveal">
+        <div class="principle-number">04</div>
+        <h3 class="principle-title">Built to Last</h3>
+        <p class="principle-text">
+          Software should be timeless. We resist trends in favor of clarity, restraint, and craftsmanship. Our work is designed to remain useful and beautiful long after the next aesthetic wave has passed.
+        </p>
+      </div>
+
+      <div class="principle reveal">
+        <div class="principle-number">05</div>
+        <h3 class="principle-title">Silence over Spectacle</h3>
+        <p class="principle-text">
+          The loudest interface is rarely the most useful one. We design for the quiet moments &mdash; for the focused mind, for the unhurried hand. Spectacle entertains; silence enables understanding.
+        </p>
+      </div>
+
+      <div class="principle reveal">
+        <div class="principle-number">06</div>
+        <h3 class="principle-title">Honesty in Every Pixel</h3>
+        <p class="principle-text">
+          A button is what it claims to be. A price is what it appears to be. A promise is what it sounds like. We do not deceive through omission, suggestion, or design sleight-of-hand. Transparency is not a feature &mdash; it is the floor.
+        </p>
+      </div>
+
+      <div class="principle reveal">
+        <div class="principle-number">07</div>
+        <h3 class="principle-title">Beauty as Function</h3>
+        <p class="principle-text">
+          Aesthetic care is not decoration. A well-considered surface signals a well-considered system beneath it. Beauty, in our work, is the visible evidence of underlying respect &mdash; for the user, for the craft, for ourselves.
+        </p>
+      </div>
+
+      <div class="principle reveal">
+        <div class="principle-number">08</div>
+        <h3 class="principle-title">Slowness as Strategy</h3>
+        <p class="principle-text">
+          The world rewards velocity. We reward thoroughness. To move slowly when others rush is to choose the long horizon over the short victory. The work that endures is rarely the work that arrived first.
+        </p>
+      </div>
+
+      <div class="principle reveal">
+        <div class="principle-number">09</div>
+        <h3 class="principle-title">The Discipline of Less</h3>
+        <p class="principle-text">
+          Every additional element competes for attention, comprehension, and trust. We earn each new feature through proof of necessity, not through enthusiasm of imagination. Subtraction is the most underrated form of progress.
+        </p>
+      </div>
+
+      <div class="principle reveal">
+        <div class="principle-number">10</div>
+        <h3 class="principle-title">In Harmony with the User</h3>
+        <p class="principle-text">
+          We build not for the user, but with them in mind &mdash; as silent companions in their day. Our work moves at their pace, defers to their attention, and dissolves quietly when their need is met. The best applications, like the best company, know when to be present and when to step aside.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="philosophy-section">
+  <div class="container">
+    <span class="section-eyebrow reveal">Our Philosophy</span>
+    <h2 class="section-title reveal">The convictions we <em>return to</em>.</h2>
+    <p class="section-prose reveal">
+      These are not slogans. They are the convictions that shape how we build, what we refuse to do, and why we exist as a studio at all.
+    </p>
+
+    <div class="philosophy-grid">
+
+      <div class="philosophy-item reveal">
+        <div class="philosophy-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10"/>
+            <path d="M12 6v6l4 2"/>
+          </svg>
+        </div>
+        <h3 class="philosophy-title">Patience pays.</h3>
+        <p class="philosophy-text">
+          Software shipped slowly outlives software shipped quickly. The market rewards speed, but users reward care. We choose users.
+        </p>
+      </div>
+
+      <div class="philosophy-item reveal">
+        <div class="philosophy-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 2L2 7l10 5 10-5-10-5z"/>
+            <path d="M2 17l10 5 10-5"/>
+            <path d="M2 12l10 5 10-5"/>
+          </svg>
+        </div>
+        <h3 class="philosophy-title">Restraint is a feature.</h3>
+        <p class="philosophy-text">
+          A confused interface is not a feature-rich interface. We say no to clutter so the essential can breathe. Less, when chosen deliberately, is the rarest luxury.
+        </p>
+      </div>
+
+      <div class="philosophy-item reveal">
+        <div class="philosophy-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+          </svg>
+        </div>
+        <h3 class="philosophy-title">Trust is earned in silence.</h3>
+        <p class="philosophy-text">
+          We do not ask for trust &mdash; we build it through what we choose not to do. No tracking. No selling. No surveillance. The absence of harm is the foundation of trust.
+        </p>
+      </div>
+
+      <div class="philosophy-item reveal">
+        <div class="philosophy-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+            <path d="M9 12l2 2 4-4"/>
+          </svg>
+        </div>
+        <h3 class="philosophy-title">A safe space to explore.</h3>
+        <p class="philosophy-text">
+          Our applications are designed as quiet sanctuaries &mdash; places where you can learn, experiment, and discover at your own pace. No pressure. No risk. No hidden agendas. Just space to grow, freely and safely.
+        </p>
+      </div>
+
+      <div class="philosophy-item reveal">
+        <div class="philosophy-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M2 12h6m8 0h6M12 2v6m0 8v6M5 5l4 4m6 6l4 4M5 19l4-4m6-6l4-4"/>
+          </svg>
+        </div>
+        <h3 class="philosophy-title">The user is the work.</h3>
+        <p class="philosophy-text">
+          We do not design for personas or focus groups. We design for the person on the other side of the screen &mdash; alone, attentive, deserving of our full effort.
+        </p>
+      </div>
+
+      <div class="philosophy-item reveal">
+        <div class="philosophy-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+            <polyline points="14 2 14 8 20 8"/>
+            <line x1="9" y1="15" x2="15" y2="15"/>
+          </svg>
+        </div>
+        <h3 class="philosophy-title">Details are not decoration.</h3>
+        <p class="philosophy-text">
+          A misaligned pixel betrays a deeper disregard. A clumsy transition reveals haste. We obsess over what most overlook because the smallest details carry the largest meaning.
+        </p>
+      </div>
+
+      <div class="philosophy-item reveal">
+        <div class="philosophy-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/>
+            <path d="M3 3v5h5"/>
+          </svg>
+        </div>
+        <h3 class="philosophy-title">Refinement, not novelty.</h3>
+        <p class="philosophy-text">
+          We do not chase what is new. We refine what is right. Novelty fades within a season; refinement compounds over decades. Time, not trend, is our editor.
+        </p>
+      </div>
+
+      <div class="philosophy-item reveal">
+        <div class="philosophy-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M3 21v-4a4 4 0 0 1 4-4h10a4 4 0 0 1 4 4v4"/>
+            <circle cx="12" cy="7" r="4"/>
+          </svg>
+        </div>
+        <h3 class="philosophy-title">No audience &mdash; only individuals.</h3>
+        <p class="philosophy-text">
+          We do not build for the crowd. The crowd is a fiction. We build for one person at a time &mdash; the curious, the careful, the considered. If we have served them well, the rest will follow.
+        </p>
+      </div>
+
+      <div class="philosophy-item reveal">
+        <div class="philosophy-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7z"/>
+          </svg>
+        </div>
+        <h3 class="philosophy-title">Care, made visible.</h3>
+        <p class="philosophy-text">
+          Software either feels cared for, or it does not. There is no in-between. Every line of code, every pixel, every word is an opportunity to make care visible &mdash; or to fail quietly.
+        </p>
+      </div>
+
+      <div class="philosophy-item reveal">
+        <div class="philosophy-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="3" y="3" width="18" height="18" rx="2"/>
+            <line x1="9" y1="9" x2="15" y2="15"/>
+            <line x1="15" y1="9" x2="9" y2="15"/>
+          </svg>
+        </div>
+        <h3 class="philosophy-title">Saying no, often.</h3>
+        <p class="philosophy-text">
+          For every feature we ship, we have declined a dozen others. The discipline of refusal is the highest form of design. What we leave out defines us as much as what we include.
+        </p>
+      </div>
+
+      <div class="philosophy-item reveal">
+        <div class="philosophy-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10"/>
+            <path d="M8 14s1.5 2 4 2 4-2 4-2"/>
+            <line x1="9" y1="9" x2="9.01" y2="9"/>
+            <line x1="15" y1="9" x2="15.01" y2="9"/>
+          </svg>
+        </div>
+        <h3 class="philosophy-title">Calm over loud.</h3>
+        <p class="philosophy-text">
+          Notifications, badges, popups, urgency &mdash; the modern interface shouts. We choose to whisper. The applications we admire most are the ones that respect the silence around them.
+        </p>
+      </div>
+
+      <div class="philosophy-item reveal">
+        <div class="philosophy-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="3"/>
+            <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/>
+          </svg>
+        </div>
+        <h3 class="philosophy-title">The work is the message.</h3>
+        <p class="philosophy-text">
+          We do not believe in marketing language, hype cycles, or manufactured urgency. The applications we build are themselves our argument. If the work is good, it will speak. If it is not, no campaign will save it.
+        </p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section class="support-section" id="support">
+  <div class="container">
+    <span class="section-eyebrow reveal">Sustain The Studio</span>
+    <h2 class="section-title reveal">An <em>offering</em>, freely given.</h2>
+
+    <div class="support-card reveal">
+      <div class="support-badge">
+        <span>100% Free</span>
+        <span>·</span>
+        <span>No Ads</span>
+      </div>
+      <h3 class="support-title">An <em>offering</em>, not a transaction</h3>
+      <p class="support-text">
+        Lite Labs operates on a quiet principle: software, at its best, is a gift extended without expectation. We build because the work matters &mdash; not because metrics demand it. Our applications carry no advertising, no purchases, no surveillance disguised as service. What we ask in return is nothing. What you choose to give, if anything at all, simply allows the work to continue. The exchange is not financial. It is philosophical &mdash; a recognition that thoughtful tools deserve thoughtful stewardship.
+      </p>
+      <a href="https://ko-fi.com/litelabs" target="_blank" rel="noopener noreferrer" class="support-btn" draggable="false">
+        <span>Contribute</span>
+        <span style="font-size: 14px;">→</span>
+      </a>
+      <div class="support-footer">Every gesture sustains the work &mdash; gratitude, not obligation.</div>
+    </div>
+  </div>
+</section>
+
+<section class="contact-section" id="contact">
+  <div class="container">
+    <span class="section-eyebrow reveal">Get In Touch</span>
+    <h2 class="section-title reveal" style="margin-left: auto; margin-right: auto;">We read <em>every</em> message.</h2>
+    <p class="section-prose reveal" style="margin: 0 auto var(--u-7);">
+      Questions, feedback, partnership inquiries, or simply hello &mdash; we welcome thoughtful correspondence and respond personally to every message we receive.
+    </p>
+    <a href="mailto:LiteLabs@proton.me" class="contact-email reveal" draggable="false">LiteLabs@proton.me</a>
+  </div>
+</section>
+
+<footer class="footer">
+  <p class="footer-quote">
+    "Stay attentive. Meaningful work takes time, and we believe it is worth the wait."
+  </p>
+
+  <div class="footer-links">
+    <a href="privacy-policy.html" draggable="false">Privacy Policy</a>
+    <a href="mailto:LiteLabs@proton.me" draggable="false">Contact</a>
+    <a href="https://ko-fi.com/litelabs" target="_blank" rel="noopener noreferrer" draggable="false">Contribute</a>
+  </div>
+
+  <div class="footer-divider"></div>
+
+  <div class="footer-copy">
+    Copyright &copy; Lite Labs. All rights reserved.<br>
+    Crafted with care &mdash; MMXXVI.
+  </div>
+
+  <div class="footer-signature">~ Lite Labs ~</div>
+</footer>
+
+<!-- Back-to-top -->
+<button class="back-to-top" id="backToTop" aria-label="Back to top" type="button">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <line x1="12" y1="19" x2="12" y2="5"/>
+    <polyline points="5 12 12 5 19 12"/>
+  </svg>
+</button>
+
+<script>
+/* ============================================================
+   ULTRA-HI-FI ENGINEERING — All systems
+   ============================================================ */
+(function() {
+  'use strict';
+
+  // ─── 1. SKELETON LOADER ───
+  const skeleton = document.getElementById('skeletonOverlay');
+  function hideSkeleton() {
+    setTimeout(() => skeleton && skeleton.classList.add('done'), 500);
+  }
+  if (document.readyState === 'complete') hideSkeleton();
+  else window.addEventListener('load', hideSkeleton);
+
+  // ─── 1b. PAGE TRANSITION — cinematic curtain lift ───
+  const pageTransition = document.getElementById('pageTransition');
+  function liftCurtain() {
+    setTimeout(() => pageTransition && pageTransition.classList.add('lift'), 100);
+  }
+  if (document.readyState === 'complete') liftCurtain();
+  else window.addEventListener('load', liftCurtain);
+
+  // ─── 1c. NAVIGATE WITH CURTAIN — intercept internal links ───
+  document.addEventListener('click', function(e) {
+    const link = e.target.closest('a[href]');
+    if (!link) return;
+    const href = link.getAttribute('href');
+    if (!href) return;
+    // Skip: external, mailto, tel, anchors, target=_blank
+    if (href.startsWith('http') || href.startsWith('mailto:') || href.startsWith('tel:') || href.startsWith('#')) return;
+    if (link.target === '_blank') return;
+    e.preventDefault();
+    if (pageTransition) {
+      pageTransition.classList.remove('lift');
+      pageTransition.style.transform = 'translateY(0)';
+      setTimeout(() => { window.location.href = href; }, 700);
+    } else {
+      window.location.href = href;
+    }
+  }, false);
+
+  // ─── 2. DUAL-THEME SYSTEM WITH MEMORY ───
+  const STORAGE_KEY = 'litelabs.theme';
+  const root = document.documentElement;
+  const metaTheme = document.getElementById('metaThemeColor');
+  function applyTheme(t) {
+    root.setAttribute('data-theme', t);
+    if (metaTheme) metaTheme.setAttribute('content', t === 'light' ? '#F8F7F4' : '#0A0B0E');
+  }
+  // Initial: stored → system → dark
+  let savedTheme = null;
+  try { savedTheme = localStorage.getItem(STORAGE_KEY); } catch(e) {}
+  if (savedTheme === 'light' || savedTheme === 'dark') {
+    applyTheme(savedTheme);
+  } else {
+    // Default to Dark theme regardless of system preference
+    applyTheme('dark');
+  }
+  // Toggle button
+  const toggle = document.getElementById('themeToggle');
+  if (toggle) {
+    toggle.addEventListener('click', function() {
+      const current = root.getAttribute('data-theme');
+      const next = current === 'light' ? 'dark' : 'light';
+      applyTheme(next);
+      try { localStorage.setItem(STORAGE_KEY, next); } catch(e) {}
+    });
+  }
+
+  // ─── 3. AI TYPING EFFECT — Hero statement ───
+  function startTyping() {
+    const el = document.getElementById('heroStatement');
+    if (!el) return;
+    const fullHTML = el.getAttribute('data-full') || '';
+    const target = document.getElementById('typedText');
+    const cursor = document.getElementById('typedCursor');
+    if (!target) return;
+
+    // Parse HTML into segments preserving tags
+    const segments = [];
+    let i = 0;
+    while (i < fullHTML.length) {
+      if (fullHTML[i] === '<') {
+        const end = fullHTML.indexOf('>', i);
+        if (end > -1) {
+          segments.push({ type: 'tag', value: fullHTML.substring(i, end + 1) });
+          i = end + 1;
+        } else { i++; }
+      } else {
+        segments.push({ type: 'char', value: fullHTML[i] });
+        i++;
+      }
+    }
+
+    let idx = 0;
+    let output = '';
+    const tick = () => {
+      if (idx >= segments.length) {
+        if (cursor) {
+          setTimeout(() => cursor.style.display = 'none', 1200);
+        }
+        return;
+      }
+      const seg = segments[idx];
+      output += seg.value;
+      target.innerHTML = output;
+      idx++;
+      const delay = seg.type === 'tag' ? 0 : (28 + Math.random() * 24);
+      setTimeout(tick, delay);
+    };
+    // Start after skeleton + hero fade-in
+    setTimeout(tick, 1400);
+  }
+  if (document.readyState === 'complete') startTyping();
+  else window.addEventListener('load', startTyping);
+
+  // ─── 4. SCROLL REVEAL ───
+  if ('IntersectionObserver' in window) {
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('in');
+          io.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -60px 0px' });
+    document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+  } else {
+    document.querySelectorAll('.reveal').forEach(el => el.classList.add('in'));
+  }
+
+  // ─── 5. CUSTOM GLOW CURSOR ───
+  const cursorGlow = document.getElementById('cursorGlow');
+  const cursorDot = document.getElementById('cursorDot');
+  let cursorTimeout;
+  if (cursorGlow && cursorDot && window.matchMedia('(hover: hover)').matches) {
+    let mouseX = 0, mouseY = 0;
+    let glowX = 0, glowY = 0;
+    function moveCursor() {
+      // Smooth follow with easing
+      glowX += (mouseX - glowX) * 0.18;
+      glowY += (mouseY - glowY) * 0.18;
+      cursorGlow.style.transform = 'translate(' + glowX + 'px, ' + glowY + 'px) translate(-50%, -50%)';
+      cursorDot.style.transform = 'translate(' + mouseX + 'px, ' + mouseY + 'px) translate(-50%, -50%)';
+      requestAnimationFrame(moveCursor);
+    }
+    document.addEventListener('mousemove', (e) => {
+      mouseX = e.clientX;
+      mouseY = e.clientY;
+      cursorGlow.style.opacity = '1';
+      cursorDot.style.opacity = '1';
+      clearTimeout(cursorTimeout);
+      cursorTimeout = setTimeout(() => {
+        cursorGlow.style.opacity = '0';
+        cursorDot.style.opacity = '0';
+      }, 2000);
+    }, { passive: true });
+    document.addEventListener('mouseleave', () => {
+      cursorGlow.style.opacity = '0';
+      cursorDot.style.opacity = '0';
+    });
+    // Hover detection on interactive elements
+    const hoverables = 'a, button, [role="button"], input, textarea, label, .theme-toggle, .back-to-top';
+    document.querySelectorAll(hoverables).forEach(el => {
+      el.addEventListener('mouseenter', () => cursorDot.classList.add('hovering'));
+      el.addEventListener('mouseleave', () => cursorDot.classList.remove('hovering'));
+    });
+    moveCursor();
+  }
+
+  // ─── 5b. READING PROGRESS BAR ───
+  const progressBar = document.getElementById('readingProgress');
+  if (progressBar) {
+    function updateProgress() {
+      const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+      const pct = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+      progressBar.style.width = Math.min(100, Math.max(0, pct)) + '%';
+    }
+    window.addEventListener('scroll', updateProgress, { passive: true });
+    window.addEventListener('resize', updateProgress);
+    updateProgress();
+  }
+
+  // ─── 6. BACK TO TOP ───
+  const btt = document.getElementById('backToTop');
+  if (btt) {
+    function onScroll() {
+      if (window.pageYOffset > 500) btt.classList.add('visible');
+      else btt.classList.remove('visible');
+    }
+    window.addEventListener('scroll', onScroll, { passive: true });
+    btt.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  }
+
+  // ─── 6b. AUTO-HIDE TOPBAR — hide on scroll, reveal only when at top ───
+  (function() {
+    const topbar = document.querySelector('.topbar');
+    if (!topbar) return;
+
+    let ticking = false;
+
+    function onScrollDirection() {
+      const currentY = window.pageYOffset || 0;
+
+      // Only show topbar when user is at the very top
+      if (currentY < 80) {
+        topbar.classList.remove('hidden-on-scroll');
+      } else {
+        // Once user starts scrolling, keep hidden forever (until back to top)
+        topbar.classList.add('hidden-on-scroll');
+      }
+
+      ticking = false;
+    }
+
+    window.addEventListener('scroll', function() {
+      if (!ticking) {
+        requestAnimationFrame(onScrollDirection);
+        ticking = true;
+      }
+    }, { passive: true });
+  })();
+
+  // ─── 7. SECURITY LAYER ───
+
+  // 7a. Prevent right-click
+  document.addEventListener('contextmenu', function(e) {
+    e.preventDefault();
+    return false;
+  }, false);
+
+  // 7b. Prevent drag
+  document.addEventListener('dragstart', function(e) {
+    e.preventDefault();
+    return false;
+  }, false);
+
+  // 7c. Block dev-tools keyboard shortcuts
+  document.addEventListener('keydown', function(e) {
+    const k = e.key || '';
+    const code = e.keyCode || 0;
+    // F12
+    if (k === 'F12' || code === 123) {
+      e.preventDefault();
+      return false;
+    }
+    // Ctrl+Shift+I (Windows/Linux DevTools)
+    if (e.ctrlKey && e.shiftKey && (k === 'I' || k === 'i' || code === 73)) {
+      e.preventDefault();
+      return false;
+    }
+    // Ctrl+Shift+J (Console)
+    if (e.ctrlKey && e.shiftKey && (k === 'J' || k === 'j' || code === 74)) {
+      e.preventDefault();
+      return false;
+    }
+    // Ctrl+Shift+C (Inspect Element)
+    if (e.ctrlKey && e.shiftKey && (k === 'C' || k === 'c' || code === 67)) {
+      e.preventDefault();
+      return false;
+    }
+    // Ctrl+U (View Source)
+    if (e.ctrlKey && !e.shiftKey && (k === 'U' || k === 'u' || code === 85)) {
+      e.preventDefault();
+      return false;
+    }
+    // Cmd+Option+I (Mac DevTools)
+    if (e.metaKey && e.altKey && (k === 'I' || k === 'i' || code === 73)) {
+      e.preventDefault();
+      return false;
+    }
+    // Cmd+Option+J (Mac Console)
+    if (e.metaKey && e.altKey && (k === 'J' || k === 'j' || code === 74)) {
+      e.preventDefault();
+      return false;
+    }
+    // Cmd+Option+C (Mac Inspect)
+    if (e.metaKey && e.altKey && (k === 'C' || k === 'c' || code === 67)) {
+      e.preventDefault();
+      return false;
+    }
+  }, false);
+
+  // 7d. Console copyright warning
+  const warning = [
+    '%c\u26a0  L I T E   L A B S  \u26a0',
+    'color: #C9A876; font-size: 22px; font-weight: 700; letter-spacing: 0.3em; padding: 12px 0;'
+  ];
+  const warning2 = [
+    '%cThis is a protected workspace.\n' +
+    'All source content, design, and structural composition are the intellectual property of Lite Labs.\n' +
+    'Unauthorized reproduction, distribution, or adaptation is strictly prohibited.\n' +
+    '\nCopyright \u00a9 Lite Labs \u2014 All rights reserved.',
+    'color: #ADB3BD; font-size: 12px; font-family: monospace; line-height: 1.7;'
+  ];
+
+  function consoleDefense() {
+    try {
+      console.clear();
+      console.log.apply(console, warning);
+      console.log.apply(console, warning2);
+    } catch(e) {}
+  }
+  consoleDefense();
+  // Light-touch loop — every 1.5s (won't kill CPU)
+  setInterval(consoleDefense, 1500);
+
+})();
+</script>
+
+</body>
+</html>
